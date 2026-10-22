@@ -10,26 +10,26 @@
   "closed": false,
   "closes_at": "2026-11-11 08:00"
  },
- "generated_at": "2026-10-22 22:08",
- "cutoff": "2026-10-22 22:00",
- "next_update": "2026-10-23 00:00",
+ "generated_at": "2026-10-23 00:05",
+ "cutoff": "2026-10-23 00:00",
+ "next_update": "2026-10-23 02:00",
  "status": {
-  "last_success_at": "2026-10-22 22:08",
+  "last_success_at": "2026-10-23 00:05",
   "last_error": null,
   "last_error_at": null
  },
  "kpi": {
-  "naver_total": 341,
+  "naver_total": 350,
   "deleted": 27,
-  "deleted_delta": 1,
-  "collected": 318,
-  "last_window_label": "10/22 20–22시",
-  "last_window_new": 16,
-  "prev_window_new": 27,
-  "neg_ratio_last": 100.0,
-  "neg_ratio_prev": 81.5,
-  "neg_ratio_all": 84.4,
-  "neg_ratio_sympathy": 79.3,
+  "deleted_delta": 0,
+  "collected": 329,
+  "last_window_label": "10/22 22–00시",
+  "last_window_new": 11,
+  "prev_window_new": 16,
+  "neg_ratio_last": 72.7,
+  "neg_ratio_prev": 100.0,
+  "neg_ratio_all": 84.0,
+  "neg_ratio_sympathy": 79.2,
   "ads": 3,
   "unanalyzed": 0
  },
@@ -52,9 +52,9 @@
     "sentiment": "부정",
     "category": "정부·정책 평가",
     "keyword": "개혁",
-    "sympathy": 1151,
-    "antipathy": 140,
-    "reply": 25
+    "sympathy": 1203,
+    "antipathy": 146,
+    "reply": 26
    }
   },
   {
@@ -75,7 +75,7 @@
     "sentiment": "부정",
     "category": "연금 재정·고갈",
     "keyword": "사회안전망",
-    "sympathy": 46,
+    "sympathy": 52,
     "antipathy": 0,
     "reply": 1
    }
@@ -121,7 +121,7 @@
     "sentiment": "부정",
     "category": "기타",
     "keyword": "중국인",
-    "sympathy": 16,
+    "sympathy": 17,
     "antipathy": 0,
     "reply": 0
    }
@@ -213,6 +213,29 @@
     "sentiment": "부정",
     "category": "연금 재정·고갈",
     "keyword": "무임승차",
+    "sympathy": 3,
+    "antipathy": 0,
+    "reply": 0
+   }
+  },
+  {
+   "window": "2026-10-22 22:00",
+   "label": "10/22 22–00시",
+   "total": 11,
+   "cumulative": 329,
+   "긍정": 0,
+   "중립": 3,
+   "부정": 8,
+   "기타": 0,
+   "neg_ratio": 72.7,
+   "pos_ratio": 0.0,
+   "top": {
+    "no": "908379002375241913",
+    "time": "2026-10-22 23:17",
+    "text": "애는 여자가 낳는데 왜..중국인에 혜택줄 돈 없애고 이걸 해결해야 되는거 아닌가",
+    "sentiment": "부정",
+    "category": "기타",
+    "keyword": "혜택",
     "sympathy": 2,
     "antipathy": 0,
     "reply": 0
@@ -243,45 +266,51 @@
    "collected_at": "2026-10-22 22:08",
    "naver_total": 341,
    "deleted": 27
+  },
+  {
+   "slot": "2026-10-23 00:00",
+   "collected_at": "2026-10-23 00:05",
+   "naver_total": 350,
+   "deleted": 27
   }
  ],
  "sentiment": {
   "count": {
    "긍정": 11,
-   "중립": 38,
-   "부정": 266,
+   "중립": 41,
+   "부정": 274,
    "기타": 3
   },
   "sympathy": {
    "긍정": 17,
-   "중립": 610,
-   "부정": 2408,
+   "중립": 646,
+   "부정": 2529,
    "기타": 0
   }
  },
  "category": {
   "기타": {
    "긍정": 6,
-   "중립": 38,
-   "부정": 146,
+   "중립": 41,
+   "부정": 148,
    "기타": 0
   },
   "연금 재정·고갈": {
    "긍정": 0,
    "중립": 0,
-   "부정": 40,
+   "부정": 42,
    "기타": 0
   },
   "제도 개선(1인 1연금)": {
    "긍정": 4,
    "중립": 0,
-   "부정": 34,
+   "부정": 36,
    "기타": 0
   },
   "정부·정책 평가": {
    "긍정": 1,
    "중립": 0,
-   "부정": 20,
+   "부정": 22,
    "기타": 0
   },
   "성별·혼인 형평성": {
@@ -298,7 +327,7 @@
   }
  },
  "demographics": {
-  "as_of": "2026-10-22 22:08",
+  "as_of": "2026-10-23 00:05",
   "gender": {
    "male": 83,
    "female": 17
@@ -318,7 +347,7 @@
    },
    {
     "age": "40",
-    "value": 38
+    "value": 37
    },
    {
     "age": "50",
@@ -345,10 +374,10 @@
   },
   {
    "keyword": "고갈",
-   "count": 6,
+   "count": 7,
    "긍정": 0,
    "중립": 0,
-   "부정": 6,
+   "부정": 7,
    "기타": 0
   },
   {
@@ -357,6 +386,14 @@
    "긍정": 0,
    "중립": 1,
    "부정": 5,
+   "기타": 0
+  },
+  {
+   "keyword": "비판",
+   "count": 6,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 6,
    "기타": 0
   },
   {
@@ -376,6 +413,14 @@
    "기타": 0
   },
   {
+   "keyword": "결혼",
+   "count": 4,
+   "긍정": 0,
+   "중립": 3,
+   "부정": 1,
+   "기타": 0
+  },
+  {
    "keyword": "비난",
    "count": 4,
    "긍정": 0,
@@ -384,11 +429,11 @@
    "기타": 0
   },
   {
-   "keyword": "비판",
+   "keyword": "혜택",
    "count": 4,
    "긍정": 0,
-   "중립": 0,
-   "부정": 4,
+   "중립": 1,
+   "부정": 3,
    "기타": 0
   },
   {
@@ -464,27 +509,11 @@
    "기타": 0
   },
   {
-   "keyword": "결혼",
-   "count": 3,
-   "긍정": 0,
-   "중립": 2,
-   "부정": 1,
-   "기타": 0
-  },
-  {
    "keyword": "불공정",
    "count": 3,
    "긍정": 0,
    "중립": 0,
    "부정": 3,
-   "기타": 0
-  },
-  {
-   "keyword": "혜택",
-   "count": 3,
-   "긍정": 0,
-   "중립": 1,
-   "부정": 2,
    "기타": 0
   },
   {
@@ -505,9 +534,9 @@
     "sentiment": "부정",
     "category": "정부·정책 평가",
     "keyword": "개혁",
-    "sympathy": 1151,
-    "antipathy": 140,
-    "reply": 25
+    "sympathy": 1203,
+    "antipathy": 146,
+    "reply": 26
    },
    {
     "no": "908313450118119457",
@@ -516,8 +545,8 @@
     "sentiment": "부정",
     "category": "제도 개선(1인 1연금)",
     "keyword": "추납제도",
-    "sympathy": 586,
-    "antipathy": 48,
+    "sympathy": 615,
+    "antipathy": 49,
     "reply": 11
    },
    {
@@ -527,9 +556,9 @@
     "sentiment": "중립",
     "category": "기타",
     "keyword": "여성연금",
-    "sympathy": 296,
-    "antipathy": 61,
-    "reply": 11
+    "sympathy": 307,
+    "antipathy": 62,
+    "reply": 12
    },
    {
     "no": "908316018558894098",
@@ -538,8 +567,8 @@
     "sentiment": "중립",
     "category": "기타",
     "keyword": "기여금",
-    "sympathy": 260,
-    "antipathy": 5,
+    "sympathy": 282,
+    "antipathy": 6,
     "reply": 5
    },
    {
@@ -549,7 +578,7 @@
     "sentiment": "부정",
     "category": "제도 개선(1인 1연금)",
     "keyword": "추납구제",
-    "sympathy": 145,
+    "sympathy": 151,
     "antipathy": 7,
     "reply": 0
    }
@@ -565,7 +594,7 @@
       "sentiment": "부정",
       "category": "성별·혼인 형평성",
       "keyword": "혜택",
-      "sympathy": 15,
+      "sympathy": 16,
       "antipathy": 9,
       "reply": 0
      },
@@ -615,7 +644,7 @@
       "sentiment": "부정",
       "category": "제도 개선(1인 1연금)",
       "keyword": "개선",
-      "sympathy": 78,
+      "sympathy": 85,
       "antipathy": 2,
       "reply": 0
      },
@@ -626,7 +655,7 @@
       "sentiment": "부정",
       "category": "제도 개선(1인 1연금)",
       "keyword": "호구",
-      "sympathy": 5,
+      "sympathy": 6,
       "antipathy": 0,
       "reply": 0
      }
@@ -642,7 +671,7 @@
       "sentiment": "부정",
       "category": "연금 재정·고갈",
       "keyword": "사회안전망",
-      "sympathy": 46,
+      "sympathy": 52,
       "antipathy": 0,
       "reply": 1
      },
@@ -708,7 +737,7 @@
       "sentiment": "부정",
       "category": "정부·정책 평가",
       "keyword": "정책",
-      "sympathy": 8,
+      "sympathy": 9,
       "antipathy": 1,
       "reply": 0
      },
@@ -758,7 +787,7 @@
       "sentiment": "부정",
       "category": "기타",
       "keyword": "소설",
-      "sympathy": 24,
+      "sympathy": 26,
       "antipathy": 0,
       "reply": 0
      },
@@ -778,6 +807,127 @@
   }
  },
  "recent": [
+  {
+   "no": "908381375814434928",
+   "time": "2026-10-22 23:54",
+   "text": "정년연장, 국민연 고갈시점 단축, 국민연금료 인상... 코스피로 얼마나 손실본건아닌지...왜 국민연금기사가 최근에 많이나오는 느낌이들지...참 이상해..",
+   "sentiment": "부정",
+   "category": "연금 재정·고갈",
+   "keyword": "고갈",
+   "sympathy": 0,
+   "antipathy": 0,
+   "reply": 0
+  },
+  {
+   "no": "908381259363778714",
+   "time": "2026-10-22 23:52",
+   "text": "결혼이  죄인가??",
+   "sentiment": "중립",
+   "category": "기타",
+   "keyword": "결혼",
+   "sympathy": 0,
+   "antipathy": 0,
+   "reply": 0
+  },
+  {
+   "no": "908381165243596866",
+   "time": "2026-10-22 23:51",
+   "text": "중국연금",
+   "sentiment": "중립",
+   "category": "기타",
+   "keyword": "중국연금",
+   "sympathy": 0,
+   "antipathy": 0,
+   "reply": 0
+  },
+  {
+   "no": "908380197298896979",
+   "time": "2026-10-22 23:36",
+   "text": "기자는 니 돈 아니라고 국민연금을 가입자도 아닌데 마구 뿌리라고. . . 그러면서 언제 국민연금이 고갈 되느니 하면서. . . . 앞뒤가 맞게 기사를 써라. .",
+   "sentiment": "부정",
+   "category": "정부·정책 평가",
+   "keyword": "비판",
+   "sympathy": 0,
+   "antipathy": 0,
+   "reply": 0
+  },
+  {
+   "no": "908379777734279323",
+   "time": "2026-10-22 23:29",
+   "text": "결국 PAY BACK",
+   "sentiment": "중립",
+   "category": "기타",
+   "keyword": "PAY BACK",
+   "sympathy": 0,
+   "antipathy": 0,
+   "reply": 0
+  },
+  {
+   "no": "908379002375241913",
+   "time": "2026-10-22 23:17",
+   "text": "애는 여자가 낳는데 왜..중국인에 혜택줄 돈 없애고 이걸 해결해야 되는거 아닌가",
+   "sentiment": "부정",
+   "category": "기타",
+   "keyword": "혜택",
+   "sympathy": 2,
+   "antipathy": 0,
+   "reply": 0
+  },
+  {
+   "no": "908378763652235295",
+   "time": "2026-10-22 23:14",
+   "text": "55세 미혼인데 직장생활을 전혀 안했다는 전제가 극히 확률이 낮은 특수한 경우의 일반화 오류입니다. 그리고 노령연금이나 최저 연금이나 비슷한데 추후 납부할 이유가 전혀 없습니다.",
+   "sentiment": "부정",
+   "category": "연금 재정·고갈",
+   "keyword": "납부",
+   "sympathy": 0,
+   "antipathy": 0,
+   "reply": 0
+  },
+  {
+   "no": "908377865131655219",
+   "time": "2026-10-22 23:00",
+   "text": "고유가 지원금부터. 외벌이 1가구는 불리\n단독가구 독신유리 건감보험기준 부부가구에게\n더 유리 해야 하는데 결혼가구 꾸리면\n맞벌이 아니면 모든 혜택에서 배제수준...\n배우자 도움 없이 독신이면 무소득\n사회복지 혜땍으로 비과세 부터\n서민주택 임대 입주 조건 등  수도 없이 많음\n외벌이 어정쩡한 가구소득에\n사회보장 조건은 모조리 자격미달 혜택 제외",
+   "sentiment": "부정",
+   "category": "기타",
+   "keyword": "불리",
+   "sympathy": 1,
+   "antipathy": 0,
+   "reply": 0
+  },
+  {
+   "no": "908377353275572293",
+   "time": "2026-10-22 22:52",
+   "text": "우리나라 사회복지 제도 전반적으로 모순 투성이\n전면개혁 필요\n1.결혼장려 하지만 사회지원은 정반대\n모든게 부부동반세대 1가구로 취급 소득\n부터 1가구1주택 등 불리한게 한두가지가 아님\n오직했으면 위장이혼이 유행이겠나 \n독신 혜땍 대우 하면서 부부1가구로 소득\n없는 배우자가 짐덩어리가 되고\n개인. 인격채로서 모든 사회지원 혜택 배제",
+   "sentiment": "부정",
+   "category": "제도 개선(1인 1연금)",
+   "keyword": "개혁",
+   "sympathy": 1,
+   "antipathy": 0,
+   "reply": 0
+  },
+  {
+   "no": "908374408102412426",
+   "time": "2026-10-22 22:06",
+   "text": "중국인 1달 내고 평생 연금 국민 내팽개친 더듬당 4대세습 북정권에 국부 몰래 빼주고 즈그끼리 빼 먹고 저것덜 찍어주는 절라인과 빈민. 나라살림 한푼 보태지 않는 0 세금 족 몇푼 타먹는 재미와 부자에 대한 원한. 표 받으려고 국민 가난하게 만드는 더듬당. 전부 0 세금족 되면 어디서 돈이 나오나",
+   "sentiment": "부정",
+   "category": "정부·정책 평가",
+   "keyword": "비판",
+   "sympathy": 1,
+   "antipathy": 1,
+   "reply": 2
+  },
+  {
+   "no": "908374393808224331",
+   "time": "2026-10-22 22:06",
+   "text": "그냥 국민연금제도 없애자! 각자 알아서 사보험 들면 되잖아 능력 안되면 굶어 죽든지 말든지",
+   "sentiment": "부정",
+   "category": "제도 개선(1인 1연금)",
+   "keyword": "제도 폐지",
+   "sympathy": 1,
+   "antipathy": 0,
+   "reply": 0
+  },
   {
    "no": "908373180966502516",
    "time": "2026-10-22 21:47",
@@ -851,7 +1001,7 @@
    "sentiment": "부정",
    "category": "연금 재정·고갈",
    "keyword": "사기",
-   "sympathy": 0,
+   "sympathy": 1,
    "antipathy": 0,
    "reply": 0
   },
@@ -862,7 +1012,7 @@
    "sentiment": "부정",
    "category": "제도 개선(1인 1연금)",
    "keyword": "개편 요구",
-   "sympathy": 1,
+   "sympathy": 2,
    "antipathy": 0,
    "reply": 0
   },
@@ -928,7 +1078,7 @@
    "sentiment": "부정",
    "category": "연금 재정·고갈",
    "keyword": "무임승차",
-   "sympathy": 2,
+   "sympathy": 3,
    "antipathy": 0,
    "reply": 0
   },
@@ -1137,7 +1287,7 @@
    "sentiment": "부정",
    "category": "기타",
    "keyword": "성별비판",
-   "sympathy": 0,
+   "sympathy": 1,
    "antipathy": 0,
    "reply": 0
   },
@@ -1995,7 +2145,7 @@
    "sentiment": "부정",
    "category": "기타",
    "keyword": "기자",
-   "sympathy": 3,
+   "sympathy": 4,
    "antipathy": 0,
    "reply": 0
   },
@@ -2039,7 +2189,7 @@
    "sentiment": "부정",
    "category": "기타",
    "keyword": "중국인",
-   "sympathy": 16,
+   "sympathy": 17,
    "antipathy": 0,
    "reply": 0
   },
@@ -2974,7 +3124,7 @@
    "sentiment": "부정",
    "category": "연금 재정·고갈",
    "keyword": "노후자금",
-   "sympathy": 8,
+   "sympathy": 10,
    "antipathy": 1,
    "reply": 1
   },
@@ -3073,7 +3223,7 @@
    "sentiment": "부정",
    "category": "기타",
    "keyword": "소설",
-   "sympathy": 24,
+   "sympathy": 26,
    "antipathy": 0,
    "reply": 0
   },
@@ -3150,7 +3300,7 @@
    "sentiment": "중립",
    "category": "기타",
    "keyword": "결혼",
-   "sympathy": 16,
+   "sympathy": 17,
    "antipathy": 0,
    "reply": 3
   },
@@ -3161,7 +3311,7 @@
    "sentiment": "부정",
    "category": "기타",
    "keyword": "책임",
-   "sympathy": 9,
+   "sympathy": 10,
    "antipathy": 0,
    "reply": 0
   },
@@ -3227,7 +3377,7 @@
    "sentiment": "부정",
    "category": "연금 재정·고갈",
    "keyword": "사회안전망",
-   "sympathy": 46,
+   "sympathy": 52,
    "antipathy": 0,
    "reply": 1
   },
@@ -3293,7 +3443,7 @@
    "sentiment": "부정",
    "category": "성별·혼인 형평성",
    "keyword": "혜택",
-   "sympathy": 15,
+   "sympathy": 16,
    "antipathy": 9,
    "reply": 0
   },
@@ -3513,7 +3663,7 @@
    "sentiment": "부정",
    "category": "제도 개선(1인 1연금)",
    "keyword": "호구",
-   "sympathy": 5,
+   "sympathy": 6,
    "antipathy": 0,
    "reply": 0
   },
@@ -3535,7 +3685,7 @@
    "sentiment": "부정",
    "category": "연금 재정·고갈",
    "keyword": "고갈론",
-   "sympathy": 27,
+   "sympathy": 28,
    "antipathy": 2,
    "reply": 0
   },
@@ -3656,7 +3806,7 @@
    "sentiment": "중립",
    "category": "기타",
    "keyword": "중국",
-   "sympathy": 18,
+   "sympathy": 20,
    "antipathy": 3,
    "reply": 1
   },
@@ -3722,7 +3872,7 @@
    "sentiment": "부정",
    "category": "정부·정책 평가",
    "keyword": "정책",
-   "sympathy": 8,
+   "sympathy": 9,
    "antipathy": 1,
    "reply": 0
   },
@@ -3955,127 +4105,6 @@
    "keyword": "충격",
    "sympathy": 5,
    "antipathy": 4,
-   "reply": 0
-  },
-  {
-   "no": "908317435076018193",
-   "time": "2026-10-22 07:22",
-   "text": "대국민 폰지사기 국민연금 없애고 다 돌려줘라.",
-   "sentiment": "부정",
-   "category": "연금 재정·고갈",
-   "keyword": "폰지사기",
-   "sympathy": 0,
-   "antipathy": 1,
-   "reply": 0
-  },
-  {
-   "no": "908317386606641192",
-   "time": "2026-10-22 07:21",
-   "text": "이나라 법 구닥다리인건 범죄자 처벌수위만 봐도 알수있지 굳이 국민연금까지ㅎㅎ",
-   "sentiment": "부정",
-   "category": "기타",
-   "keyword": "구닥다리",
-   "sympathy": 0,
-   "antipathy": 0,
-   "reply": 0
-  },
-  {
-   "no": "908317244000305184",
-   "time": "2026-10-22 07:19",
-   "text": "어차피 사기 인거 낸 돈 돌려주고 없애자",
-   "sentiment": "부정",
-   "category": "기타",
-   "keyword": "사기",
-   "sympathy": 1,
-   "antipathy": 1,
-   "reply": 0
-  },
-  {
-   "no": "908317164627296258",
-   "time": "2026-10-22 07:18",
-   "text": "국민연금 재정이나 좀 아끼고 지켜 주세요 주가폭락해서 다 날리지 말고",
-   "sentiment": "부정",
-   "category": "연금 재정·고갈",
-   "keyword": "재정",
-   "sympathy": 0,
-   "antipathy": 0,
-   "reply": 0
-  },
-  {
-   "no": "908316942681505862",
-   "time": "2026-10-22 07:14",
-   "text": "중국인 국민연금 타먹는거 부터 개선해야지",
-   "sentiment": "부정",
-   "category": "제도 개선(1인 1연금)",
-   "keyword": "개선",
-   "sympathy": 78,
-   "antipathy": 2,
-   "reply": 0
-  },
-  {
-   "no": "908316902365855871",
-   "time": "2026-10-22 07:13",
-   "text": "성실히 낸 사람만 호구.",
-   "sentiment": "부정",
-   "category": "기타",
-   "keyword": "호구",
-   "sympathy": 0,
-   "antipathy": 0,
-   "reply": 0
-  },
-  {
-   "no": "908316892886728804",
-   "time": "2026-10-22 07:13",
-   "text": "정권을 떠 바치기  위해 국민연금  182조를 날려 먹었는데 무엇을 기대하나?",
-   "sentiment": "부정",
-   "category": "정부·정책 평가",
-   "keyword": "정권",
-   "sympathy": 0,
-   "antipathy": 0,
-   "reply": 0
-  },
-  {
-   "no": "908316849047863311",
-   "time": "2026-10-22 07:13",
-   "text": "연금가입자 사망하면 배우자에게 연금지급 안하려는 빌드업인가",
-   "sentiment": "부정",
-   "category": "기타",
-   "keyword": "빌드업",
-   "sympathy": 1,
-   "antipathy": 0,
-   "reply": 0
-  },
-  {
-   "no": "908316802625306673",
-   "time": "2026-10-22 07:12",
-   "text": "갈라치기 또 시작이야??",
-   "sentiment": "부정",
-   "category": "기타",
-   "keyword": "갈라치기",
-   "sympathy": 0,
-   "antipathy": 0,
-   "reply": 0
-  },
-  {
-   "no": "908316729677971496",
-   "time": "2026-10-22 07:11",
-   "text": "정말 낡은 몹쓸 제도네.",
-   "sentiment": "부정",
-   "category": "기타",
-   "keyword": "몹쓸 제도",
-   "sympathy": 0,
-   "antipathy": 0,
-   "reply": 0
-  },
-  {
-   "no": "908316582239797370",
-   "time": "2026-10-22 07:08",
-   "text": "결국 하고 싶은 말은 여자 차별 받는다는 소리잖아… 평생 납부 안하고 살다가 추납하는 여자는 지 돈으로 추납하냐? 남편돈이지. 추납 안되는 여자는 손가락 빨고 사냐? 결국 남편돈이지. 둘 다 남편 돈으로 사는 거면서 뭔 제도 탓하는 척 여자가 손해본다는 갯벌소리야!",
-   "sentiment": "부정",
-   "category": "성별·혼인 형평성",
-   "keyword": "차별",
-   "sympathy": 0,
-   "antipathy": 0,
    "reply": 0
   }
  ]

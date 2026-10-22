@@ -10,26 +10,26 @@
   "closed": false,
   "closes_at": "2026-11-11 08:00"
  },
- "generated_at": "2026-10-22 22:08",
- "cutoff": "2026-10-22 22:00",
- "next_update": "2026-10-23 00:00",
+ "generated_at": "2026-10-23 00:05",
+ "cutoff": "2026-10-23 00:00",
+ "next_update": "2026-10-23 02:00",
  "status": {
-  "last_success_at": "2026-10-22 22:08",
+  "last_success_at": "2026-10-23 00:05",
   "last_error": null,
   "last_error_at": null
  },
  "kpi": {
   "naver_total": 85,
   "deleted": 4,
-  "deleted_delta": 1,
+  "deleted_delta": 0,
   "collected": 82,
-  "last_window_label": "10/22 20–22시",
+  "last_window_label": "10/22 22–00시",
   "last_window_new": 0,
   "prev_window_new": 0,
   "neg_ratio_last": null,
   "neg_ratio_prev": null,
   "neg_ratio_all": 95.1,
-  "neg_ratio_sympathy": 99.1,
+  "neg_ratio_sympathy": 99.2,
   "ads": 0,
   "unanalyzed": 0
  },
@@ -75,7 +75,7 @@
     "sentiment": "부정",
     "category": "기금 운용 손실",
     "keyword": "손실",
-    "sympathy": 12,
+    "sympathy": 13,
     "antipathy": 1,
     "reply": 1
    }
@@ -187,6 +187,19 @@
    "neg_ratio": null,
    "pos_ratio": null,
    "top": null
+  },
+  {
+   "window": "2026-10-22 22:00",
+   "label": "10/22 22–00시",
+   "total": 0,
+   "cumulative": 82,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 0,
+   "기타": 0,
+   "neg_ratio": null,
+   "pos_ratio": null,
+   "top": null
   }
  ],
  "snapshots": [
@@ -201,6 +214,12 @@
    "collected_at": "2026-10-22 22:08",
    "naver_total": 85,
    "deleted": 4
+  },
+  {
+   "slot": "2026-10-23 00:00",
+   "collected_at": "2026-10-23 00:05",
+   "naver_total": 85,
+   "deleted": 4
   }
  ],
  "sentiment": {
@@ -213,7 +232,7 @@
   "sympathy": {
    "긍정": 0,
    "중립": 3,
-   "부정": 348,
+   "부정": 356,
    "기타": 0
   }
  },
@@ -438,7 +457,7 @@
     "sentiment": "부정",
     "category": "기금 운용 손실",
     "keyword": "방만함",
-    "sympathy": 48,
+    "sympathy": 49,
     "antipathy": 5,
     "reply": 2
    },
@@ -449,7 +468,7 @@
     "sentiment": "부정",
     "category": "재정 고갈·미래세대 부담",
     "keyword": "희생",
-    "sympathy": 36,
+    "sympathy": 37,
     "antipathy": 4,
     "reply": 2
    },
@@ -460,7 +479,7 @@
     "sentiment": "부정",
     "category": "기금 운용 손실",
     "keyword": "반도체",
-    "sympathy": 33,
+    "sympathy": 34,
     "antipathy": 5,
     "reply": 3
    },
@@ -471,7 +490,7 @@
     "sentiment": "부정",
     "category": "기타",
     "keyword": "구조개편",
-    "sympathy": 29,
+    "sympathy": 30,
     "antipathy": 4,
     "reply": 0
    }
@@ -526,7 +545,7 @@
       "sentiment": "부정",
       "category": "기금 운용 손실",
       "keyword": "손실",
-      "sympathy": 12,
+      "sympathy": 13,
       "antipathy": 1,
       "reply": 1
      },
@@ -1047,7 +1066,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "돈",
-   "sympathy": 7,
+   "sympathy": 8,
    "antipathy": 0,
    "reply": 0
   },
@@ -1223,7 +1242,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "갈취",
-   "sympathy": 2,
+   "sympathy": 3,
    "antipathy": 0,
    "reply": 0
   },
@@ -1366,7 +1385,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "손실",
-   "sympathy": 12,
+   "sympathy": 13,
    "antipathy": 1,
    "reply": 1
   },
@@ -1432,7 +1451,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "손실",
-   "sympathy": 3,
+   "sympathy": 4,
    "antipathy": 0,
    "reply": 0
   },
@@ -1465,7 +1484,7 @@
    "sentiment": "부정",
    "category": "기타",
    "keyword": "구조개편",
-   "sympathy": 29,
+   "sympathy": 30,
    "antipathy": 4,
    "reply": 0
   },
@@ -1487,7 +1506,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "방만함",
-   "sympathy": 48,
+   "sympathy": 49,
    "antipathy": 5,
    "reply": 2
   },
@@ -1509,7 +1528,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "반도체",
-   "sympathy": 33,
+   "sympathy": 34,
    "antipathy": 5,
    "reply": 3
   },
@@ -1520,7 +1539,7 @@
    "sentiment": "부정",
    "category": "재정 고갈·미래세대 부담",
    "keyword": "희생",
-   "sympathy": 36,
+   "sympathy": 37,
    "antipathy": 4,
    "reply": 2
   },
