@@ -82,12 +82,13 @@
 
         * { box-sizing: border-box; }
 
+        html { font-size: 14px; }
         body {
             margin: 0;
             background: var(--bg);
             color: var(--text);
             font-family: 'Pretendard Variable', Pretendard, -apple-system, 'Apple SD Gothic Neo', sans-serif;
-            font-size: 15px;
+            font-size: 14px;
             line-height: 1.5;
             padding-bottom: 48px;
         }
@@ -207,14 +208,17 @@
         }
         .btn:hover { border-color: var(--primary); }
         .table-wrap { overflow: auto; max-height: 640px; border: 1px solid var(--line); border-radius: 12px; }
-        table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-        th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
-        th { position: sticky; top: 0; background: var(--surface-2); color: var(--text-2); font-weight: 700; white-space: nowrap; z-index: 1; }
+        /* 고정 레이아웃: 댓글 열만 남는 폭을 쓰고 나머지는 2줄로 접는다 */
+        table { width: 100%; min-width: 600px; table-layout: fixed; border-collapse: collapse; font-size: 0.86rem; line-height: 1.45; }
+        th, td { padding: 7px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; word-break: keep-all; overflow-wrap: anywhere; }
+        th { position: sticky; top: 0; background: var(--surface-2); color: var(--text-2); font-weight: 700; z-index: 1; }
         th.sortable { cursor: pointer; user-select: none; }
-        td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-        td.time { white-space: nowrap; color: var(--muted); }
-        td.nowrap { white-space: nowrap; }
-        td.text { min-width: 260px; white-space: pre-wrap; word-break: break-word; }
+        td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+        td.time { color: var(--muted); font-variant-numeric: tabular-nums; }
+        td.sub { color: var(--text-2); }
+        td.text { white-space: pre-wrap; word-break: break-word; }
+        col.c-time { width: 62px; } col.c-sentiment { width: 66px; } col.c-category { width: 104px; }
+        col.c-keyword { width: 92px; } col.c-sympathy { width: 52px; } col.c-antipathy { width: 52px; }
         tr:hover td { background: var(--surface-2); }
         .table-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 10px; color: var(--muted); font-size: 0.85rem; flex-wrap: wrap; }
 
@@ -323,9 +327,9 @@
             return {
                 paper_bgcolor: 'rgba(0,0,0,0)',
                 plot_bgcolor: 'rgba(0,0,0,0)',
-                font: { family: getComputedStyle(document.body).fontFamily, color: text2, size: 12 },
+                font: { family: getComputedStyle(document.body).fontFamily, color: text2, size: 11 },
                 margin: { t: 10, r: 12, b: 40, l: 48 },
-                hoverlabel: { bgcolor: cssVar('--surface'), bordercolor: line, font: { color: cssVar('--text'), size: 12 } },
+                hoverlabel: { bgcolor: cssVar('--surface'), bordercolor: line, font: { color: cssVar('--text'), size: 11 } },
                 showlegend: false,
                 ...extra,
                 xaxis: { gridcolor: line, linecolor: line, zeroline: false, fixedrange: true, ...(extra.xaxis || {}) },
@@ -652,13 +656,13 @@
 
         // ---------- table ----------
         const COLUMNS = [
-            { key: 'time', label: '작성 시각', cls: 'time' },
+            { key: 'time', label: '작성<br>시각', cls: 'time' },
             { key: 'sentiment', label: '감성' },
             { key: 'category', label: '주제' },
             { key: 'keyword', label: '키워드' },
             { key: 'text', label: '댓글', cls: 'text', nosort: true },
             { key: 'sympathy', label: '공감', cls: 'num' },
-            { key: 'antipathy', label: '비공감', cls: 'num' },
+            { key: 'antipathy', label: '비<br>공감', cls: 'num' },
         ];
 
         function renderTable(s) {
@@ -676,6 +680,7 @@
                     <input id="fQ" type="search" placeholder="댓글·키워드 검색" value="${esc(t.filter.q)}">
                 </div>
                 <div class="table-wrap"><table>
+                    <colgroup>${COLUMNS.map((c) => `<col class="c-${c.key}">`).join('')}</colgroup>
                     <thead><tr>${COLUMNS.map((c) => `<th class="${c.cls || ''} ${c.nosort ? '' : 'sortable'}" data-key="${c.key}">${c.label}${t.sort.key === c.key || (c.key === 'time' && t.sort.key === 'no') ? (t.sort.asc ? ' ↑' : ' ↓') : ''}</th>`).join('')}</tr></thead>
                     <tbody id="tBody"></tbody>
                 </table></div>
@@ -717,10 +722,10 @@
             const LIMIT = 1000;
             $('#tCount').textContent = `${fmtNum(rows.length)}건${rows.length > LIMIT ? ` (상위 ${fmtNum(LIMIT)}건 표시)` : ''}`;
             $('#tBody').innerHTML = rows.slice(0, LIMIT).map((r) => `<tr>
-                <td class="time">${esc(r.time.slice(5))}</td>
-                <td class="nowrap">${sentimentBadge(r.sentiment)}</td>
-                <td class="nowrap">${esc(r.category)}</td>
-                <td class="nowrap">${esc(r.keyword)}</td>
+                <td class="time">${esc(r.time.slice(5, 10))}<br>${esc(r.time.slice(11, 16))}</td>
+                <td>${sentimentBadge(r.sentiment)}</td>
+                <td class="sub">${esc(r.category)}</td>
+                <td class="sub">${esc(r.keyword)}</td>
                 <td class="text">${esc(r.text)}</td>
                 <td class="num">${fmtNum(r.sympathy)}</td>
                 <td class="num">${fmtNum(r.antipathy)}</td>
