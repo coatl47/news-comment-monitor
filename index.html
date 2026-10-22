@@ -127,7 +127,6 @@
         /* layout */
         .grid { display: grid; gap: 16px; margin-top: 16px; }
         .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .grid-cards { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
         @media (max-width: 900px) { .grid-2 { grid-template-columns: minmax(0, 1fr); } }
 
         .card {
@@ -195,14 +194,6 @@
         .kw span { color: var(--muted); font-size: 0.8rem; margin-left: 4px; }
         .kw .share { height: 5px; margin-top: 5px; }
 
-        /* overview cards */
-        .ov-card { cursor: pointer; transition: border-color .15s; display: flex; flex-direction: column; gap: 10px; }
-        .ov-card:hover, .ov-card:focus-visible { border-color: var(--primary); outline: none; }
-        .ov-title { font-size: 0.92rem; color: var(--text-2); margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .ov-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-        .ov-stats div { font-size: 0.78rem; color: var(--muted); }
-        .ov-stats b { display: block; font-size: 1.2rem; color: var(--text); font-variant-numeric: tabular-nums; }
-
         /* table */
         .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
         .filters select, .filters input {
@@ -262,8 +253,7 @@
         <nav class="tabs" id="tabs" role="tablist"></nav>
 
         <main>
-            <section id="overviewSection"></section>
-            <section id="detailSection" class="hidden"></section>
+            <section id="detailSection"></section>
         </main>
 
         <footer class="card disclaimer" style="margin-top:16px">
@@ -279,7 +269,6 @@
     <script>
         const SENTIMENTS = ['긍정', '중립', '부정', '기타'];
         const SENT_VAR = { '긍정': '--pos', '중립': '--neu', '부정': '--neg', '기타': '--etc' };
-        const SERIES_VARS = ['--s1', '--s2', '--s3', '--s4', '--s5', '--s6', '--s7', '--s8'];
         const SLOT_MS = 2 * 3600 * 1000;
         const PLOT_CONFIG = { displayModeBar: false, responsive: true };
 
@@ -393,7 +382,9 @@
 
         // ---------- routing ----------
         function buildTabs() {
-            const tabs = [{ id: 'overview', label: '종합' }, ...app.index.articles.map((a) => ({ id: a.id, label: a.tab_label, warn: !!a.status?.last_error }))];
+            const tabs = app.index.articles.map((a) => ({ id: a.id, label: a.tab_label, warn: !!a.status?.last_error }));
+            // 기사가 하나뿐이면 탭 줄을 숨긴다
+            $('#tabs').classList.toggle('hidden', tabs.length < 2);
             $('#tabs').innerHTML = tabs.map((t) =>
                 `<button class="tab" role="tab" data-id="${esc(t.id)}" aria-selected="false">${t.warn ? '<span class="dot" style="background:var(--neg)" title="수집 지연"></span>' : ''}${esc(t.label)}</button>`).join('');
             $('#tabs').addEventListener('click', (e) => {
@@ -403,19 +394,19 @@
         }
 
         function route() {
-            const id = decodeURIComponent(location.hash.slice(1)) || 'overview';
-            const exists = id === 'overview' || app.index.articles.some((a) => a.id === id);
-            show(exists ? id : 'overview');
+            const articles = app.index.articles;
+            if (!articles.length) {
+                $('#detailSection').innerHTML = '<div class="card empty-msg" style="margin-top:16px">아직 수집된 기사가 없습니다. dashboard_config.json 에 기사를 추가하세요.</div>';
+                return;
+            }
+            const id = decodeURIComponent(location.hash.slice(1));
+            show(articles.some((a) => a.id === id) ? id : articles[0].id);
         }
 
         async function show(id) {
             app.active = id;
             document.querySelectorAll('.tab').forEach((t) => t.setAttribute('aria-selected', String(t.dataset.id === id)));
-            const isOverview = id === 'overview';
-            $('#overviewSection').classList.toggle('hidden', !isOverview);
-            $('#detailSection').classList.toggle('hidden', isOverview);
-            if (isOverview) return renderOverview();
-            $('#detailSection').innerHTML = '<div class="card empty-msg">불러오는 중…</div>';
+            $('#detailSection').innerHTML = '<div class="card empty-msg" style="margin-top:16px">불러오는 중…</div>';
             try {
                 if (!app.summaries[id]) app.summaries[id] = await fetchJson(`data/${id}/summary.json`);
                 if (app.active === id) renderDetail(app.summaries[id]);
@@ -426,86 +417,7 @@
 
         function rerender() {
             if (!app.index) return;
-            if (app.active === 'overview') renderOverview();
-            else if (app.summaries[app.active]) renderDetail(app.summaries[app.active], true);
-        }
-
-        // ---------- overview ----------
-        function renderOverview() {
-            const arts = app.index.articles;
-            const section = $('#overviewSection');
-            if (!arts.length) {
-                section.innerHTML = '<div class="card empty-msg" style="margin-top:16px">아직 수집된 기사가 없습니다. dashboard_config.json 에 기사를 추가하세요.</div>';
-                return;
-            }
-            const colorOf = (i) => cssVar(SERIES_VARS[i % SERIES_VARS.length]);
-            section.innerHTML = `
-                <div class="grid grid-cards">
-                    ${arts.map((a, i) => {
-                        const k = a.kpi;
-                        return `<article class="card ov-card" tabindex="0" data-id="${esc(a.id)}">
-                            <div class="card-head" style="margin:0">
-                                <h3 class="card-title"><span class="dot" style="display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;background:${colorOf(i)}"></span>${esc(a.tab_label)}</h3>
-                                ${a.status?.last_error ? '<span class="badge warn">⚠ 수집 지연</span>' : (a.collect_enabled === false ? '<span class="badge">수집 중지</span>' : '')}
-                            </div>
-                            <p class="ov-title">${esc(a.title)}</p>
-                            <div class="ov-stats">
-                                <div>네이버 댓글<b>${fmtNum(k.naver_total)}</b></div>
-                                <div>최근 2시간<b>+${fmtNum(k.last_window_new)}</b></div>
-                                <div>부정 비율<b>${fmtPct(k.neg_ratio_all)}</b></div>
-                            </div>
-                            ${shareBar(a.sentiment.count)}
-                        </article>`;
-                    }).join('')}
-                </div>
-                <div class="grid grid-2">
-                    <div class="card">
-                        <div class="card-head"><div><h3 class="card-title">2시간 단위 신규 댓글</h3><p class="card-desc">기사별로 각 2시간 구간에 새로 달린 댓글 수</p></div></div>
-                        ${legendHtml(arts.map((a, i) => [a.tab_label, colorOf(i)]))}
-                        <div id="ovTimeline" class="chart"></div>
-                    </div>
-                    <div class="card">
-                        <div class="card-head"><div><h3 class="card-title">기사별 감성 비율</h3><p class="card-desc">분류된 전체 댓글 기준 (광고·미분석은 기타)</p></div></div>
-                        ${legendHtml(SENTIMENTS.map((s) => [s, cssVar(SENT_VAR[s])]))}
-                        <div id="ovSentiment" class="chart"></div>
-                    </div>
-                </div>`;
-
-            section.querySelectorAll('.ov-card').forEach((el) => {
-                el.addEventListener('click', () => { location.hash = el.dataset.id; });
-                el.addEventListener('keydown', (e) => { if (e.key === 'Enter') location.hash = el.dataset.id; });
-            });
-
-            Plotly.newPlot('ovTimeline', arts.map((a, i) => ({
-                type: 'scatter', mode: 'lines+markers', name: a.tab_label,
-                x: a.timeline.map((w) => windowCenter(w.window)),
-                y: a.timeline.map((w) => w.total),
-                customdata: a.timeline.map((w) => w.label),
-                line: { color: colorOf(i), width: 2 },
-                marker: { size: 8, color: colorOf(i), line: { color: cssVar('--surface'), width: 2 } },
-                hovertemplate: `${esc(a.tab_label)}<br>%{customdata}: %{y:,}건<extra></extra>`,
-            })), baseLayout({ xaxis: timeAxis(Math.max(...arts.map((a) => a.timeline.length))), yaxis: { title: { text: '건' } }, hovermode: 'closest' }), PLOT_CONFIG);
-
-            const labels = arts.map((a) => a.tab_label);
-            Plotly.newPlot('ovSentiment', SENTIMENTS.map((s) => {
-                const values = arts.map((a) => {
-                    const total = SENTIMENTS.reduce((acc, k) => acc + (a.sentiment.count[k] || 0), 0);
-                    return total ? (a.sentiment.count[s] || 0) / total * 100 : 0;
-                });
-                return {
-                    type: 'bar', orientation: 'h', name: s, y: labels, x: values,
-                    customdata: arts.map((a) => a.sentiment.count[s] || 0),
-                    marker: { color: cssVar(SENT_VAR[s]), line: { color: cssVar('--surface'), width: 2 } },
-                    text: values.map((v) => (v >= 8 ? `${v.toFixed(0)}%` : '')), textposition: 'inside', insidetextanchor: 'middle',
-                    textfont: { color: '#fff' },
-                    hovertemplate: `%{y} · ${s} %{x:.1f}% (%{customdata:,}건)<extra></extra>`,
-                };
-            }), baseLayout({
-                barmode: 'stack', bargap: 0.45,
-                margin: { t: 10, r: 12, b: 30, l: 120 },
-                xaxis: { range: [0, 100], ticksuffix: '%' },
-                yaxis: { autorange: 'reversed', gridcolor: 'rgba(0,0,0,0)' },
-            }), PLOT_CONFIG);
+            if (app.summaries[app.active]) renderDetail(app.summaries[app.active], true);
         }
 
         // ---------- detail ----------
@@ -840,7 +752,7 @@
             try {
                 app.index = await fetchJson('data/index.json');
             } catch (err) {
-                $('#overviewSection').innerHTML = `<div class="card empty-msg" style="margin-top:16px">data/index.json 을 불러오지 못했습니다. 첫 수집이 끝난 뒤 다시 확인하세요.<br>${esc(err.message)}</div>`;
+                $('#detailSection').innerHTML = `<div class="card empty-msg" style="margin-top:16px">data/index.json 을 불러오지 못했습니다. 첫 수집이 끝난 뒤 다시 확인하세요.<br>${esc(err.message)}</div>`;
                 return;
             }
             document.title = app.index.dashboard_title;
