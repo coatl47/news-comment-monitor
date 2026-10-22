@@ -10,26 +10,26 @@
   "closed": false,
   "closes_at": "2026-11-11 08:00"
  },
- "generated_at": "2026-10-23 02:05",
- "cutoff": "2026-10-23 02:00",
- "next_update": "2026-10-23 04:00",
+ "generated_at": "2026-10-23 04:05",
+ "cutoff": "2026-10-23 04:00",
+ "next_update": "2026-10-23 06:00",
  "status": {
-  "last_success_at": "2026-10-23 02:05",
+  "last_success_at": "2026-10-23 04:05",
   "last_error": null,
   "last_error_at": null
  },
  "kpi": {
-  "naver_total": 357,
+  "naver_total": 361,
   "deleted": 28,
-  "deleted_delta": 1,
-  "collected": 336,
-  "last_window_label": "10/23 00–02시",
-  "last_window_new": 7,
-  "prev_window_new": 11,
-  "neg_ratio_last": 85.7,
-  "neg_ratio_prev": 72.7,
-  "neg_ratio_all": 84.1,
-  "neg_ratio_sympathy": 79.2,
+  "deleted_delta": 0,
+  "collected": 340,
+  "last_window_label": "10/23 02–04시",
+  "last_window_new": 4,
+  "prev_window_new": 7,
+  "neg_ratio_last": 75.0,
+  "neg_ratio_prev": 85.7,
+  "neg_ratio_all": 84.0,
+  "neg_ratio_sympathy": 79.3,
   "ads": 3,
   "unanalyzed": 0
  },
@@ -52,8 +52,8 @@
     "sentiment": "부정",
     "category": "정부·정책 평가",
     "keyword": "개혁",
-    "sympathy": 1244,
-    "antipathy": 156,
+    "sympathy": 1272,
+    "antipathy": 161,
     "reply": 26
    }
   },
@@ -75,7 +75,7 @@
     "sentiment": "부정",
     "category": "연금 재정·고갈",
     "keyword": "사회안전망",
-    "sympathy": 55,
+    "sympathy": 58,
     "antipathy": 0,
     "reply": 1
    }
@@ -121,7 +121,7 @@
     "sentiment": "부정",
     "category": "기타",
     "keyword": "중국인",
-    "sympathy": 19,
+    "sympathy": 21,
     "antipathy": 0,
     "reply": 0
    }
@@ -236,7 +236,7 @@
     "sentiment": "부정",
     "category": "기타",
     "keyword": "혜택",
-    "sympathy": 2,
+    "sympathy": 3,
     "antipathy": 0,
     "reply": 0
    }
@@ -259,6 +259,29 @@
     "sentiment": "부정",
     "category": "제도 개선(1인 1연금)",
     "keyword": "납부",
+    "sympathy": 1,
+    "antipathy": 0,
+    "reply": 0
+   }
+  },
+  {
+   "window": "2026-10-23 02:00",
+   "label": "10/23 02–04시",
+   "total": 4,
+   "cumulative": 340,
+   "긍정": 0,
+   "중립": 1,
+   "부정": 3,
+   "기타": 0,
+   "neg_ratio": 75.0,
+   "pos_ratio": 0.0,
+   "top": {
+    "no": "908395709395369995",
+    "time": "2026-10-23 03:37",
+    "text": "국민연금이 현 극좌정권의 쌈짓돈으로 전락해버렸는데, 언제 다 탕진될지 모를 일이다.",
+    "sentiment": "부정",
+    "category": "정부·정책 평가",
+    "keyword": "탕진",
     "sympathy": 1,
     "antipathy": 0,
     "reply": 0
@@ -301,45 +324,51 @@
    "collected_at": "2026-10-23 02:05",
    "naver_total": 357,
    "deleted": 28
+  },
+  {
+   "slot": "2026-10-23 04:00",
+   "collected_at": "2026-10-23 04:05",
+   "naver_total": 361,
+   "deleted": 28
   }
  ],
  "sentiment": {
   "count": {
    "긍정": 11,
-   "중립": 42,
-   "부정": 280,
+   "중립": 43,
+   "부정": 283,
    "기타": 3
   },
   "sympathy": {
    "긍정": 17,
-   "중립": 669,
-   "부정": 2608,
+   "중립": 684,
+   "부정": 2678,
    "기타": 0
   }
  },
  "category": {
   "기타": {
    "긍정": 6,
-   "중립": 42,
+   "중립": 43,
    "부정": 151,
    "기타": 0
   },
   "제도 개선(1인 1연금)": {
    "긍정": 4,
    "중립": 0,
-   "부정": 38,
+   "부정": 39,
    "기타": 0
   },
   "연금 재정·고갈": {
    "긍정": 0,
    "중립": 0,
-   "부정": 42,
+   "부정": 43,
    "기타": 0
   },
   "정부·정책 평가": {
    "긍정": 1,
    "중립": 0,
-   "부정": 23,
+   "부정": 24,
    "기타": 0
   },
   "성별·혼인 형평성": {
@@ -356,7 +385,7 @@
   }
  },
  "demographics": {
-  "as_of": "2026-10-23 02:05",
+  "as_of": "2026-10-23 04:05",
   "gender": {
    "male": 83,
    "female": 17
@@ -563,8 +592,8 @@
     "sentiment": "부정",
     "category": "정부·정책 평가",
     "keyword": "개혁",
-    "sympathy": 1244,
-    "antipathy": 156,
+    "sympathy": 1272,
+    "antipathy": 161,
     "reply": 26
    },
    {
@@ -574,8 +603,8 @@
     "sentiment": "부정",
     "category": "제도 개선(1인 1연금)",
     "keyword": "추납제도",
-    "sympathy": 628,
-    "antipathy": 50,
+    "sympathy": 643,
+    "antipathy": 51,
     "reply": 12
    },
    {
@@ -585,9 +614,9 @@
     "sentiment": "중립",
     "category": "기타",
     "keyword": "여성연금",
-    "sympathy": 318,
-    "antipathy": 64,
-    "reply": 13
+    "sympathy": 324,
+    "antipathy": 67,
+    "reply": 14
    },
    {
     "no": "908316018558894098",
@@ -596,7 +625,7 @@
     "sentiment": "중립",
     "category": "기타",
     "keyword": "기여금",
-    "sympathy": 289,
+    "sympathy": 296,
     "antipathy": 7,
     "reply": 5
    },
@@ -607,7 +636,7 @@
     "sentiment": "부정",
     "category": "제도 개선(1인 1연금)",
     "keyword": "추납구제",
-    "sympathy": 153,
+    "sympathy": 160,
     "antipathy": 7,
     "reply": 0
    }
@@ -673,7 +702,7 @@
       "sentiment": "부정",
       "category": "제도 개선(1인 1연금)",
       "keyword": "개선",
-      "sympathy": 90,
+      "sympathy": 93,
       "antipathy": 2,
       "reply": 0
      },
@@ -700,7 +729,7 @@
       "sentiment": "부정",
       "category": "연금 재정·고갈",
       "keyword": "사회안전망",
-      "sympathy": 55,
+      "sympathy": 58,
       "antipathy": 0,
       "reply": 1
      },
@@ -827,7 +856,7 @@
       "sentiment": "부정",
       "category": "기타",
       "keyword": "중국인",
-      "sympathy": 19,
+      "sympathy": 21,
       "antipathy": 0,
       "reply": 0
      }
@@ -836,6 +865,50 @@
   }
  },
  "recent": [
+  {
+   "no": "908396682272571406",
+   "time": "2026-10-23 03:52",
+   "text": "100만원  이상받는 여성수급자 통계가 맞나요?200만원 이상받는 수급자가 고작 1900여명이라니 너무 적은숫자 이닌지. . .",
+   "sentiment": "중립",
+   "category": "기타",
+   "keyword": "통계",
+   "sympathy": 0,
+   "antipathy": 0,
+   "reply": 0
+  },
+  {
+   "no": "908395709395369995",
+   "time": "2026-10-23 03:37",
+   "text": "국민연금이 현 극좌정권의 쌈짓돈으로 전락해버렸는데, 언제 다 탕진될지 모를 일이다.",
+   "sentiment": "부정",
+   "category": "정부·정책 평가",
+   "keyword": "탕진",
+   "sympathy": 1,
+   "antipathy": 0,
+   "reply": 0
+  },
+  {
+   "no": "908394304420970524",
+   "time": "2026-10-23 03:15",
+   "text": "국민연금의 재정 적자시기와 소멸된다는 위기까지 나오는 마당에 필요성은 반심반의...국민연금은 공단(국가/정부)의 주식투자(도박자금)에 유용하고 소득좀내면 그들은 성과급 잔치하고 얼마전 처럼 200조에가까운 적자를 내고도 어느누구 책임지는 일없다. 국민연금 필요惡이다. 마냥 좋게 보이지 않는다.과대 광고질 그만해라.",
+   "sentiment": "부정",
+   "category": "연금 재정·고갈",
+   "keyword": "적자",
+   "sympathy": 1,
+   "antipathy": 0,
+   "reply": 0
+  },
+  {
+   "no": "908391767420698681",
+   "time": "2026-10-23 02:35",
+   "text": "추후납부제도를 손봐서 젊었을때부터 미리 노후대책을 하게끔 유도를 해야지 이 헛똑똑이들아. 60되서 10년치 한꺼번에 낼 수 있을 정도의 사람 노후대책까지 신경 쓰니까 제도가 누더기 걸레가 되어가고 있는거 아니냐",
+   "sentiment": "부정",
+   "category": "제도 개선(1인 1연금)",
+   "keyword": "제도",
+   "sympathy": 1,
+   "antipathy": 0,
+   "reply": 0
+  },
   {
    "no": "908389409433321503",
    "time": "2026-10-23 01:59",
@@ -865,7 +938,7 @@
    "sentiment": "부정",
    "category": "기타",
    "keyword": "불만",
-   "sympathy": 0,
+   "sympathy": 1,
    "antipathy": 0,
    "reply": 0
   },
@@ -876,7 +949,7 @@
    "sentiment": "부정",
    "category": "정부·정책 평가",
    "keyword": "사기",
-   "sympathy": 0,
+   "sympathy": 1,
    "antipathy": 0,
    "reply": 0
   },
@@ -953,7 +1026,7 @@
    "sentiment": "부정",
    "category": "정부·정책 평가",
    "keyword": "비판",
-   "sympathy": 1,
+   "sympathy": 2,
    "antipathy": 0,
    "reply": 0
   },
@@ -975,7 +1048,7 @@
    "sentiment": "부정",
    "category": "기타",
    "keyword": "혜택",
-   "sympathy": 2,
+   "sympathy": 3,
    "antipathy": 0,
    "reply": 0
   },
@@ -1019,7 +1092,7 @@
    "sentiment": "부정",
    "category": "정부·정책 평가",
    "keyword": "비판",
-   "sympathy": 1,
+   "sympathy": 2,
    "antipathy": 1,
    "reply": 2
   },
@@ -2295,7 +2368,7 @@
    "sentiment": "부정",
    "category": "기타",
    "keyword": "중국인",
-   "sympathy": 19,
+   "sympathy": 21,
    "antipathy": 0,
    "reply": 0
   },
@@ -3230,7 +3303,7 @@
    "sentiment": "부정",
    "category": "연금 재정·고갈",
    "keyword": "노후자금",
-   "sympathy": 11,
+   "sympathy": 12,
    "antipathy": 1,
    "reply": 1
   },
@@ -3406,7 +3479,7 @@
    "sentiment": "중립",
    "category": "기타",
    "keyword": "결혼",
-   "sympathy": 18,
+   "sympathy": 19,
    "antipathy": 0,
    "reply": 3
   },
@@ -3417,7 +3490,7 @@
    "sentiment": "부정",
    "category": "기타",
    "keyword": "책임",
-   "sympathy": 10,
+   "sympathy": 11,
    "antipathy": 0,
    "reply": 0
   },
@@ -3483,7 +3556,7 @@
    "sentiment": "부정",
    "category": "연금 재정·고갈",
    "keyword": "사회안전망",
-   "sympathy": 55,
+   "sympathy": 58,
    "antipathy": 0,
    "reply": 1
   },
@@ -3791,7 +3864,7 @@
    "sentiment": "부정",
    "category": "연금 재정·고갈",
    "keyword": "고갈론",
-   "sympathy": 29,
+   "sympathy": 31,
    "antipathy": 2,
    "reply": 0
   },
@@ -3912,7 +3985,7 @@
    "sentiment": "중립",
    "category": "기타",
    "keyword": "중국",
-   "sympathy": 22,
+   "sympathy": 23,
    "antipathy": 3,
    "reply": 1
   },
@@ -4090,50 +4163,6 @@
    "keyword": "정부",
    "sympathy": 3,
    "antipathy": 1,
-   "reply": 0
-  },
-  {
-   "no": "908318292207206478",
-   "time": "2026-10-22 07:35",
-   "text": "당연한거 아님? 낸 만큼 받는거지.",
-   "sentiment": "긍정",
-   "category": "기타",
-   "keyword": "당연함",
-   "sympathy": 1,
-   "antipathy": 0,
-   "reply": 1
-  },
-  {
-   "no": "908318227094831172",
-   "time": "2026-10-22 07:34",
-   "text": "국민연금 추후납부 같은 말도 안되는 제도는 그냥 없애라...형평성에 어긋난다",
-   "sentiment": "부정",
-   "category": "제도 개선(1인 1연금)",
-   "keyword": "형평성",
-   "sympathy": 0,
-   "antipathy": 0,
-   "reply": 0
-  },
-  {
-   "no": "908318097188847679",
-   "time": "2026-10-22 07:32",
-   "text": "국민 연금 관련 글에 왜??? 대한민국 지도에도 없는 내란남북도 것들이 왈가왈부 하는걸까?",
-   "sentiment": "중립",
-   "category": "기타",
-   "keyword": "내란남북도",
-   "sympathy": 0,
-   "antipathy": 1,
-   "reply": 0
-  },
-  {
-   "no": "908318053870076022",
-   "time": "2026-10-22 07:31",
-   "text": "국밈연금출산크레디토",
-   "sentiment": "광고",
-   "category": "기타",
-   "keyword": "크레디토",
-   "sympathy": 0,
-   "antipathy": 0,
    "reply": 0
   }
  ]
