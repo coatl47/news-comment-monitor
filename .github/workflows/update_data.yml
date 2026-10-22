@@ -2,8 +2,9 @@ name: Auto Update Naver Comment Data
 
 on:
   schedule:
-    # KST 짝수 정시(00·02·…·22시) 5분 = UTC 홀수 정시 5분. 정각 혼잡을 피해 5분 늦춤
-    - cron: '5 1-23/2 * * *'
+    # 30분마다 깨어나서, 이번 2시간 구간(KST 00·02·…·22시)을 아직 처리하지 않았을 때만 수집한다.
+    # GitHub 예약 실행은 늦거나 빠지는 일이 잦아서, 정시 1회만 걸면 한 구간을 통째로 놓칠 수 있다.
+    - cron: '5,35 * * * *'
   workflow_dispatch:        # GitHub에서 수동 버튼 클릭으로도 실행 가능
 
 permissions:
@@ -51,8 +52,8 @@ jobs:
           # 1. 최신 코드 가져오기
           git pull --rebase origin main
 
-          # 2. 데이터 업데이트 스크립트 실행
-          python update_job.py
+          # 2. 데이터 업데이트 스크립트 실행 (예약 실행은 이미 처리한 구간이면 건너뜀, 수동 실행은 항상 수행)
+          python update_job.py ${{ github.event_name == 'schedule' && '--skip-if-current' || '' }}
 
           # 3. 결과 저장
           git add data/

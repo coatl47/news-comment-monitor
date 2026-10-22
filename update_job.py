@@ -5,6 +5,7 @@
     python update_job.py --article <id>     # 특정 기사만
     python update_job.py --no-analyze       # AI 분류 생략
     python update_job.py --now "2026-10-22 14:05"   # 기준 시각 지정(테스트용)
+    python update_job.py --skip-if-current  # 이번 2시간 구간을 이미 처리했으면 종료 (cron 보조 실행용)
 """
 from __future__ import annotations
 
@@ -28,6 +29,18 @@ logger = logging.getLogger("update_job")
 def load_config() -> dict:
     with open(CONFIG_PATH, encoding="utf-8") as f:
         return json.load(f)
+
+
+def is_current(article: dict, cutoff, do_analyze: bool) -> bool:
+    """이번 구간 수집을 마쳤고, 분류 대기 댓글도 없으면 True"""
+    path = os.path.join(DATA_ROOT, article["id"])
+    state = collector.load_state(path)
+    if article.get("collect_enabled", True) and state.get("last_cutoff") != collector.fmt(cutoff):
+        return False
+    if do_analyze and os.getenv("OPENROUTER_API_KEY"):
+        if any((r.get("sentiment") or "") in analyzer.PENDING for r in collector.load_comments(path)):
+            return False
+    return True
 
 
 def process_article(article: dict, now, do_analyze: bool) -> dict:
@@ -68,6 +81,8 @@ def main() -> int:
     parser.add_argument("--article", help="이 id 의 기사만 처리")
     parser.add_argument("--no-analyze", action="store_true", help="AI 분류 생략")
     parser.add_argument("--now", help='기준 시각 (KST, "YYYY-MM-DD HH:MM")')
+    parser.add_argument("--skip-if-current", action="store_true",
+                        help="모든 기사가 이번 구간까지 처리돼 있으면 아무것도 하지 않음")
     args = parser.parse_args()
 
     logging.basicConfig(level=os.getenv("LOG_LEVEL", "INFO"),
@@ -81,6 +96,11 @@ def main() -> int:
         if not articles:
             logger.error("활성 기사 중 id=%s 가 없습니다.", args.article)
             return 1
+
+    cutoff = collector.floor_slot(now)
+    if args.skip_if_current and all(is_current(a, cutoff, not args.no_analyze) for a in articles):
+        logger.info("cutoff %s 까지 모두 처리돼 있어 건너뜁니다.", collector.fmt(cutoff))
+        return 0
 
     logger.info("기준 시각 %s (cutoff %s), 대상 기사 %d건",
                 collector.fmt(now), collector.fmt(collector.floor_slot(now)), len(articles))
