@@ -1,0 +1,14 @@
+{
+  "dashboard_title": "네이버 뉴스 댓글 여론 모니터링",
+  "articles": [
+    {
+      "id": "pension_marriage_20261022",
+      "tab_label": "국민연금 낡은 구조",
+      "url": "https://n.news.naver.com/article/001/0016392780?ntype=RANKING",
+      "categories": ["성별·혼인 형평성", "제도 개선(1인 1연금)", "연금 재정·고갈", "노후 불안", "정부·정책 평가"],
+      "prompt_file": "prompt/prompt_base.txt",
+      "enabled": true,
+      "collect_enabled": true
+    }
+  ]
+}

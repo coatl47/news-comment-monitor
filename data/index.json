@@ -1,0 +1,89 @@
+{
+ "dashboard_title": "네이버 뉴스 댓글 여론 모니터링",
+ "generated_at": "2026-10-22 16:33",
+ "slot_hours": 2,
+ "articles": [
+  {
+   "id": "pension_marriage_20261022",
+   "tab_label": "국민연금 낡은 구조",
+   "title": "결혼이 가른 55세 친구의 엇갈린 노후…국민연금의 낡은 구조",
+   "press": "연합뉴스",
+   "published_at": "2026-10-22 06:00:40",
+   "url": "https://n.news.naver.com/article/001/0016392780?ntype=RANKING",
+   "collect_enabled": true,
+   "cutoff": "2026-10-22 16:00",
+   "next_update": "2026-10-22 18:00",
+   "status": {
+    "last_success_at": "2026-10-22 16:33",
+    "last_error": null,
+    "last_error_at": null
+   },
+   "kpi": {
+    "naver_total": 272,
+    "deleted": 20,
+    "deleted_delta": null,
+    "collected": 247,
+    "last_window_label": "10/22 14–16시",
+    "last_window_new": 33,
+    "prev_window_new": 29,
+    "neg_ratio_last": null,
+    "neg_ratio_prev": null,
+    "neg_ratio_all": null,
+    "neg_ratio_sympathy": null,
+    "ads": 0,
+    "unanalyzed": 247
+   },
+   "sentiment": {
+    "count": {
+     "긍정": 0,
+     "중립": 0,
+     "부정": 0,
+     "기타": 247
+    },
+    "sympathy": {
+     "긍정": 0,
+     "중립": 0,
+     "부정": 0,
+     "기타": 2376
+    }
+   },
+   "timeline": [
+    {
+     "window": "2026-10-22 06:00",
+     "label": "10/22 06–08시",
+     "total": 54,
+     "cumulative": 54,
+     "neg_ratio": null
+    },
+    {
+     "window": "2026-10-22 08:00",
+     "label": "10/22 08–10시",
+     "total": 79,
+     "cumulative": 133,
+     "neg_ratio": null
+    },
+    {
+     "window": "2026-10-22 10:00",
+     "label": "10/22 10–12시",
+     "total": 52,
+     "cumulative": 185,
+     "neg_ratio": null
+    },
+    {
+     "window": "2026-10-22 12:00",
+     "label": "10/22 12–14시",
+     "total": 29,
+     "cumulative": 214,
+     "neg_ratio": null
+    },
+    {
+     "window": "2026-10-22 14:00",
+     "label": "10/22 14–16시",
+     "total": 33,
+     "cumulative": 247,
+     "neg_ratio": null
+    }
+   ]
+  }
+ ]
+}

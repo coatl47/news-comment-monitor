@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뉴스 댓글 여론 모니터링</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/plotly.js-basic-dist-min@2.35.2/plotly-basic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #f3f5f8;
+            --surface: #ffffff;
+            --surface-2: #f7f8fa;
+            --line: #e1e6ee;
+            --text: #16181d;
+            --text-2: #4b5160;
+            --muted: #747b8a;
+            --primary: #185abd;
+            --primary-soft: #eaf2ff;
+            --on-primary: #ffffff;
+            --hero-1: #103f87;
+            --hero-2: #1f67d2;
+            --pos: #2a78d6;
+            --neu: #a8a7a2;
+            --neg: #e34948;
+            --etc: #dcdbd6;
+            --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100;
+            --s5: #e87ba4; --s6: #008300; --s7: #6250d6; --s8: #e34948;
+            --shadow: 0 10px 30px rgba(16, 40, 80, 0.06);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                color-scheme: dark;
+                --bg: #111213;
+                --surface: #1a1a19;
+                --surface-2: #222221;
+                --line: #33332f;
+                --text: #f0efec;
+                --text-2: #c3c2b7;
+                --muted: #918f87;
+                --primary: #6aa5f0;
+                --primary-soft: #1d2a3d;
+            --on-primary: #0b1a30;
+                --hero-1: #0d2f66;
+                --hero-2: #17509f;
+                --pos: #3987e5;
+                --neu: #b8b7b0;
+                --neg: #e66767;
+                --etc: #4a4945;
+                --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500;
+                --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
+                --shadow: none;
+            }
+        }
+
+        :root[data-theme="dark"] {
+            color-scheme: dark;
+            --bg: #111213;
+            --surface: #1a1a19;
+            --surface-2: #222221;
+            --line: #33332f;
+            --text: #f0efec;
+            --text-2: #c3c2b7;
+            --muted: #918f87;
+            --primary: #6aa5f0;
+            --primary-soft: #1d2a3d;
+            --on-primary: #0b1a30;
+            --hero-1: #0d2f66;
+            --hero-2: #17509f;
+            --pos: #3987e5;
+            --neu: #b8b7b0;
+            --neg: #e66767;
+            --etc: #4a4945;
+            --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500;
+            --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
+            --shadow: none;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Pretendard Variable', Pretendard, -apple-system, 'Apple SD Gothic Neo', sans-serif;
+            font-size: 15px;
+            line-height: 1.5;
+            padding-bottom: 48px;
+        }
+
+        a { color: inherit; }
+        button { font: inherit; color: inherit; }
+
+        .page-shell { max-width: 1380px; margin: 0 auto; padding: 0 20px; }
+
+        /* hero */
+        .hero { padding: 20px 0 12px; }
+        .hero-panel {
+            background: linear-gradient(135deg, var(--hero-1), var(--hero-2));
+            color: #fff;
+            border-radius: 24px;
+            padding: 20px 24px;
+            display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap;
+        }
+        .hero-title { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; margin: 0 0 4px; letter-spacing: -0.02em; }
+        .hero-sub { opacity: 0.85; font-size: 0.92rem; margin: 0; }
+        .hero-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+        .hero-chip {
+            background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 999px; padding: 6px 12px; font-size: 0.85rem; white-space: nowrap;
+        }
+        .theme-btn { cursor: pointer; }
+
+        /* tabs */
+        .tabs { display: flex; gap: 8px; overflow-x: auto; padding: 12px 0 4px; scrollbar-width: thin; }
+        .tab {
+            border: 1px solid var(--line); background: var(--surface); color: var(--text-2);
+            border-radius: 999px; padding: 8px 16px; cursor: pointer; white-space: nowrap; font-weight: 600;
+        }
+        .tab[aria-selected="true"] { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+        .tab .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
+
+        /* layout */
+        .grid { display: grid; gap: 16px; margin-top: 16px; }
+        .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .grid-cards { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+        @media (max-width: 900px) { .grid-2 { grid-template-columns: minmax(0, 1fr); } }
+
+        .card {
+            background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+            padding: 18px 20px; box-shadow: var(--shadow); min-width: 0;
+        }
+        .card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+        .card-title { font-size: 1.05rem; font-weight: 700; margin: 0; }
+        .card-desc { color: var(--muted); font-size: 0.85rem; margin: 2px 0 0; }
+        .badge {
+            display: inline-block; border-radius: 999px; padding: 3px 10px; font-size: 0.78rem; font-weight: 600;
+            background: var(--primary-soft); color: var(--primary); white-space: nowrap;
+        }
+        .badge.warn { background: #fdecea; color: #b42318; }
+        :root[data-theme="dark"] .badge.warn { background: #3a1d1b; color: #f3a29a; }
+        @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .badge.warn { background: #3a1d1b; color: #f3a29a; } }
+
+        /* article header */
+        .article-head h2 { font-size: 1.25rem; margin: 0 0 6px; line-height: 1.4; }
+        .article-meta { color: var(--muted); font-size: 0.88rem; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+        /* kpi */
+        .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 16px; }
+        .kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; box-shadow: var(--shadow); }
+        .kpi-label { color: var(--muted); font-size: 0.82rem; font-weight: 600; }
+        .kpi-value { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; margin: 2px 0; font-variant-numeric: tabular-nums; }
+        .kpi-value small { font-size: 0.95rem; font-weight: 600; color: var(--text-2); margin-left: 2px; }
+        .kpi-sub { color: var(--text-2); font-size: 0.82rem; }
+
+        /* charts */
+        .chart { width: 100%; height: 320px; }
+        .chart.short { height: 200px; }
+        .chart.tall { height: 380px; }
+        .empty-msg { color: var(--muted); padding: 32px 0; text-align: center; font-size: 0.9rem; }
+        .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.85rem; color: var(--text-2); }
+        .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+
+        /* stacked share bar (html) */
+        .share { display: flex; height: 12px; border-radius: 6px; overflow: hidden; gap: 2px; background: var(--surface); }
+        .share span { display: block; height: 100%; }
+
+        /* window detail */
+        .window-box { margin-top: 10px; border-top: 1px dashed var(--line); padding-top: 12px; }
+        .window-title { font-weight: 700; margin-bottom: 4px; }
+
+        /* comments */
+        .comment { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; background: var(--surface-2); margin-top: 8px; }
+        .comment p { margin: 4px 0 6px; white-space: pre-wrap; word-break: break-word; }
+        .comment-meta { color: var(--muted); font-size: 0.8rem; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+        .s-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 0.78rem; font-weight: 700; color: var(--text-2); }
+        .s-badge i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+        .rep-group { margin-top: 14px; }
+        .rep-group h4 { margin: 0; font-size: 0.92rem; }
+        .rep-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+        @media (max-width: 700px) { .rep-cols { grid-template-columns: minmax(0, 1fr); } }
+
+        /* demographics */
+        .gender { margin: 6px 0 14px; }
+        .gender-labels { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-2); margin-bottom: 4px; }
+
+        /* keywords */
+        .kw-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .kw { border: 1px solid var(--line); border-radius: 10px; padding: 6px 10px; background: var(--surface-2); min-width: 92px; }
+        .kw b { font-weight: 700; }
+        .kw span { color: var(--muted); font-size: 0.8rem; margin-left: 4px; }
+        .kw .share { height: 5px; margin-top: 5px; }
+
+        /* overview cards */
+        .ov-card { cursor: pointer; transition: border-color .15s; display: flex; flex-direction: column; gap: 10px; }
+        .ov-card:hover, .ov-card:focus-visible { border-color: var(--primary); outline: none; }
+        .ov-title { font-size: 0.92rem; color: var(--text-2); margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .ov-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .ov-stats div { font-size: 0.78rem; color: var(--muted); }
+        .ov-stats b { display: block; font-size: 1.2rem; color: var(--text); font-variant-numeric: tabular-nums; }
+
+        /* table */
+        .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+        .filters select, .filters input {
+            border: 1px solid var(--line); background: var(--surface-2); color: var(--text);
+            border-radius: 10px; padding: 7px 10px; font: inherit; font-size: 0.88rem;
+        }
+        .filters input { flex: 1; min-width: 160px; }
+        .btn {
+            border: 1px solid var(--line); background: var(--surface-2); border-radius: 10px;
+            padding: 7px 12px; cursor: pointer; font-size: 0.88rem; font-weight: 600;
+        }
+        .btn:hover { border-color: var(--primary); }
+        .table-wrap { overflow: auto; max-height: 640px; border: 1px solid var(--line); border-radius: 12px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+        th { position: sticky; top: 0; background: var(--surface-2); color: var(--text-2); font-weight: 700; white-space: nowrap; z-index: 1; }
+        th.sortable { cursor: pointer; user-select: none; }
+        td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+        td.time { white-space: nowrap; color: var(--muted); }
+        td.nowrap { white-space: nowrap; }
+        td.text { min-width: 260px; white-space: pre-wrap; word-break: break-word; }
+        tr:hover td { background: var(--surface-2); }
+        .table-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 10px; color: var(--muted); font-size: 0.85rem; flex-wrap: wrap; }
+
+        .disclaimer { color: var(--muted); font-size: 0.85rem; }
+        .disclaimer h3 { font-size: 0.95rem; color: var(--text-2); margin: 0 0 6px; }
+        .disclaimer ul { margin: 0; padding-left: 18px; }
+        .hidden { display: none !important; }
+
+        @media (max-width: 600px) {
+            .page-shell { padding: 0 16px; }
+            .hero-panel { border-radius: 18px; padding: 16px; }
+            .card { padding: 14px; }
+            .kpi-value { font-size: 1.45rem; }
+            .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .chart { height: 280px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-shell">
+        <header class="hero">
+            <div class="hero-panel">
+                <div>
+                    <h1 class="hero-title" id="dashboardTitle">뉴스 댓글 여론 모니터링</h1>
+                    <p class="hero-sub">네이버 뉴스 댓글 · 2시간마다(KST 짝수 정시) 새 댓글을 모아 AI로 감성·주제를 분류합니다</p>
+                </div>
+                <div class="hero-meta">
+                    <span class="hero-chip" id="heroCutoff">데이터 기준 —</span>
+                    <span class="hero-chip" id="heroNext">다음 업데이트 —</span>
+                    <button class="hero-chip theme-btn" id="themeBtn" type="button" aria-label="화면 테마 전환">테마</button>
+                </div>
+            </div>
+        </header>
+
+        <nav class="tabs" id="tabs" role="tablist"></nav>
+
+        <main>
+            <section id="overviewSection"></section>
+            <section id="detailSection" class="hidden"></section>
+        </main>
+
+        <footer class="card disclaimer" style="margin-top:16px">
+            <h3>면책조항</h3>
+            <ul>
+                <li>수치는 각 수집 시점(2시간 경계) 기준이며, 네이버 화면의 실시간 값과 다를 수 있습니다. 삭제·숨김 댓글과 답글은 분석에서 제외됩니다.</li>
+                <li>감성·주제 분류는 AI 자동 분류 결과로, 작성자의 실제 의도와 다를 수 있습니다. 반어·비꼼은 오분류될 수 있습니다.</li>
+                <li>댓글 작성자는 기사 독자 전체를 대표하지 않습니다. 정책 판단이나 대외 커뮤니케이션에 쓰기 전에 추가 검토가 필요합니다.</li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        const SENTIMENTS = ['긍정', '중립', '부정', '기타'];
+        const SENT_VAR = { '긍정': '--pos', '중립': '--neu', '부정': '--neg', '기타': '--etc' };
+        const SERIES_VARS = ['--s1', '--s2', '--s3', '--s4', '--s5', '--s6', '--s7', '--s8'];
+        const SLOT_MS = 2 * 3600 * 1000;
+        const PLOT_CONFIG = { displayModeBar: false, responsive: true };
+
+        const app = { index: null, summaries: {}, active: null, fullRows: {}, table: null };
+
+        // ---------- utils ----------
+        const $ = (sel) => document.querySelector(sel);
+        const cssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+        const sentColor = (s) => cssVar(SENT_VAR[bucket(s)] || '--etc');
+        const bucket = (s) => (['긍정', '중립', '부정'].includes(s) ? s : '기타');
+        const fmtNum = (n) => (n === null || n === undefined ? '—' : Number(n).toLocaleString('ko-KR'));
+        const fmtPct = (n) => (n === null || n === undefined ? '—' : `${n.toFixed(1)}%`);
+
+        function esc(value) {
+            return String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        }
+
+        function delta(curr, prev, unit) {
+            if (curr === null || curr === undefined || prev === null || prev === undefined) return '';
+            const d = curr - prev;
+            if (Math.abs(d) < 0.05) return `직전 대비 변동 없음`;
+            const v = unit === '%p' ? Math.abs(d).toFixed(1) : fmtNum(Math.abs(d));
+            return `직전 대비 ${d > 0 ? '▲' : '▼'} ${v}${unit}`;
+        }
+
+        // '2026-10-22 12:00' → 해당 2시간 구간의 중앙(차트 x 좌표)
+        function windowCenter(win) {
+            const t = new Date(win.replace(' ', 'T') + ':00+09:00').getTime() + SLOT_MS / 2;
+            return toKstString(t);
+        }
+        function toKstString(ms) {
+            const d = new Date(ms + 9 * 3600 * 1000);
+            return d.toISOString().slice(0, 16).replace('T', ' ');
+        }
+
+        async function fetchJson(path) {
+            const res = await fetch(`${path}?v=${Date.now()}`);
+            if (!res.ok) throw new Error(`${path}: HTTP ${res.status}`);
+            return res.json();
+        }
+
+        // 구간 수가 적으면 2시간 경계마다 눈금, 많으면 Plotly 자동 눈금
+        function timeAxis(count) {
+            const axis = { type: 'date', tickformat: count > 24 ? '%m/%d' : '%m/%d %H시' };
+            if (count <= 12) Object.assign(axis, { dtick: SLOT_MS, tick0: '2026-01-01 00:00' });
+            return axis;
+        }
+
+        function baseLayout(extra = {}) {
+            const text2 = cssVar('--text-2');
+            const line = cssVar('--line');
+            return {
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)',
+                font: { family: getComputedStyle(document.body).fontFamily, color: text2, size: 12 },
+                margin: { t: 10, r: 12, b: 40, l: 48 },
+                hoverlabel: { bgcolor: cssVar('--surface'), bordercolor: line, font: { color: cssVar('--text'), size: 12 } },
+                showlegend: false,
+                ...extra,
+                xaxis: { gridcolor: line, linecolor: line, zeroline: false, fixedrange: true, ...(extra.xaxis || {}) },
+                yaxis: { gridcolor: line, linecolor: line, zeroline: false, fixedrange: true, rangemode: 'tozero', ...(extra.yaxis || {}) },
+            };
+        }
+
+        function legendHtml(items) {
+            return `<div class="legend">${items.map(([label, color]) => `<span><i style="background:${color}"></i>${esc(label)}</span>`).join('')}</div>`;
+        }
+
+        function shareBar(counts, keys = SENTIMENTS) {
+            const total = keys.reduce((a, k) => a + (counts[k] || 0), 0);
+            if (!total) return `<div class="share"><span style="flex:1;background:var(--etc)"></span></div>`;
+            return `<div class="share" role="img" aria-label="${keys.map((k) => `${k} ${Math.round((counts[k] || 0) / total * 100)}%`).join(', ')}">${keys
+                .filter((k) => counts[k])
+                .map((k) => `<span title="${k} ${fmtNum(counts[k])}" style="flex:${counts[k]};background:var(${SENT_VAR[k]})"></span>`).join('')}</div>`;
+        }
+
+        function sentimentBadge(s) {
+            return `<span class="s-badge"><i style="background:var(${SENT_VAR[bucket(s)]})"></i>${esc(s || '미분석')}</span>`;
+        }
+
+        function commentHtml(c) {
+            return `<div class="comment">
+                <div class="comment-meta">${sentimentBadge(c.sentiment)}${c.category ? `<span>${esc(c.category)}</span>` : ''}${c.keyword ? `<span>#${esc(c.keyword)}</span>` : ''}</div>
+                <p>${esc(c.text)}</p>
+                <div class="comment-meta"><span>공감 ${fmtNum(c.sympathy)}</span><span>비공감 ${fmtNum(c.antipathy)}</span><span>답글 ${fmtNum(c.reply)}</span><span>${esc(c.time)}</span></div>
+            </div>`;
+        }
+
+        // ---------- theme ----------
+        function currentTheme() {
+            const forced = document.documentElement.dataset.theme;
+            if (forced) return forced;
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        function applyTheme(theme) {
+            if (theme) document.documentElement.dataset.theme = theme;
+            $('#themeBtn').textContent = currentTheme() === 'dark' ? '라이트 모드' : '다크 모드';
+        }
+        function initTheme() {
+            let saved = null;
+            try { saved = localStorage.getItem('ncm-theme'); } catch (e) { /* storage unavailable */ }
+            applyTheme(saved);
+            $('#themeBtn').addEventListener('click', () => {
+                const next = currentTheme() === 'dark' ? 'light' : 'dark';
+                try { localStorage.setItem('ncm-theme', next); } catch (e) { /* ignore */ }
+                applyTheme(next);
+                rerender();
+            });
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { applyTheme(); rerender(); });
+        }
+
+        // ---------- routing ----------
+        function buildTabs() {
+            const tabs = [{ id: 'overview', label: '종합' }, ...app.index.articles.map((a) => ({ id: a.id, label: a.tab_label, warn: !!a.status?.last_error }))];
+            $('#tabs').innerHTML = tabs.map((t) =>
+                `<button class="tab" role="tab" data-id="${esc(t.id)}" aria-selected="false">${t.warn ? '<span class="dot" style="background:var(--neg)" title="수집 지연"></span>' : ''}${esc(t.label)}</button>`).join('');
+            $('#tabs').addEventListener('click', (e) => {
+                const btn = e.target.closest('.tab');
+                if (btn) location.hash = btn.dataset.id;
+            });
+        }
+
+        function route() {
+            const id = decodeURIComponent(location.hash.slice(1)) || 'overview';
+            const exists = id === 'overview' || app.index.articles.some((a) => a.id === id);
+            show(exists ? id : 'overview');
+        }
+
+        async function show(id) {
+            app.active = id;
+            document.querySelectorAll('.tab').forEach((t) => t.setAttribute('aria-selected', String(t.dataset.id === id)));
+            const isOverview = id === 'overview';
+            $('#overviewSection').classList.toggle('hidden', !isOverview);
+            $('#detailSection').classList.toggle('hidden', isOverview);
+            if (isOverview) return renderOverview();
+            $('#detailSection').innerHTML = '<div class="card empty-msg">불러오는 중…</div>';
+            try {
+                if (!app.summaries[id]) app.summaries[id] = await fetchJson(`data/${id}/summary.json`);
+                if (app.active === id) renderDetail(app.summaries[id]);
+            } catch (err) {
+                $('#detailSection').innerHTML = `<div class="card empty-msg">데이터를 불러오지 못했습니다: ${esc(err.message)}</div>`;
+            }
+        }
+
+        function rerender() {
+            if (!app.index) return;
+            if (app.active === 'overview') renderOverview();
+            else if (app.summaries[app.active]) renderDetail(app.summaries[app.active], true);
+        }
+
+        // ---------- overview ----------
+        function renderOverview() {
+            const arts = app.index.articles;
+            const section = $('#overviewSection');
+            if (!arts.length) {
+                section.innerHTML = '<div class="card empty-msg" style="margin-top:16px">아직 수집된 기사가 없습니다. dashboard_config.json 에 기사를 추가하세요.</div>';
+                return;
+            }
+            const colorOf = (i) => cssVar(SERIES_VARS[i % SERIES_VARS.length]);
+            section.innerHTML = `
+                <div class="grid grid-cards">
+                    ${arts.map((a, i) => {
+                        const k = a.kpi;
+                        return `<article class="card ov-card" tabindex="0" data-id="${esc(a.id)}">
+                            <div class="card-head" style="margin:0">
+                                <h3 class="card-title"><span class="dot" style="display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;background:${colorOf(i)}"></span>${esc(a.tab_label)}</h3>
+                                ${a.status?.last_error ? '<span class="badge warn">⚠ 수집 지연</span>' : (a.collect_enabled === false ? '<span class="badge">수집 중지</span>' : '')}
+                            </div>
+                            <p class="ov-title">${esc(a.title)}</p>
+                            <div class="ov-stats">
+                                <div>네이버 댓글<b>${fmtNum(k.naver_total)}</b></div>
+                                <div>최근 2시간<b>+${fmtNum(k.last_window_new)}</b></div>
+                                <div>부정 비율<b>${fmtPct(k.neg_ratio_all)}</b></div>
+                            </div>
+                            ${shareBar(a.sentiment.count)}
+                        </article>`;
+                    }).join('')}
+                </div>
+                <div class="grid grid-2">
+                    <div class="card">
+                        <div class="card-head"><div><h3 class="card-title">2시간 단위 신규 댓글</h3><p class="card-desc">기사별로 각 2시간 구간에 새로 달린 댓글 수</p></div></div>
+                        ${legendHtml(arts.map((a, i) => [a.tab_label, colorOf(i)]))}
+                        <div id="ovTimeline" class="chart"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-head"><div><h3 class="card-title">기사별 감성 비율</h3><p class="card-desc">분류된 전체 댓글 기준 (광고·미분석은 기타)</p></div></div>
+                        ${legendHtml(SENTIMENTS.map((s) => [s, cssVar(SENT_VAR[s])]))}
+                        <div id="ovSentiment" class="chart"></div>
+                    </div>
+                </div>`;
+
+            section.querySelectorAll('.ov-card').forEach((el) => {
+                el.addEventListener('click', () => { location.hash = el.dataset.id; });
+                el.addEventListener('keydown', (e) => { if (e.key === 'Enter') location.hash = el.dataset.id; });
+            });
+
+            Plotly.newPlot('ovTimeline', arts.map((a, i) => ({
+                type: 'scatter', mode: 'lines+markers', name: a.tab_label,
+                x: a.timeline.map((w) => windowCenter(w.window)),
+                y: a.timeline.map((w) => w.total),
+                customdata: a.timeline.map((w) => w.label),
+                line: { color: colorOf(i), width: 2 },
+                marker: { size: 8, color: colorOf(i), line: { color: cssVar('--surface'), width: 2 } },
+                hovertemplate: `${esc(a.tab_label)}<br>%{customdata}: %{y:,}건<extra></extra>`,
+            })), baseLayout({ xaxis: timeAxis(Math.max(...arts.map((a) => a.timeline.length))), yaxis: { title: { text: '건' } }, hovermode: 'closest' }), PLOT_CONFIG);
+
+            const labels = arts.map((a) => a.tab_label);
+            Plotly.newPlot('ovSentiment', SENTIMENTS.map((s) => {
+                const values = arts.map((a) => {
+                    const total = SENTIMENTS.reduce((acc, k) => acc + (a.sentiment.count[k] || 0), 0);
+                    return total ? (a.sentiment.count[s] || 0) / total * 100 : 0;
+                });
+                return {
+                    type: 'bar', orientation: 'h', name: s, y: labels, x: values,
+                    customdata: arts.map((a) => a.sentiment.count[s] || 0),
+                    marker: { color: cssVar(SENT_VAR[s]), line: { color: cssVar('--surface'), width: 2 } },
+                    text: values.map((v) => (v >= 8 ? `${v.toFixed(0)}%` : '')), textposition: 'inside', insidetextanchor: 'middle',
+                    textfont: { color: '#fff' },
+                    hovertemplate: `%{y} · ${s} %{x:.1f}% (%{customdata:,}건)<extra></extra>`,
+                };
+            }), baseLayout({
+                barmode: 'stack', bargap: 0.45,
+                margin: { t: 10, r: 12, b: 30, l: 120 },
+                xaxis: { range: [0, 100], ticksuffix: '%' },
+                yaxis: { autorange: 'reversed', gridcolor: 'rgba(0,0,0,0)' },
+            }), PLOT_CONFIG);
+        }
+
+        // ---------- detail ----------
+        function renderDetail(s, keepTable = false) {
+            const a = s.article, k = s.kpi;
+            const section = $('#detailSection');
+            const negDelta = delta(k.neg_ratio_last, k.neg_ratio_prev, '%p');
+            const newDelta = delta(k.last_window_new, k.prev_window_new, '건');
+            const categories = Object.keys(s.category);
+
+            section.innerHTML = `
+                <div class="card article-head" style="margin-top:16px">
+                    <h2><a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.title || a.tab_label)}</a></h2>
+                    <div class="article-meta">
+                        ${a.press ? `<span>${esc(a.press)}</span>` : ''}
+                        ${a.published_at ? `<span>게재 ${esc(a.published_at.slice(0, 16))}</span>` : ''}
+                        <span>데이터 기준 ${esc(s.cutoff || '—')}</span>
+                        ${s.status.last_error ? `<span class="badge warn" title="${esc(s.status.last_error)}">⚠ 수집 지연 · 마지막 성공 ${esc(s.status.last_success_at || '—')}</span>` : ''}
+                        ${a.collect_enabled === false ? '<span class="badge">수집 중지됨</span>' : ''}
+                        ${k.unanalyzed ? `<span class="badge">미분석 ${fmtNum(k.unanalyzed)}건</span>` : ''}
+                    </div>
+                </div>
+
+                <div class="kpis">
+                    <div class="kpi"><div class="kpi-label">네이버 댓글 수</div><div class="kpi-value">${fmtNum(k.naver_total)}</div>
+                        <div class="kpi-sub">삭제 ${fmtNum(k.deleted)}건${k.deleted_delta ? ` (+${fmtNum(k.deleted_delta)})` : ''} · 분석 대상 ${fmtNum(k.collected)}건</div></div>
+                    <div class="kpi"><div class="kpi-label">최근 2시간 신규${k.last_window_label ? ` · ${esc(k.last_window_label)}` : ''}</div>
+                        <div class="kpi-value">+${fmtNum(k.last_window_new)}<small>건</small></div><div class="kpi-sub">${newDelta || '&nbsp;'}</div></div>
+                    <div class="kpi"><div class="kpi-label">최근 2시간 부정 비율</div><div class="kpi-value">${fmtPct(k.neg_ratio_last)}</div>
+                        <div class="kpi-sub">${negDelta || '&nbsp;'}</div></div>
+                    <div class="kpi"><div class="kpi-label">전체 부정 비율</div><div class="kpi-value">${fmtPct(k.neg_ratio_all)}</div>
+                        <div class="kpi-sub">공감 수 기준 ${fmtPct(k.neg_ratio_sympathy)}</div></div>
+                    <div class="kpi"><div class="kpi-label">다음 업데이트</div><div class="kpi-value" style="font-size:1.3rem">${esc((s.next_update || '—').slice(5))}</div>
+                        <div class="kpi-sub">2시간마다 · 지연될 수 있음</div></div>
+                </div>
+
+                <div class="card" style="margin-top:16px">
+                    <div class="card-head"><div><h3 class="card-title">2시간 단위 여론 추이</h3>
+                        <p class="card-desc">작성 시각 기준으로 2시간 구간마다 달린 댓글 수. 막대를 누르면 그 시간대 대표 댓글이 보입니다.</p></div></div>
+                    ${legendHtml(SENTIMENTS.map((x) => [x, cssVar(SENT_VAR[x])]))}
+                    <div id="dTimeline" class="chart tall"></div>
+                    <div id="dWindow" class="window-box"></div>
+                </div>
+
+                <div class="grid grid-2">
+                    <div class="card">
+                        <div class="card-head"><div><h3 class="card-title">시간대별 긍정·부정 비율</h3><p class="card-desc">각 구간에서 분류된 댓글(긍정·중립·부정) 중 비율. 점이 작을수록 댓글 수가 적어 변동이 큽니다.</p></div></div>
+                        ${legendHtml([['부정 비율', cssVar('--neg')], ['긍정 비율', cssVar('--pos')]])}
+                        <div id="dRatio" class="chart"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-head"><div><h3 class="card-title">댓글 수 vs 공감 수</h3><p class="card-desc">같은 댓글을 '몇 개 달렸나'와 '공감을 얼마나 받았나'로 나눠 본 감성 비율</p></div></div>
+                        ${legendHtml(SENTIMENTS.map((x) => [x, cssVar(SENT_VAR[x])]))}
+                        <div id="dCompare" class="chart short"></div>
+                        <div class="card-desc" id="dCompareNote"></div>
+                    </div>
+                </div>
+
+                <div class="grid grid-2">
+                    <div class="card">
+                        <div class="card-head"><div><h3 class="card-title">주제별 여론</h3><p class="card-desc">AI가 분류한 주제별 긍정·중립·부정 댓글 수</p></div></div>
+                        ${legendHtml(['긍정', '중립', '부정'].map((x) => [x, cssVar(SENT_VAR[x])]))}
+                        <div id="dCategory" class="chart" style="height:${Math.max(220, categories.length * 46 + 60)}px"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-head"><div><h3 class="card-title">댓글 작성자 분포</h3><p class="card-desc">네이버 제공 통계${s.demographics ? ` · ${esc(s.demographics.as_of)} 기준` : ''}</p></div></div>
+                        <div id="dDemo"></div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top:16px">
+                    <div class="card-head"><div><h3 class="card-title">주요 키워드</h3><p class="card-desc">AI가 뽑은 댓글 핵심어 상위 ${s.keywords.length}개 · 막대는 감성 구성</p></div></div>
+                    <div class="kw-list">${s.keywords.length ? s.keywords.map((w) =>
+                        `<div class="kw" title="긍정 ${w['긍정']} · 중립 ${w['중립']} · 부정 ${w['부정']}"><b>${esc(w.keyword)}</b><span>${fmtNum(w.count)}</span>${shareBar(w, ['긍정', '중립', '부정'])}</div>`).join('')
+                        : '<div class="empty-msg" style="width:100%">AI 분류 후 표시됩니다.</div>'}</div>
+                </div>
+
+                <div class="card" style="margin-top:16px">
+                    <div class="card-head"><div><h3 class="card-title">대표 댓글</h3><p class="card-desc">공감 수 상위 댓글 (광고 제외)</p></div></div>
+                    <div id="dRep"></div>
+                </div>
+
+                <div class="card" style="margin-top:16px" id="dTableCard"></div>`;
+
+            renderTimeline(s);
+            renderRatio(s);
+            renderCompare(s);
+            renderCategory(s, categories);
+            renderDemographics(s);
+            renderRepresentative(s);
+            if (!keepTable || !app.table || app.table.id !== a.id) {
+                app.table = { id: a.id, rows: app.fullRows[a.id] || s.recent, full: !!app.fullRows[a.id], sort: { key: 'no', asc: false }, filter: { s: '', c: '', q: '' } };
+            }
+            renderTable(s);
+        }
+
+        function renderTimeline(s) {
+            const tl = s.timeline;
+            if (!tl.length) { $('#dTimeline').innerHTML = '<div class="empty-msg">아직 데이터가 없습니다.</div>'; return; }
+            const x = tl.map((w) => windowCenter(w.window));
+            const traces = SENTIMENTS.map((name) => ({
+                type: 'bar', name, x, y: tl.map((w) => w[name]),
+                width: SLOT_MS * 0.82,
+                customdata: tl.map((w) => [w.label, w.total]),
+                marker: { color: cssVar(SENT_VAR[name]), line: { color: cssVar('--surface'), width: 1 } },
+                hovertemplate: `%{customdata[0]} · ${name} %{y:,}건 (전체 %{customdata[1]:,}건)<extra></extra>`,
+            }));
+            Plotly.newPlot('dTimeline', traces, baseLayout({
+                barmode: 'stack', barcornerradius: 3, hovermode: 'closest',
+                xaxis: timeAxis(tl.length),
+                yaxis: { title: { text: '건' } },
+            }), PLOT_CONFIG);
+            const el = $('#dTimeline');
+            el.on('plotly_click', (ev) => { const p = ev.points?.[0]; if (p) showWindow(s, p.pointIndex); });
+            showWindow(s, tl.length - 1);
+        }
+
+        function showWindow(s, i) {
+            const w = s.timeline[i];
+            const box = $('#dWindow');
+            if (!w) { box.innerHTML = ''; return; }
+            box.innerHTML = `
+                <div class="window-title">${esc(w.label)} · ${fmtNum(w.total)}건 ${i === s.timeline.length - 1 ? '<span class="badge">최근 구간</span>' : ''}</div>
+                <div class="card-desc" style="margin-bottom:6px">긍정 ${fmtNum(w['긍정'])} · 중립 ${fmtNum(w['중립'])} · 부정 ${fmtNum(w['부정'])} · 기타 ${fmtNum(w['기타'])}${w.neg_ratio !== null ? ` · 부정 비율 ${fmtPct(w.neg_ratio)}` : ''}</div>
+                ${w.top ? commentHtml(w.top) : '<div class="card-desc">이 구간에는 댓글이 없습니다.</div>'}`;
+        }
+
+        function renderRatio(s) {
+            const tl = s.timeline.filter((w) => w.neg_ratio !== null);
+            if (!tl.length) { $('#dRatio').innerHTML = '<div class="empty-msg">AI 분류 후 표시됩니다.</div>'; return; }
+            const x = tl.map((w) => windowCenter(w.window));
+            const maxN = Math.max(...tl.map((w) => w['긍정'] + w['중립'] + w['부정']));
+            const size = tl.map((w) => 6 + 8 * Math.sqrt((w['긍정'] + w['중립'] + w['부정']) / maxN));
+            const mk = (name, key, cssName) => ({
+                type: 'scatter', mode: 'lines+markers', name, x, y: tl.map((w) => w[key]),
+                customdata: tl.map((w) => [w.label, w['긍정'] + w['중립'] + w['부정']]),
+                line: { color: cssVar(cssName), width: 2 },
+                marker: { size, color: cssVar(cssName), line: { color: cssVar('--surface'), width: 2 } },
+                hovertemplate: `%{customdata[0]} · ${name} %{y:.1f}% (분류 %{customdata[1]:,}건)<extra></extra>`,
+            });
+            Plotly.newPlot('dRatio', [mk('부정 비율', 'neg_ratio', '--neg'), mk('긍정 비율', 'pos_ratio', '--pos')], baseLayout({
+                xaxis: timeAxis(s.timeline.length),
+                yaxis: { range: [0, 100], ticksuffix: '%', rangemode: 'normal' },
+                hovermode: 'closest',
+            }), PLOT_CONFIG);
+        }
+
+        function renderCompare(s) {
+            const rows = [['댓글 수', s.sentiment.count], ['공감 수', s.sentiment.sympathy]];
+            const totals = rows.map(([, c]) => SENTIMENTS.reduce((a, k) => a + (c[k] || 0), 0));
+            if (!totals[0]) { $('#dCompare').innerHTML = '<div class="empty-msg">데이터가 없습니다.</div>'; return; }
+            Plotly.newPlot('dCompare', SENTIMENTS.map((name) => {
+                const vals = rows.map(([, c], i) => (totals[i] ? (c[name] || 0) / totals[i] * 100 : 0));
+                return {
+                    type: 'bar', orientation: 'h', name, y: rows.map(([l]) => l), x: vals,
+                    customdata: rows.map(([, c]) => c[name] || 0),
+                    marker: { color: cssVar(SENT_VAR[name]), line: { color: cssVar('--surface'), width: 2 } },
+                    text: vals.map((v) => (v >= 8 ? `${v.toFixed(0)}%` : '')), textposition: 'inside', insidetextanchor: 'middle',
+                    textfont: { color: '#fff' },
+                    hovertemplate: `%{y} · ${name} %{x:.1f}% (%{customdata:,})<extra></extra>`,
+                };
+            }), baseLayout({
+                barmode: 'stack', bargap: 0.4,
+                margin: { t: 6, r: 12, b: 28, l: 64 },
+                xaxis: { range: [0, 100], ticksuffix: '%' },
+                yaxis: { autorange: 'reversed', gridcolor: 'rgba(0,0,0,0)' },
+            }), PLOT_CONFIG);
+            const k = s.kpi;
+            if (k.neg_ratio_all !== null && k.neg_ratio_sympathy !== null) {
+                const d = k.neg_ratio_sympathy - k.neg_ratio_all;
+                $('#dCompareNote').textContent = Math.abs(d) < 3
+                    ? '두 기준의 부정 비율이 비슷합니다.'
+                    : `공감 수 기준 부정 비율이 댓글 수 기준보다 ${Math.abs(d).toFixed(1)}%p ${d > 0 ? '높습니다. 부정 의견이 더 많은 공감을 받고 있습니다.' : '낮습니다. 부정 댓글은 많지만 공감은 상대적으로 적습니다.'}`;
+            }
+        }
+
+        function renderCategory(s, categories) {
+            if (!categories.length) { $('#dCategory').innerHTML = '<div class="empty-msg">AI 분류 후 표시됩니다.</div>'; return; }
+            Plotly.newPlot('dCategory', ['긍정', '중립', '부정'].map((name) => ({
+                type: 'bar', orientation: 'h', name, y: categories, x: categories.map((c) => s.category[c][name] || 0),
+                marker: { color: cssVar(SENT_VAR[name]), line: { color: cssVar('--surface'), width: 2 } },
+                hovertemplate: `%{y} · ${name} %{x:,}건<extra></extra>`,
+            })), baseLayout({
+                barmode: 'stack', bargap: 0.35, barcornerradius: 3,
+                margin: { t: 6, r: 12, b: 30, l: 130 },
+                yaxis: { autorange: 'reversed', gridcolor: 'rgba(0,0,0,0)' },
+            }), PLOT_CONFIG);
+        }
+
+        function renderDemographics(s) {
+            const box = $('#dDemo');
+            const d = s.demographics;
+            if (!d) { box.innerHTML = '<div class="empty-msg">네이버가 이 기사의 성별·연령 통계를 제공하지 않습니다.<br>(댓글이 적은 기사는 통계가 없습니다)</div>'; return; }
+            let htmlStr = '';
+            if (d.gender) {
+                const m = d.gender.male || 0, f = d.gender.female || 0;
+                htmlStr += `<div class="gender"><div class="gender-labels"><span>남성 <b>${m}%</b></span><span>여성 <b>${f}%</b></span></div>
+                    <div class="share" style="height:14px"><span style="flex:${m};background:var(--s1)"></span><span style="flex:${f};background:var(--s2)"></span></div></div>`;
+            }
+            htmlStr += '<div id="dAge" class="chart short"></div>';
+            box.innerHTML = htmlStr;
+            if (d.age) {
+                const labels = d.age.map((x, i) => (i === d.age.length - 1 ? `${x.age}대+` : `${x.age}대`));
+                Plotly.newPlot('dAge', [{
+                    type: 'bar', x: labels, y: d.age.map((x) => x.value),
+                    marker: { color: cssVar('--s1') },
+                    text: d.age.map((x) => `${x.value}%`), textposition: 'outside', cliponaxis: false,
+                    hovertemplate: '%{x} %{y}%<extra></extra>',
+                }], baseLayout({
+                    bargap: 0.35, barcornerradius: 3,
+                    margin: { t: 18, r: 8, b: 28, l: 8 },
+                    yaxis: { visible: false, range: [0, Math.max(...d.age.map((x) => x.value)) * 1.25] },
+                    xaxis: { gridcolor: 'rgba(0,0,0,0)' },
+                }), PLOT_CONFIG);
+            }
+        }
+
+        function renderRepresentative(s) {
+            const rep = s.representative;
+            const box = $('#dRep');
+            if (!rep.top.length) { box.innerHTML = '<div class="empty-msg">AI 분류 후 표시됩니다.</div>'; return; }
+            const groups = Object.entries(rep.by_category).map(([cat, v]) => `
+                <div class="rep-group"><h4>${esc(cat)}</h4>
+                    <div class="rep-cols">
+                        <div>${v['긍정'].length ? v['긍정'].map(commentHtml).join('') : '<div class="card-desc" style="margin-top:8px">긍정 댓글 없음</div>'}</div>
+                        <div>${v['부정'].length ? v['부정'].map(commentHtml).join('') : '<div class="card-desc" style="margin-top:8px">부정 댓글 없음</div>'}</div>
+                    </div></div>`).join('');
+            box.innerHTML = `
+                <div class="rep-group" style="margin-top:0"><h4>공감 TOP ${rep.top.length}</h4>${rep.top.map(commentHtml).join('')}</div>
+                ${groups ? `<div class="rep-group"><div class="card-desc">주제별 · 왼쪽 긍정 / 오른쪽 부정</div></div>${groups}` : ''}`;
+        }
+
+        // ---------- table ----------
+        const COLUMNS = [
+            { key: 'time', label: '작성 시각', cls: 'time' },
+            { key: 'sentiment', label: '감성' },
+            { key: 'category', label: '주제' },
+            { key: 'keyword', label: '키워드' },
+            { key: 'text', label: '댓글', cls: 'text', nosort: true },
+            { key: 'sympathy', label: '공감', cls: 'num' },
+            { key: 'antipathy', label: '비공감', cls: 'num' },
+        ];
+
+        function renderTable(s) {
+            const t = app.table;
+            const card = $('#dTableCard');
+            const cats = [...new Set(t.rows.map((r) => r.category).filter(Boolean))].sort();
+            const sentOpts = [...new Set(t.rows.map((r) => r.sentiment))];
+            card.innerHTML = `
+                <div class="card-head"><div><h3 class="card-title">댓글 데이터</h3>
+                    <p class="card-desc">${t.full ? '수집된 전체 댓글' : `최신 ${fmtNum(t.rows.length)}건`} · 열 제목을 누르면 정렬</p></div>
+                    <span class="badge" id="tCount"></span></div>
+                <div class="filters">
+                    <select id="fS" aria-label="감성 필터"><option value="">감성 전체</option>${sentOpts.map((x) => `<option ${t.filter.s === x ? 'selected' : ''}>${esc(x)}</option>`).join('')}</select>
+                    <select id="fC" aria-label="주제 필터"><option value="">주제 전체</option>${cats.map((x) => `<option ${t.filter.c === x ? 'selected' : ''}>${esc(x)}</option>`).join('')}</select>
+                    <input id="fQ" type="search" placeholder="댓글·키워드 검색" value="${esc(t.filter.q)}">
+                </div>
+                <div class="table-wrap"><table>
+                    <thead><tr>${COLUMNS.map((c) => `<th class="${c.cls || ''} ${c.nosort ? '' : 'sortable'}" data-key="${c.key}">${c.label}${t.sort.key === c.key || (c.key === 'time' && t.sort.key === 'no') ? (t.sort.asc ? ' ↑' : ' ↓') : ''}</th>`).join('')}</tr></thead>
+                    <tbody id="tBody"></tbody>
+                </table></div>
+                <div class="table-foot">
+                    <span>${t.full ? '' : `전체 ${fmtNum(s.kpi.collected)}건 중 최신분만 표시 중`}</span>
+                    <span style="display:flex;gap:8px">
+                        ${t.full ? '' : '<button class="btn" id="tLoadAll" type="button">전체 댓글 불러오기</button>'}
+                        <a class="btn" href="data/${esc(s.article.id)}/comments.csv" download style="text-decoration:none">CSV 내려받기</a>
+                    </span>
+                </div>`;
+
+            card.querySelector('#fS').addEventListener('change', (e) => { t.filter.s = e.target.value; fillTableBody(); });
+            card.querySelector('#fC').addEventListener('change', (e) => { t.filter.c = e.target.value; fillTableBody(); });
+            card.querySelector('#fQ').addEventListener('input', (e) => { t.filter.q = e.target.value; fillTableBody(); });
+            card.querySelectorAll('th.sortable').forEach((th) => th.addEventListener('click', () => {
+                const key = th.dataset.key === 'time' ? 'no' : th.dataset.key;
+                t.sort = { key, asc: t.sort.key === key ? !t.sort.asc : false };
+                renderTable(s);
+            }));
+            const loadBtn = card.querySelector('#tLoadAll');
+            if (loadBtn) loadBtn.addEventListener('click', () => loadAllComments(s, loadBtn));
+            fillTableBody();
+        }
+
+        function fillTableBody() {
+            const t = app.table;
+            const q = t.filter.q.trim().toLowerCase();
+            let rows = t.rows.filter((r) =>
+                (!t.filter.s || r.sentiment === t.filter.s) &&
+                (!t.filter.c || r.category === t.filter.c) &&
+                (!q || r.text.toLowerCase().includes(q) || (r.keyword || '').toLowerCase().includes(q)));
+            const { key, asc } = t.sort;
+            rows = rows.slice().sort((a, b) => {
+                let va = a[key], vb = b[key];
+                if (key === 'no') { va = BigInt(va); vb = BigInt(vb); return (va < vb ? -1 : va > vb ? 1 : 0) * (asc ? 1 : -1); }
+                if (typeof va === 'number') return (va - vb) * (asc ? 1 : -1);
+                return String(va || '').localeCompare(String(vb || ''), 'ko') * (asc ? 1 : -1);
+            });
+            const LIMIT = 1000;
+            $('#tCount').textContent = `${fmtNum(rows.length)}건${rows.length > LIMIT ? ` (상위 ${fmtNum(LIMIT)}건 표시)` : ''}`;
+            $('#tBody').innerHTML = rows.slice(0, LIMIT).map((r) => `<tr>
+                <td class="time">${esc(r.time.slice(5))}</td>
+                <td class="nowrap">${sentimentBadge(r.sentiment)}</td>
+                <td class="nowrap">${esc(r.category)}</td>
+                <td class="nowrap">${esc(r.keyword)}</td>
+                <td class="text">${esc(r.text)}</td>
+                <td class="num">${fmtNum(r.sympathy)}</td>
+                <td class="num">${fmtNum(r.antipathy)}</td>
+            </tr>`).join('') || `<tr><td colspan="${COLUMNS.length}" class="empty-msg">조건에 맞는 댓글이 없습니다.</td></tr>`;
+        }
+
+        function loadAllComments(s, btn) {
+            btn.disabled = true;
+            btn.textContent = '불러오는 중…';
+            Papa.parse(`data/${s.article.id}/comments.csv?v=${Date.now()}`, {
+                download: true, header: true, skipEmptyLines: true,
+                complete: (res) => {
+                    const rows = res.data.map((r) => ({
+                        no: r.comment_no, time: (r.reg_time || '').slice(0, 16), text: r.contents || '',
+                        sentiment: r.sentiment || '미분석', category: r.category || '', keyword: r.keyword || '',
+                        sympathy: Number(r.sympathy) || 0, antipathy: Number(r.antipathy) || 0, reply: Number(r.reply_count) || 0,
+                    }));
+                    app.fullRows[s.article.id] = rows;
+                    Object.assign(app.table, { rows, full: true });
+                    renderTable(s);
+                },
+                error: (err) => { btn.disabled = false; btn.textContent = `실패: ${err.message || err}`; },
+            });
+        }
+
+        // ---------- init ----------
+        async function init() {
+            initTheme();
+            try {
+                app.index = await fetchJson('data/index.json');
+            } catch (err) {
+                $('#overviewSection').innerHTML = `<div class="card empty-msg" style="margin-top:16px">data/index.json 을 불러오지 못했습니다. 첫 수집이 끝난 뒤 다시 확인하세요.<br>${esc(err.message)}</div>`;
+                return;
+            }
+            document.title = app.index.dashboard_title;
+            $('#dashboardTitle').textContent = app.index.dashboard_title;
+            const cutoffs = app.index.articles.map((a) => a.cutoff).filter(Boolean).sort();
+            const nexts = app.index.articles.map((a) => a.next_update).filter(Boolean).sort();
+            $('#heroCutoff').textContent = `데이터 기준 ${cutoffs.length ? cutoffs[cutoffs.length - 1] : '—'}`;
+            $('#heroNext').textContent = `다음 업데이트 ${nexts.length ? nexts[nexts.length - 1].slice(11) : '—'}`;
+            buildTabs();
+            window.addEventListener('hashchange', route);
+            route();
+        }
+
+        init();
+    </script>
+</body>
+
+</html>
