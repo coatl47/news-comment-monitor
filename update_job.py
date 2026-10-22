@@ -35,7 +35,8 @@ def is_current(article: dict, cutoff, do_analyze: bool) -> bool:
     """이번 구간 수집을 마쳤고, 분류 대기 댓글도 없으면 True"""
     path = os.path.join(DATA_ROOT, article["id"])
     state = collector.load_state(path)
-    if article.get("collect_enabled", True) and state.get("last_cutoff") != collector.fmt(cutoff):
+    if (article.get("collect_enabled", True) and not state.get("closed")
+            and state.get("last_cutoff") != collector.fmt(cutoff)):
         return False
     if do_analyze and os.getenv("OPENROUTER_API_KEY"):
         if any((r.get("sentiment") or "") in analyzer.PENDING for r in collector.load_comments(path)):
@@ -47,7 +48,10 @@ def process_article(article: dict, now, do_analyze: bool) -> dict:
     path = collector.article_dir(DATA_ROOT, article["id"])
     logger.info("[%s] %s", article["id"], article.get("tab_label", ""))
 
-    if article.get("collect_enabled", True):
+    if collector.load_state(path).get("closed"):
+        logger.info("  마감된 기사 (게재 후 %s일 경과)", article.get("close_after_days"))
+        rows = collector.load_comments(path)
+    elif article.get("collect_enabled", True):
         try:
             rows = collector.run_collection(article, path, now)["rows"]
         except Exception as e:
@@ -90,7 +94,9 @@ def main() -> int:
 
     now = aggregator.parse_dt(args.now) if args.now else collector.now_kst()
     config = load_config()
-    articles = [a for a in config.get("articles", []) if a.get("enabled", True)]
+    close_days = config.get("close_after_days", 20)
+    articles = [{"close_after_days": close_days, **a}
+                for a in config.get("articles", []) if a.get("enabled", True)]
     if args.article:
         articles = [a for a in articles if a["id"] == args.article]
         if not articles:

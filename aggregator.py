@@ -8,7 +8,7 @@ import os
 from collections import Counter, defaultdict
 from datetime import datetime, timedelta
 
-from collector import KST, SLOT_HOURS, fmt, load_snapshots
+from collector import KST, SLOT_HOURS, closes_at, fmt, load_snapshots
 
 SENTIMENT_ORDER = ["긍정", "중립", "부정", "기타"]
 OPINION = ("긍정", "중립", "부정")
@@ -144,6 +144,8 @@ def build_summary(article: dict, rows: list[dict], state: dict, path: str, now: 
 
     deleted_prev = int(snapshots[-2]["deleted"] or 0) if len(snapshots) > 1 else None
     meta = state.get("article_meta") or {}
+    close = closes_at(article, state)
+    closed = bool(state.get("closed"))
     sentiment_state = Counter(r.get("sentiment") or "미분석" for r in rows)
 
     return {
@@ -155,10 +157,12 @@ def build_summary(article: dict, rows: list[dict], state: dict, path: str, now: 
             "published_at": article.get("published_at") or meta.get("published_at") or "",
             "url": article["url"],
             "collect_enabled": article.get("collect_enabled", True),
+            "closed": closed,
+            "closes_at": fmt(close) if close else None,
         },
         "generated_at": fmt(now),
         "cutoff": state.get("last_cutoff"),
-        "next_update": fmt(cutoff + timedelta(hours=SLOT_HOURS)) if cutoff else None,
+        "next_update": fmt(cutoff + timedelta(hours=SLOT_HOURS)) if cutoff and not closed else None,
         "status": {
             "last_success_at": state.get("last_success_at"),
             "last_error": state.get("last_error"),

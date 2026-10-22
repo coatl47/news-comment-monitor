@@ -56,6 +56,22 @@ def fmt(dt: datetime) -> str:
     return dt.strftime("%Y-%m-%d %H:%M")
 
 
+def ceil_slot(dt: datetime, hours: int = SLOT_HOURS) -> datetime:
+    """dt 이후 첫 2시간 경계 (06:00 → 06:00, 06:00:40 → 08:00)"""
+    f = floor_slot(dt, hours)
+    return f if f == dt.astimezone(KST) else f + timedelta(hours=hours)
+
+
+def closes_at(article: dict, state: dict):
+    """게재 후 close_after_days 일이 지난 뒤 첫 2시간 경계. 게재 시각을 모르거나 0일이면 None"""
+    days = article.get("close_after_days")
+    pub = article.get("published_at") or (state.get("article_meta") or {}).get("published_at")
+    if not days or not pub:
+        return None
+    published = datetime.strptime(pub[:19], "%Y-%m-%d %H:%M:%S" if len(pub) >= 19 else "%Y-%m-%d %H:%M")
+    return ceil_slot(published.replace(tzinfo=KST) + timedelta(days=days))
+
+
 # ---------- 저장소 ----------
 
 def article_dir(data_root: str, article_id: str) -> str:
@@ -209,7 +225,7 @@ def snapshot_from(result: dict, slot: datetime, collected_at: datetime, new_coun
 
 
 def run_collection(article: dict, path: str, now: datetime) -> dict:
-    """기사 1건 증분 수집. 반환: 실행 결과 요약"""
+    """기사 1건 증분 수집. 마감 시각이 지났으면 마감 시각까지만 모으고 closed 로 표시한다."""
     oid, aid, sid = naver_client.parse_url(article["url"])
     session = naver_client.make_session(oid, aid, sid)
     state = load_state(path)
@@ -220,6 +236,16 @@ def run_collection(article: dict, path: str, now: datetime) -> dict:
             state["article_meta"] = naver_client.fetch_article_meta(session, oid, aid)
         except Exception as e:  # 메타는 부가 정보라 실패해도 진행
             logger.warning("  기사 메타 조회 실패: %s", e)
+
+    close = closes_at(article, state)
+    closing = bool(close and cutoff >= close)
+    if closing:
+        cutoff = close
+        if state.get("last_cutoff") and state["last_cutoff"] >= fmt(close):
+            state.update({"closed": True, "closed_at": fmt(close), "last_run_at": fmt(now)})
+            save_state(path, state)
+            logger.info("  마감 (%s), 마감 시각까지 이미 수집됨", fmt(close))
+            return {"rows": load_comments(path), "added": 0, "state": state}
 
     last_no = int(state.get("last_comment_no") or 0)
     rows = load_comments(path)
@@ -253,6 +279,9 @@ def run_collection(article: dict, path: str, now: datetime) -> dict:
         "last_success_at": fmt(now),
         "last_error": None,
     })
+    if closing:
+        state.update({"closed": True, "closed_at": fmt(close)})
+        logger.info("  게재 후 %s일 경과로 마감 (%s)", article.get("close_after_days"), fmt(close))
     save_state(path, state)
     logger.info("  신규 %d건 (누적 %d건, 기준점 %s, cutoff %s)", added, len(rows), new_last_no, fmt(cutoff))
     return {"rows": rows, "added": added, "state": state}

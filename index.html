@@ -123,6 +123,7 @@
             border-radius: 999px; padding: 8px 16px; cursor: pointer; white-space: nowrap; font-weight: 600;
         }
         .tab[aria-selected="true"] { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+        .tab-closed { margin-left: 6px; font-size: 0.75rem; font-weight: 600; opacity: 0.7; }
         .tab .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
 
         /* layout */
@@ -388,11 +389,11 @@
 
         // ---------- routing ----------
         function buildTabs() {
-            const tabs = app.index.articles.map((a) => ({ id: a.id, label: a.tab_label, warn: !!a.status?.last_error }));
+            const tabs = app.index.articles.map((a) => ({ id: a.id, label: a.tab_label, warn: !a.closed && !!a.status?.last_error, closed: !!a.closed }));
             // 기사가 하나뿐이면 탭 줄을 숨긴다
             $('#tabs').classList.toggle('hidden', tabs.length < 2);
             $('#tabs').innerHTML = tabs.map((t) =>
-                `<button class="tab" role="tab" data-id="${esc(t.id)}" aria-selected="false">${t.warn ? '<span class="dot" style="background:var(--neg)" title="수집 지연"></span>' : ''}${esc(t.label)}</button>`).join('');
+                `<button class="tab" role="tab" data-id="${esc(t.id)}" aria-selected="false">${t.warn ? '<span class="dot" style="background:var(--neg)" title="수집 지연"></span>' : ''}${esc(t.label)}${t.closed ? '<span class="tab-closed">마감</span>' : ''}</button>`).join('');
             $('#tabs').addEventListener('click', (e) => {
                 const btn = e.target.closest('.tab');
                 if (btn) location.hash = btn.dataset.id;
@@ -442,7 +443,9 @@
                         ${a.published_at ? `<span>게재 ${esc(a.published_at.slice(0, 16))}</span>` : ''}
                         <span>데이터 기준 ${esc(s.cutoff || '—')}</span>
                         ${s.status.last_error ? `<span class="badge warn" title="${esc(s.status.last_error)}">⚠ 수집 지연 · 마지막 성공 ${esc(s.status.last_success_at || '—')}</span>` : ''}
-                        ${a.collect_enabled === false ? '<span class="badge">수집 중지됨</span>' : ''}
+                        ${a.closed ? `<span class="badge">마감 · ${esc((a.closes_at || '').slice(5))} 이후 댓글은 수집하지 않음</span>`
+                            : a.closes_at ? `<span>마감 예정 ${esc(a.closes_at.slice(5))}</span>` : ''}
+                        ${a.collect_enabled === false && !a.closed ? '<span class="badge">수집 중지됨</span>' : ''}
                         ${k.unanalyzed ? `<span class="badge">미분석 ${fmtNum(k.unanalyzed)}건</span>` : ''}
                     </div>
                 </div>
@@ -456,8 +459,11 @@
                         <div class="kpi-sub">${negDelta || '&nbsp;'}</div></div>
                     <div class="kpi"><div class="kpi-label">전체 부정 비율</div><div class="kpi-value">${fmtPct(k.neg_ratio_all)}</div>
                         <div class="kpi-sub">공감 수 기준 ${fmtPct(k.neg_ratio_sympathy)}</div></div>
-                    <div class="kpi"><div class="kpi-label">다음 업데이트</div><div class="kpi-value" style="font-size:1.3rem">${esc((s.next_update || '—').slice(5))}</div>
-                        <div class="kpi-sub">2시간마다 · 지연될 수 있음</div></div>
+                    ${a.closed
+                        ? `<div class="kpi"><div class="kpi-label">업데이트</div><div class="kpi-value" style="font-size:1.3rem">마감</div>
+                            <div class="kpi-sub">${esc((a.closes_at || '').slice(5))}까지 수집</div></div>`
+                        : `<div class="kpi"><div class="kpi-label">다음 업데이트</div><div class="kpi-value" style="font-size:1.3rem">${esc((s.next_update || '—').slice(5))}</div>
+                            <div class="kpi-sub">2시간마다${a.closes_at ? ` · ${esc(a.closes_at.slice(5, 10))} 마감` : ' · 지연될 수 있음'}</div></div>`}
                 </div>
 
                 <div class="card" style="margin-top:16px">
@@ -767,7 +773,8 @@
             const cutoffs = app.index.articles.map((a) => a.cutoff).filter(Boolean).sort();
             const nexts = app.index.articles.map((a) => a.next_update).filter(Boolean).sort();
             $('#heroCutoff').textContent = `데이터 기준 ${cutoffs.length ? cutoffs[cutoffs.length - 1] : '—'}`;
-            $('#heroNext').textContent = `다음 업데이트 ${nexts.length ? nexts[nexts.length - 1].slice(11) : '—'}`;
+            const allClosed = app.index.articles.length && app.index.articles.every((a) => a.closed);
+            $('#heroNext').textContent = allClosed ? '모든 기사 마감' : `다음 업데이트 ${nexts.length ? nexts[nexts.length - 1].slice(11) : '—'}`;
             buildTabs();
             window.addEventListener('hashchange', route);
             route();
