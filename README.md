@@ -49,8 +49,8 @@
 3. **Settings → Actions → General → Workflow permissions** 를 *Read and write* 로 설정합니다.
 4. **Settings → Pages** 에서 Source를 *Deploy from a branch*, `main` / `(root)` 로 설정합니다.
 5. **Actions → Auto Update Naver Comment Data → Run workflow** 로 한 번 수동 실행해서 네이버 수집이 되는지 확인합니다.
-   이후에는 30분마다(매시 5분·35분) 깨어나서, 이번 2시간 구간을 아직 처리하지 않았을 때만 수집합니다(`--skip-if-current`).
-   GitHub 예약 실행은 수십 분씩 늦거나 아예 빠지는 일이 잦아서 정시 1회만 걸어 두면 한 구간을 놓칠 수 있기 때문입니다. 이미 처리한 구간이면 커밋 없이 바로 끝납니다.
+   이후에는 2시간마다(KST 짝수 정시 5분) 자동 실행됩니다. 수동 실행으로 이미 처리한 구간이면 커밋 없이 바로 끝납니다(`--skip-if-current`).
+   GitHub 예약 실행은 수십 분씩 늦거나 한 회차를 건너뛸 수 있습니다. 건너뛴 구간의 댓글은 다음 회차에 함께 수집되므로 누락은 없습니다.
 
 > GitHub Actions는 해외 IP라서 네이버가 막을 수 있습니다. 실패하면 대시보드 탭에 "⚠ 수집 지연" 이 표시되고, `data/<id>/state.json` 의 `last_error` 에 원인이 남습니다. 이때는 아래처럼 Mac에서 같은 작업을 돌리면 됩니다.
 
