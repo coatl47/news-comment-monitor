@@ -6,13 +6,15 @@
   "press": "연합뉴스",
   "published_at": "2026-10-22 06:00:10",
   "url": "https://n.news.naver.com/mnews/article/001/0016392775?sid=102",
-  "collect_enabled": true
+  "collect_enabled": true,
+  "closed": false,
+  "closes_at": "2026-11-11 08:00"
  },
- "generated_at": "2026-10-22 21:12",
+ "generated_at": "2026-10-22 21:25",
  "cutoff": "2026-10-22 20:00",
  "next_update": "2026-10-22 22:00",
  "status": {
-  "last_success_at": "2026-10-22 21:12",
+  "last_success_at": "2026-10-22 21:25",
   "last_error": null,
   "last_error_at": null
  },
@@ -177,7 +179,7 @@
  "snapshots": [
   {
    "slot": "2026-10-22 20:00",
-   "collected_at": "2026-10-22 21:12",
+   "collected_at": "2026-10-22 21:25",
    "naver_total": 85,
    "deleted": 3
   }

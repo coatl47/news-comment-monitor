@@ -6,13 +6,15 @@
   "press": "연합뉴스",
   "published_at": "2026-10-22 06:00:40",
   "url": "https://n.news.naver.com/article/001/0016392780?ntype=RANKING",
-  "collect_enabled": true
+  "collect_enabled": true,
+  "closed": false,
+  "closes_at": "2026-11-11 08:00"
  },
- "generated_at": "2026-10-22 21:12",
+ "generated_at": "2026-10-22 21:25",
  "cutoff": "2026-10-22 20:00",
  "next_update": "2026-10-22 22:00",
  "status": {
-  "last_success_at": "2026-10-22 21:12",
+  "last_success_at": "2026-10-22 21:25",
   "last_error": null,
   "last_error_at": null
  },
@@ -27,7 +29,7 @@
   "neg_ratio_last": 81.5,
   "neg_ratio_prev": 96.4,
   "neg_ratio_all": 83.6,
-  "neg_ratio_sympathy": 79.2,
+  "neg_ratio_sympathy": 79.3,
   "ads": 3,
   "unanalyzed": 0
  },
@@ -50,7 +52,7 @@
     "sentiment": "부정",
     "category": "정부·정책 평가",
     "keyword": "개혁",
-    "sympathy": 1122,
+    "sympathy": 1130,
     "antipathy": 140,
     "reply": 25
    }
@@ -73,7 +75,7 @@
     "sentiment": "부정",
     "category": "연금 재정·고갈",
     "keyword": "사회안전망",
-    "sympathy": 42,
+    "sympathy": 43,
     "antipathy": 0,
     "reply": 1
    }
@@ -209,7 +211,7 @@
   },
   {
    "slot": "2026-10-22 20:00",
-   "collected_at": "2026-10-22 21:12",
+   "collected_at": "2026-10-22 21:25",
    "naver_total": 336,
    "deleted": 26
   }
@@ -223,8 +225,8 @@
   },
   "sympathy": {
    "긍정": 17,
-   "중립": 599,
-   "부정": 2347,
+   "중립": 600,
+   "부정": 2362,
    "기타": 0
   }
  },
@@ -267,7 +269,7 @@
   }
  },
  "demographics": {
-  "as_of": "2026-10-22 21:12",
+  "as_of": "2026-10-22 21:25",
   "gender": {
    "male": 84,
    "female": 16
@@ -474,7 +476,7 @@
     "sentiment": "부정",
     "category": "정부·정책 평가",
     "keyword": "개혁",
-    "sympathy": 1122,
+    "sympathy": 1130,
     "antipathy": 140,
     "reply": 25
    },
@@ -485,8 +487,8 @@
     "sentiment": "부정",
     "category": "제도 개선(1인 1연금)",
     "keyword": "추납제도",
-    "sympathy": 572,
-    "antipathy": 46,
+    "sympathy": 577,
+    "antipathy": 47,
     "reply": 11
    },
    {
@@ -497,7 +499,7 @@
     "category": "기타",
     "keyword": "여성연금",
     "sympathy": 290,
-    "antipathy": 59,
+    "antipathy": 61,
     "reply": 11
    },
    {
@@ -611,7 +613,7 @@
       "sentiment": "부정",
       "category": "연금 재정·고갈",
       "keyword": "사회안전망",
-      "sympathy": 42,
+      "sympathy": 43,
       "antipathy": 0,
       "reply": 1
      },
@@ -1898,7 +1900,7 @@
    "sentiment": "부정",
    "category": "기타",
    "keyword": "역차별",
-   "sympathy": 5,
+   "sympathy": 6,
    "antipathy": 0,
    "reply": 0
   },
@@ -2943,7 +2945,7 @@
    "sentiment": "중립",
    "category": "기타",
    "keyword": "결혼",
-   "sympathy": 15,
+   "sympathy": 16,
    "antipathy": 0,
    "reply": 3
   },
@@ -3020,7 +3022,7 @@
    "sentiment": "부정",
    "category": "연금 재정·고갈",
    "keyword": "사회안전망",
-   "sympathy": 42,
+   "sympathy": 43,
    "antipathy": 0,
    "reply": 1
   },
@@ -3999,7 +4001,7 @@
    "sentiment": "부정",
    "category": "정부·정책 평가",
    "keyword": "개혁",
-   "sympathy": 1122,
+   "sympathy": 1130,
    "antipathy": 140,
    "reply": 25
   },
@@ -4032,8 +4034,8 @@
    "sentiment": "부정",
    "category": "제도 개선(1인 1연금)",
    "keyword": "추납제도",
-   "sympathy": 572,
-   "antipathy": 46,
+   "sympathy": 577,
+   "antipathy": 47,
    "reply": 11
   },
   {

@@ -1,6 +1,6 @@
 {
  "dashboard_title": "네이버 뉴스 댓글 여론 모니터링",
- "generated_at": "2026-10-22 21:12",
+ "generated_at": "2026-10-22 21:25",
  "slot_hours": 2,
  "articles": [
   {
@@ -11,10 +11,12 @@
    "published_at": "2026-10-22 06:00:40",
    "url": "https://n.news.naver.com/article/001/0016392780?ntype=RANKING",
    "collect_enabled": true,
+   "closed": false,
+   "closes_at": "2026-11-11 08:00",
    "cutoff": "2026-10-22 20:00",
    "next_update": "2026-10-22 22:00",
    "status": {
-    "last_success_at": "2026-10-22 21:12",
+    "last_success_at": "2026-10-22 21:25",
     "last_error": null,
     "last_error_at": null
    },
@@ -29,7 +31,7 @@
     "neg_ratio_last": 81.5,
     "neg_ratio_prev": 96.4,
     "neg_ratio_all": 83.6,
-    "neg_ratio_sympathy": 79.2,
+    "neg_ratio_sympathy": 79.3,
     "ads": 3,
     "unanalyzed": 0
    },
@@ -42,8 +44,8 @@
     },
     "sympathy": {
      "긍정": 17,
-     "중립": 599,
-     "부정": 2347,
+     "중립": 600,
+     "부정": 2362,
      "기타": 0
     }
    },
@@ -107,10 +109,12 @@
    "published_at": "2026-10-22 06:00:10",
    "url": "https://n.news.naver.com/mnews/article/001/0016392775?sid=102",
    "collect_enabled": true,
+   "closed": false,
+   "closes_at": "2026-11-11 08:00",
    "cutoff": "2026-10-22 20:00",
    "next_update": "2026-10-22 22:00",
    "status": {
-    "last_success_at": "2026-10-22 21:12",
+    "last_success_at": "2026-10-22 21:25",
     "last_error": null,
     "last_error_at": null
    },
@@ -203,10 +207,12 @@
    "published_at": "2026-10-22 17:44:19",
    "url": "https://n.news.naver.com/mnews/article/009/0005752721?sid=101",
    "collect_enabled": true,
+   "closed": false,
+   "closes_at": "2026-11-11 18:00",
    "cutoff": "2026-10-22 20:00",
    "next_update": "2026-10-22 22:00",
    "status": {
-    "last_success_at": "2026-10-22 21:12",
+    "last_success_at": "2026-10-22 21:25",
     "last_error": null,
     "last_error_at": null
    },
