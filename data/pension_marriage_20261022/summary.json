@@ -8,16 +8,16 @@
   "url": "https://n.news.naver.com/article/001/0016392780?ntype=RANKING",
   "collect_enabled": true
  },
- "generated_at": "2026-10-22 20:55",
+ "generated_at": "2026-10-22 21:12",
  "cutoff": "2026-10-22 20:00",
  "next_update": "2026-10-22 22:00",
  "status": {
-  "last_success_at": "2026-10-22 20:55",
+  "last_success_at": "2026-10-22 21:12",
   "last_error": null,
   "last_error_at": null
  },
  "kpi": {
-  "naver_total": 334,
+  "naver_total": 336,
   "deleted": 26,
   "deleted_delta": 2,
   "collected": 302,
@@ -27,7 +27,7 @@
   "neg_ratio_last": 81.5,
   "neg_ratio_prev": 96.4,
   "neg_ratio_all": 83.6,
-  "neg_ratio_sympathy": 79.3,
+  "neg_ratio_sympathy": 79.2,
   "ads": 3,
   "unanalyzed": 0
  },
@@ -50,8 +50,8 @@
     "sentiment": "부정",
     "category": "정부·정책 평가",
     "keyword": "개혁",
-    "sympathy": 1112,
-    "antipathy": 139,
+    "sympathy": 1122,
+    "antipathy": 140,
     "reply": 25
    }
   },
@@ -73,7 +73,7 @@
     "sentiment": "부정",
     "category": "연금 재정·고갈",
     "keyword": "사회안전망",
-    "sympathy": 41,
+    "sympathy": 42,
     "antipathy": 0,
     "reply": 1
    }
@@ -182,15 +182,15 @@
    "neg_ratio": 81.5,
    "pos_ratio": 7.4,
    "top": {
-    "no": "908365636353130578",
-    "time": "2026-10-22 19:50",
-    "text": "이번에 주가 하락 기간동안  국민연금이 200조원  손실을 봤다고 하는데  언제까지 국민연금의 연자도 모르는 보건복지부 장관 결재를 기다려야 하…",
+    "no": "908362086881427515",
+    "time": "2026-10-22 18:55",
+    "text": "이번 주식으로 다 닐려서 국민연금은 구경도 못할듯 진짜 죄명이정부 대단한일 해냈어 온국민을 거지로 만들다니!!",
     "sentiment": "부정",
-    "category": "제도 개선(1인 1연금)",
-    "keyword": "독립운영",
+    "category": "연금 재정·고갈",
+    "keyword": "구경못함",
     "sympathy": 2,
     "antipathy": 0,
-    "reply": 1
+    "reply": 0
    }
   }
  ],
@@ -209,8 +209,8 @@
   },
   {
    "slot": "2026-10-22 20:00",
-   "collected_at": "2026-10-22 20:55",
-   "naver_total": 334,
+   "collected_at": "2026-10-22 21:12",
+   "naver_total": 336,
    "deleted": 26
   }
  ],
@@ -223,8 +223,8 @@
   },
   "sympathy": {
    "긍정": 17,
-   "중립": 592,
-   "부정": 2328,
+   "중립": 599,
+   "부정": 2347,
    "기타": 0
   }
  },
@@ -267,10 +267,10 @@
   }
  },
  "demographics": {
-  "as_of": "2026-10-22 20:55",
+  "as_of": "2026-10-22 21:12",
   "gender": {
-   "male": 83,
-   "female": 17
+   "male": 84,
+   "female": 16
   },
   "age": [
    {
@@ -474,8 +474,8 @@
     "sentiment": "부정",
     "category": "정부·정책 평가",
     "keyword": "개혁",
-    "sympathy": 1112,
-    "antipathy": 139,
+    "sympathy": 1122,
+    "antipathy": 140,
     "reply": 25
    },
    {
@@ -485,8 +485,8 @@
     "sentiment": "부정",
     "category": "제도 개선(1인 1연금)",
     "keyword": "추납제도",
-    "sympathy": 566,
-    "antipathy": 45,
+    "sympathy": 572,
+    "antipathy": 46,
     "reply": 11
    },
    {
@@ -496,7 +496,7 @@
     "sentiment": "중립",
     "category": "기타",
     "keyword": "여성연금",
-    "sympathy": 287,
+    "sympathy": 290,
     "antipathy": 59,
     "reply": 11
    },
@@ -507,7 +507,7 @@
     "sentiment": "중립",
     "category": "기타",
     "keyword": "기여금",
-    "sympathy": 252,
+    "sympathy": 256,
     "antipathy": 5,
     "reply": 5
    },
@@ -518,7 +518,7 @@
     "sentiment": "부정",
     "category": "제도 개선(1인 1연금)",
     "keyword": "추납구제",
-    "sympathy": 139,
+    "sympathy": 141,
     "antipathy": 7,
     "reply": 0
    }
@@ -578,25 +578,25 @@
     ],
     "부정": [
      {
-      "no": "908313450118119457",
-      "time": "2026-10-22 06:20",
-      "text": "추납제도라는 말도 안되는 제도를 없애야 함",
+      "no": "908316942681505862",
+      "time": "2026-10-22 07:14",
+      "text": "중국인 국민연금 타먹는거 부터 개선해야지",
       "sentiment": "부정",
       "category": "제도 개선(1인 1연금)",
-      "keyword": "추납제도",
-      "sympathy": 566,
-      "antipathy": 45,
-      "reply": 11
+      "keyword": "개선",
+      "sympathy": 78,
+      "antipathy": 2,
+      "reply": 0
      },
      {
-      "no": "908313459664355353",
-      "time": "2026-10-22 06:20",
-      "text": "그런식의 추납구제 난 반댈세",
+      "no": "908321412735828179",
+      "time": "2026-10-22 08:23",
+      "text": "제도 자체가 문제네 추납제도 없애라 그동은 열심히 낸 사람들은 호구 만들고 왜 그동안 못낸사람들 까지 배려해주는거냐? 기초연금 있자나 왜 국민연금을 해주냐 이거야",
       "sentiment": "부정",
       "category": "제도 개선(1인 1연금)",
-      "keyword": "추납구제",
-      "sympathy": 139,
-      "antipathy": 7,
+      "keyword": "호구",
+      "sympathy": 5,
+      "antipathy": 0,
       "reply": 0
      }
     ]
@@ -611,7 +611,7 @@
       "sentiment": "부정",
       "category": "연금 재정·고갈",
       "keyword": "사회안전망",
-      "sympathy": 41,
+      "sympathy": 42,
       "antipathy": 0,
       "reply": 1
      },
@@ -671,17 +671,6 @@
     ],
     "부정": [
      {
-      "no": "908313656662425661",
-      "time": "2026-10-22 06:23",
-      "text": "눈만 뜨면 개혁개혁 거리던 범죄 전과자들이 정작 개혁해야 될 이런 낡은 제도는 내버려 두고 자기들 감방 안 가려는 궁리만 해 온 것. 특히 이재명은 '대통령도 죄 지으면 감옥 가야 한다'며 외치고 다니더니 자기는 죄 짓고도 감옥 가기 싫어 국가 시스템까지 다 망가뜨리고 있다. 망할 것들!",
-      "sentiment": "부정",
-      "category": "정부·정책 평가",
-      "keyword": "개혁",
-      "sympathy": 1112,
-      "antipathy": 139,
-      "reply": 25
-     },
-     {
       "no": "908319730383716478",
       "time": "2026-10-22 07:57",
       "text": "정부가 지속적으로 연금을 개정하면서 소득대체율을 줄여서 생겨난 사건인데, 이걸 결혼가정이 문제라면서 여론을 호도하네;;; 진짜 이 정부 문제가 많네;;; 가정을 깨서 한가지 물건을 2개씩 팔려는 1+1 소비 정책을 장려하네;;; 부동산이 말이 많으니깐 가정 하나를 깨서 각각 살수 있게 2채의 소비효과를 노린거야?? 이 정책 입안자는 진짜 못뗏고, 악마같은 논리다!!!",
@@ -690,6 +679,17 @@
       "keyword": "정책",
       "sympathy": 8,
       "antipathy": 1,
+      "reply": 0
+     },
+     {
+      "no": "908348755051282550",
+      "time": "2026-10-22 15:28",
+      "text": "현정부는 국민연금을 사금융으로 이용하고 있는게 사실...진짜 이런걸 특검해야한다",
+      "sentiment": "부정",
+      "category": "정부·정책 평가",
+      "keyword": "사금융",
+      "sympathy": 3,
+      "antipathy": 0,
       "reply": 0
      }
     ]
@@ -3020,7 +3020,7 @@
    "sentiment": "부정",
    "category": "연금 재정·고갈",
    "keyword": "사회안전망",
-   "sympathy": 41,
+   "sympathy": 42,
    "antipathy": 0,
    "reply": 1
   },
@@ -3911,7 +3911,7 @@
    "sentiment": "중립",
    "category": "기타",
    "keyword": "기여금",
-   "sympathy": 252,
+   "sympathy": 256,
    "antipathy": 5,
    "reply": 5
   },
@@ -3999,8 +3999,8 @@
    "sentiment": "부정",
    "category": "정부·정책 평가",
    "keyword": "개혁",
-   "sympathy": 1112,
-   "antipathy": 139,
+   "sympathy": 1122,
+   "antipathy": 140,
    "reply": 25
   },
   {
@@ -4021,7 +4021,7 @@
    "sentiment": "부정",
    "category": "제도 개선(1인 1연금)",
    "keyword": "추납구제",
-   "sympathy": 139,
+   "sympathy": 141,
    "antipathy": 7,
    "reply": 0
   },
@@ -4032,8 +4032,8 @@
    "sentiment": "부정",
    "category": "제도 개선(1인 1연금)",
    "keyword": "추납제도",
-   "sympathy": 566,
-   "antipathy": 45,
+   "sympathy": 572,
+   "antipathy": 46,
    "reply": 11
   },
   {
