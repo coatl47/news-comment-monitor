@@ -5,7 +5,43 @@
       "id": "pension_marriage_20261022",
       "tab_label": "국민연금 낡은 구조",
       "url": "https://n.news.naver.com/article/001/0016392780?ntype=RANKING",
-      "categories": ["성별·혼인 형평성", "제도 개선(1인 1연금)", "연금 재정·고갈", "노후 불안", "정부·정책 평가"],
+      "categories": [
+        "성별·혼인 형평성",
+        "제도 개선(1인 1연금)",
+        "연금 재정·고갈",
+        "노후 불안",
+        "정부·정책 평가"
+      ],
+      "prompt_file": "prompt/prompt_base.txt",
+      "enabled": true,
+      "collect_enabled": true
+    },
+    {
+      "id": "pension_spouse_20261022",
+      "tab_label": "결혼해도 연금 유지",
+      "url": "https://n.news.naver.com/mnews/article/001/0016392775?sid=102",
+      "categories": [
+        "무소득자 가입 확대",
+        "기금 운용 손실",
+        "재정 고갈·미래세대 부담",
+        "의무가입·제도 불신",
+        "정부·정치 비판"
+      ],
+      "prompt_file": "prompt/prompt_base.txt",
+      "enabled": true,
+      "collect_enabled": true
+    },
+    {
+      "id": "pension_nonincome_20261022",
+      "tab_label": "무소득자 연금 문턱",
+      "url": "https://n.news.naver.com/mnews/article/009/0005752721?sid=101",
+      "categories": [
+        "무소득자 가입 확대",
+        "기금 운용 손실",
+        "재정 고갈·미래세대 부담",
+        "의무가입·제도 불신",
+        "정부·정치 비판"
+      ],
       "prompt_file": "prompt/prompt_base.txt",
       "enabled": true,
       "collect_enabled": true
