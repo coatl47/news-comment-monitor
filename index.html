@@ -209,16 +209,18 @@
         .btn:hover { border-color: var(--primary); }
         .table-wrap { overflow: auto; max-height: 640px; border: 1px solid var(--line); border-radius: 12px; }
         /* 고정 레이아웃: 댓글 열만 남는 폭을 쓰고 나머지는 2줄로 접는다 */
-        table { width: 100%; min-width: 600px; table-layout: fixed; border-collapse: collapse; font-size: 0.86rem; line-height: 1.45; }
-        th, td { padding: 7px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; word-break: keep-all; overflow-wrap: anywhere; }
+        table { width: 100%; min-width: 540px; table-layout: fixed; border-collapse: collapse; font-size: 0.86rem; line-height: 1.45; }
+        th, td { padding: 6px 5px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; word-break: keep-all; overflow-wrap: anywhere; }
         th { position: sticky; top: 0; background: var(--surface-2); color: var(--text-2); font-weight: 700; z-index: 1; }
         th.sortable { cursor: pointer; user-select: none; }
         td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+        td.num { white-space: nowrap; overflow-wrap: normal; }
         td.time { color: var(--muted); font-variant-numeric: tabular-nums; }
         td.sub { color: var(--text-2); }
         td.text { white-space: pre-wrap; word-break: break-word; }
-        col.c-time { width: 62px; } col.c-sentiment { width: 66px; } col.c-category { width: 104px; }
-        col.c-keyword { width: 92px; } col.c-sympathy { width: 52px; } col.c-antipathy { width: 52px; }
+        col.c-time { width: 53px; } col.c-sentiment { width: 54px; } col.c-category { width: 92px; }
+        col.c-keyword { width: 78px; } col.c-sympathy { width: 48px; } col.c-antipathy { width: 52px; }
+        th:first-child, td:first-child { padding-left: 10px; } th:last-child, td:last-child { padding-right: 10px; }
         tr:hover td { background: var(--surface-2); }
         .table-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 10px; color: var(--muted); font-size: 0.85rem; flex-wrap: wrap; }
 
