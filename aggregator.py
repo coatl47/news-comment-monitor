@@ -102,14 +102,16 @@ def build_demographics(snapshots: list[dict]):
 def build_representative(rows: list[dict], categories: list[str]) -> dict:
     ranked = sorted((r for r in rows if r.get("sentiment") in OPINION),
                     key=lambda r: (r["sympathy"], -r["antipathy"]), reverse=True)
+    top = ranked[:5]
+    shown = {r["comment_no"] for r in top}  # TOP 5 에 나온 댓글은 주제별에서 빼고 다음 순위로 채운다
     by_category = {}
     for cat in categories + ["기타"]:
-        bucket_rows = [r for r in ranked if r.get("category") == cat]
+        bucket_rows = [r for r in ranked if r.get("category") == cat and r["comment_no"] not in shown]
         entry = {s: [comment_view(r, full=True) for r in bucket_rows if r["sentiment"] == s][:2]
                  for s in ("긍정", "부정")}
         if entry["긍정"] or entry["부정"]:
             by_category[cat] = entry
-    return {"top": [comment_view(r, full=True) for r in ranked[:5]], "by_category": by_category}
+    return {"top": [comment_view(r, full=True) for r in top], "by_category": by_category}
 
 
 def build_summary(article: dict, rows: list[dict], state: dict, path: str, now: datetime) -> dict:
