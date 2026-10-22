@@ -4,7 +4,12 @@ on:
   schedule:
     # KST 짝수 정시(00·02·…·22시) 5분 = UTC 홀수 정시 5분. 정각 혼잡을 피해 5분 늦춤
     - cron: '5 1-23/2 * * *'
-  workflow_dispatch:        # GitHub에서 수동 버튼 클릭으로도 실행 가능
+  workflow_dispatch:        # GitHub 수동 버튼, 외부 cron(cron-job.org)의 API 호출
+    inputs:
+      skip_if_current:
+        description: '이번 2시간 구간을 이미 처리했으면 건너뛰기 (외부 cron 용)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -51,8 +56,8 @@ jobs:
           # 1. 최신 코드 가져오기
           git pull --rebase origin main
 
-          # 2. 데이터 업데이트 스크립트 실행 (예약 실행은 이미 처리한 구간이면 건너뜀, 수동 실행은 항상 수행)
-          python update_job.py ${{ github.event_name == 'schedule' && '--skip-if-current' || '' }}
+          # 2. 데이터 업데이트 스크립트 실행 (예약·외부 cron 실행은 이미 처리한 구간이면 건너뜀, 수동 실행은 항상 수행)
+          python update_job.py ${{ (github.event_name == 'schedule' || inputs.skip_if_current) && '--skip-if-current' || '' }}
 
           # 3. 결과 저장
           git add data/
