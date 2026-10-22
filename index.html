@@ -285,9 +285,9 @@
 
         const app = { index: null, summaries: {}, active: null, fullRows: {}, table: null, unit: loadUnit() };
 
-        // 추이 차트 단위: 'day'(기본) | 'slot'(2시간). 보는 사람 브라우저에만 기억
+        // 추이 차트 단위: 'slot'(2시간, 기본) | 'day'(일별). 보는 사람 브라우저에만 기억
         function loadUnit() {
-            try { return localStorage.getItem('ncm-unit') === 'slot' ? 'slot' : 'day'; } catch (e) { return 'day'; }
+            try { return localStorage.getItem('ncm-unit') === 'day' ? 'day' : 'slot'; } catch (e) { return 'slot'; }
         }
 
         // ---------- utils ----------
