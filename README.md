@@ -59,6 +59,15 @@
    이후에는 2시간마다(KST 짝수 정시 5분) 자동 실행됩니다. 수동 실행으로 이미 처리한 구간이면 커밋 없이 바로 끝납니다(`--skip-if-current`).
    GitHub 예약 실행은 수십 분씩 늦거나 한 회차를 건너뛸 수 있습니다. 건너뛴 구간의 댓글은 다음 회차에 함께 수집되므로 누락은 없습니다.
 
+### 외부 cron (cron-job.org)
+GitHub 예약 실행이 이 저장소에서 제때 돌지 않아서, cron-job.org 가 KST 짝수 정시 5분마다 워크플로 실행 API를 호출합니다. GitHub 예약 실행도 그대로 두며, 둘 중 늦게 온 쪽은 `skip_if_current` 로 바로 끝납니다.
+
+- 토큰: fine-grained PAT, 이 저장소만, `Actions: Read and write`. 만료되면 새로 만들어 cron-job.org 의 `Authorization` 헤더만 교체합니다.
+- 요청: `POST https://api.github.com/repos/coatl47/news-comment-monitor/actions/workflows/update_data.yml/dispatches`
+  - 헤더: `Authorization: Bearer <토큰>`, `Accept: application/vnd.github+json`, `X-GitHub-Api-Version: 2022-11-28`, `Content-Type: application/json`
+  - 본문: `{"ref":"main","inputs":{"skip_if_current":"true"}}`
+  - 시간대 `Asia/Seoul`, crontab `5 */2 * * *`. 성공 응답은 `204 No Content`.
+
 > GitHub Actions는 해외 IP라서 네이버가 막을 수 있습니다. 실패하면 대시보드 탭에 "⚠ 수집 지연" 이 표시되고, `data/<id>/state.json` 의 `last_error` 에 원인이 남습니다. 이때는 아래처럼 Mac에서 같은 작업을 돌리면 됩니다.
 
 ## 로컬 실행
