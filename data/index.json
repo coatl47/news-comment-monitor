@@ -1,6 +1,6 @@
 {
  "dashboard_title": "네이버 뉴스 댓글 여론 모니터링",
- "generated_at": "2026-10-22 21:25",
+ "generated_at": "2026-10-22 22:08",
  "slot_hours": 2,
  "articles": [
   {
@@ -13,24 +13,24 @@
    "collect_enabled": true,
    "closed": false,
    "closes_at": "2026-11-11 08:00",
-   "cutoff": "2026-10-22 20:00",
-   "next_update": "2026-10-22 22:00",
+   "cutoff": "2026-10-22 22:00",
+   "next_update": "2026-10-23 00:00",
    "status": {
-    "last_success_at": "2026-10-22 21:25",
+    "last_success_at": "2026-10-22 22:08",
     "last_error": null,
     "last_error_at": null
    },
    "kpi": {
-    "naver_total": 336,
-    "deleted": 26,
-    "deleted_delta": 2,
-    "collected": 302,
-    "last_window_label": "10/22 18–20시",
-    "last_window_new": 27,
-    "prev_window_new": 28,
-    "neg_ratio_last": 81.5,
-    "neg_ratio_prev": 96.4,
-    "neg_ratio_all": 83.6,
+    "naver_total": 341,
+    "deleted": 27,
+    "deleted_delta": 1,
+    "collected": 318,
+    "last_window_label": "10/22 20–22시",
+    "last_window_new": 16,
+    "prev_window_new": 27,
+    "neg_ratio_last": 100.0,
+    "neg_ratio_prev": 81.5,
+    "neg_ratio_all": 84.4,
     "neg_ratio_sympathy": 79.3,
     "ads": 3,
     "unanalyzed": 0
@@ -39,13 +39,13 @@
     "count": {
      "긍정": 11,
      "중립": 38,
-     "부정": 250,
+     "부정": 266,
      "기타": 3
     },
     "sympathy": {
      "긍정": 17,
-     "중립": 600,
-     "부정": 2362,
+     "중립": 610,
+     "부정": 2408,
      "기타": 0
     }
    },
@@ -98,6 +98,13 @@
      "total": 27,
      "cumulative": 302,
      "neg_ratio": 81.5
+    },
+    {
+     "window": "2026-10-22 20:00",
+     "label": "10/22 20–22시",
+     "total": 16,
+     "cumulative": 318,
+     "neg_ratio": 100.0
     }
    ]
   },
@@ -111,23 +118,23 @@
    "collect_enabled": true,
    "closed": false,
    "closes_at": "2026-11-11 08:00",
-   "cutoff": "2026-10-22 20:00",
-   "next_update": "2026-10-22 22:00",
+   "cutoff": "2026-10-22 22:00",
+   "next_update": "2026-10-23 00:00",
    "status": {
-    "last_success_at": "2026-10-22 21:25",
+    "last_success_at": "2026-10-22 22:08",
     "last_error": null,
     "last_error_at": null
    },
    "kpi": {
     "naver_total": 85,
-    "deleted": 3,
-    "deleted_delta": null,
+    "deleted": 4,
+    "deleted_delta": 1,
     "collected": 82,
-    "last_window_label": "10/22 18–20시",
+    "last_window_label": "10/22 20–22시",
     "last_window_new": 0,
-    "prev_window_new": 1,
+    "prev_window_new": 0,
     "neg_ratio_last": null,
-    "neg_ratio_prev": 100.0,
+    "neg_ratio_prev": null,
     "neg_ratio_all": 95.1,
     "neg_ratio_sympathy": 99.1,
     "ads": 0,
@@ -196,6 +203,13 @@
      "total": 0,
      "cumulative": 82,
      "neg_ratio": null
+    },
+    {
+     "window": "2026-10-22 20:00",
+     "label": "10/22 20–22시",
+     "total": 0,
+     "cumulative": 82,
+     "neg_ratio": null
     }
    ]
   },
@@ -209,23 +223,23 @@
    "collect_enabled": true,
    "closed": false,
    "closes_at": "2026-11-11 18:00",
-   "cutoff": "2026-10-22 20:00",
-   "next_update": "2026-10-22 22:00",
+   "cutoff": "2026-10-22 22:00",
+   "next_update": "2026-10-23 00:00",
    "status": {
-    "last_success_at": "2026-10-22 21:25",
+    "last_success_at": "2026-10-22 22:08",
     "last_error": null,
     "last_error_at": null
    },
    "kpi": {
     "naver_total": 2,
     "deleted": 0,
-    "deleted_delta": null,
+    "deleted_delta": 0,
     "collected": 2,
-    "last_window_label": "10/22 18–20시",
-    "last_window_new": 2,
-    "prev_window_new": null,
-    "neg_ratio_last": 100.0,
-    "neg_ratio_prev": null,
+    "last_window_label": "10/22 20–22시",
+    "last_window_new": 0,
+    "prev_window_new": 2,
+    "neg_ratio_last": null,
+    "neg_ratio_prev": 100.0,
     "neg_ratio_all": 100.0,
     "neg_ratio_sympathy": 100.0,
     "ads": 0,
@@ -252,6 +266,13 @@
      "total": 2,
      "cumulative": 2,
      "neg_ratio": 100.0
+    },
+    {
+     "window": "2026-10-22 20:00",
+     "label": "10/22 20–22시",
+     "total": 0,
+     "cumulative": 2,
+     "neg_ratio": null
     }
    ]
   }
