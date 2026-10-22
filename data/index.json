@@ -1,6 +1,6 @@
 {
  "dashboard_title": "네이버 뉴스 댓글 여론 모니터링",
- "generated_at": "2026-10-22 18:40",
+ "generated_at": "2026-10-22 20:55",
  "slot_hours": 2,
  "articles": [
   {
@@ -11,39 +11,39 @@
    "published_at": "2026-10-22 06:00:40",
    "url": "https://n.news.naver.com/article/001/0016392780?ntype=RANKING",
    "collect_enabled": true,
-   "cutoff": "2026-10-22 18:00",
-   "next_update": "2026-10-22 20:00",
+   "cutoff": "2026-10-22 20:00",
+   "next_update": "2026-10-22 22:00",
    "status": {
-    "last_success_at": "2026-10-22 18:40",
+    "last_success_at": "2026-10-22 20:55",
     "last_error": null,
     "last_error_at": null
    },
    "kpi": {
-    "naver_total": 306,
-    "deleted": 24,
-    "deleted_delta": 4,
-    "collected": 275,
-    "last_window_label": "10/22 16–18시",
-    "last_window_new": 28,
-    "prev_window_new": 33,
-    "neg_ratio_last": 96.4,
-    "neg_ratio_prev": 87.9,
-    "neg_ratio_all": 83.8,
-    "neg_ratio_sympathy": 78.8,
+    "naver_total": 334,
+    "deleted": 26,
+    "deleted_delta": 2,
+    "collected": 302,
+    "last_window_label": "10/22 18–20시",
+    "last_window_new": 27,
+    "prev_window_new": 28,
+    "neg_ratio_last": 81.5,
+    "neg_ratio_prev": 96.4,
+    "neg_ratio_all": 83.6,
+    "neg_ratio_sympathy": 79.3,
     "ads": 3,
     "unanalyzed": 0
    },
    "sentiment": {
     "count": {
-     "긍정": 9,
-     "중립": 35,
-     "부정": 228,
+     "긍정": 11,
+     "중립": 38,
+     "부정": 250,
      "기타": 3
     },
     "sympathy": {
      "긍정": 17,
-     "중립": 547,
-     "부정": 2095,
+     "중립": 592,
+     "부정": 2328,
      "기타": 0
     }
    },
@@ -89,6 +89,163 @@
      "total": 28,
      "cumulative": 275,
      "neg_ratio": 96.4
+    },
+    {
+     "window": "2026-10-22 18:00",
+     "label": "10/22 18–20시",
+     "total": 27,
+     "cumulative": 302,
+     "neg_ratio": 81.5
+    }
+   ]
+  },
+  {
+   "id": "pension_spouse_20261022",
+   "tab_label": "결혼해도 연금 유지",
+   "title": "결혼해도 국민연금 유지…'소득없는 배우자 등' 667만명 품는다",
+   "press": "연합뉴스",
+   "published_at": "2026-10-22 06:00:10",
+   "url": "https://n.news.naver.com/mnews/article/001/0016392775?sid=102",
+   "collect_enabled": true,
+   "cutoff": "2026-10-22 20:00",
+   "next_update": "2026-10-22 22:00",
+   "status": {
+    "last_success_at": "2026-10-22 20:55",
+    "last_error": null,
+    "last_error_at": null
+   },
+   "kpi": {
+    "naver_total": 85,
+    "deleted": 3,
+    "deleted_delta": null,
+    "collected": 82,
+    "last_window_label": "10/22 18–20시",
+    "last_window_new": 0,
+    "prev_window_new": 1,
+    "neg_ratio_last": null,
+    "neg_ratio_prev": 100.0,
+    "neg_ratio_all": 95.1,
+    "neg_ratio_sympathy": 99.1,
+    "ads": 0,
+    "unanalyzed": 0
+   },
+   "sentiment": {
+    "count": {
+     "긍정": 2,
+     "중립": 2,
+     "부정": 78,
+     "기타": 0
+    },
+    "sympathy": {
+     "긍정": 0,
+     "중립": 3,
+     "부정": 348,
+     "기타": 0
+    }
+   },
+   "timeline": [
+    {
+     "window": "2026-10-22 06:00",
+     "label": "10/22 06–08시",
+     "total": 13,
+     "cumulative": 13,
+     "neg_ratio": 92.3
+    },
+    {
+     "window": "2026-10-22 08:00",
+     "label": "10/22 08–10시",
+     "total": 46,
+     "cumulative": 59,
+     "neg_ratio": 93.5
+    },
+    {
+     "window": "2026-10-22 10:00",
+     "label": "10/22 10–12시",
+     "total": 20,
+     "cumulative": 79,
+     "neg_ratio": 100.0
+    },
+    {
+     "window": "2026-10-22 12:00",
+     "label": "10/22 12–14시",
+     "total": 0,
+     "cumulative": 79,
+     "neg_ratio": null
+    },
+    {
+     "window": "2026-10-22 14:00",
+     "label": "10/22 14–16시",
+     "total": 2,
+     "cumulative": 81,
+     "neg_ratio": 100.0
+    },
+    {
+     "window": "2026-10-22 16:00",
+     "label": "10/22 16–18시",
+     "total": 1,
+     "cumulative": 82,
+     "neg_ratio": 100.0
+    },
+    {
+     "window": "2026-10-22 18:00",
+     "label": "10/22 18–20시",
+     "total": 0,
+     "cumulative": 82,
+     "neg_ratio": null
+    }
+   ]
+  },
+  {
+   "id": "pension_nonincome_20261022",
+   "tab_label": "무소득자 연금 문턱",
+   "title": "무소득 전업주부·청년에 연금 문턱 낮춘다",
+   "press": "매일경제",
+   "published_at": "2026-10-22 17:44:19",
+   "url": "https://n.news.naver.com/mnews/article/009/0005752721?sid=101",
+   "collect_enabled": true,
+   "cutoff": "2026-10-22 20:00",
+   "next_update": "2026-10-22 22:00",
+   "status": {
+    "last_success_at": "2026-10-22 20:55",
+    "last_error": null,
+    "last_error_at": null
+   },
+   "kpi": {
+    "naver_total": 2,
+    "deleted": 0,
+    "deleted_delta": null,
+    "collected": 2,
+    "last_window_label": "10/22 18–20시",
+    "last_window_new": 2,
+    "prev_window_new": null,
+    "neg_ratio_last": 100.0,
+    "neg_ratio_prev": null,
+    "neg_ratio_all": 100.0,
+    "neg_ratio_sympathy": 100.0,
+    "ads": 0,
+    "unanalyzed": 0
+   },
+   "sentiment": {
+    "count": {
+     "긍정": 0,
+     "중립": 0,
+     "부정": 2,
+     "기타": 0
+    },
+    "sympathy": {
+     "긍정": 0,
+     "중립": 0,
+     "부정": 2,
+     "기타": 0
+    }
+   },
+   "timeline": [
+    {
+     "window": "2026-10-22 18:00",
+     "label": "10/22 18–20시",
+     "total": 2,
+     "cumulative": 2,
+     "neg_ratio": 100.0
     }
    ]
   }

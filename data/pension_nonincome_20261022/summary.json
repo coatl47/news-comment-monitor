@@ -1,0 +1,198 @@
+{
+ "article": {
+  "id": "pension_nonincome_20261022",
+  "tab_label": "무소득자 연금 문턱",
+  "title": "무소득 전업주부·청년에 연금 문턱 낮춘다",
+  "press": "매일경제",
+  "published_at": "2026-10-22 17:44:19",
+  "url": "https://n.news.naver.com/mnews/article/009/0005752721?sid=101",
+  "collect_enabled": true
+ },
+ "generated_at": "2026-10-22 20:55",
+ "cutoff": "2026-10-22 20:00",
+ "next_update": "2026-10-22 22:00",
+ "status": {
+  "last_success_at": "2026-10-22 20:55",
+  "last_error": null,
+  "last_error_at": null
+ },
+ "kpi": {
+  "naver_total": 2,
+  "deleted": 0,
+  "deleted_delta": null,
+  "collected": 2,
+  "last_window_label": "10/22 18–20시",
+  "last_window_new": 2,
+  "prev_window_new": null,
+  "neg_ratio_last": 100.0,
+  "neg_ratio_prev": null,
+  "neg_ratio_all": 100.0,
+  "neg_ratio_sympathy": 100.0,
+  "ads": 0,
+  "unanalyzed": 0
+ },
+ "timeline": [
+  {
+   "window": "2026-10-22 18:00",
+   "label": "10/22 18–20시",
+   "total": 2,
+   "cumulative": 2,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 2,
+   "기타": 0,
+   "neg_ratio": 100.0,
+   "pos_ratio": 0.0,
+   "top": {
+    "no": "908359752902246417",
+    "time": "2026-10-22 18:19",
+    "text": "참으로 너무하네 국민연금 다털어 먹고서.....손실을 이런식으로 매꾸려하나....욕나온다....",
+    "sentiment": "부정",
+    "category": "기금 운용 손실",
+    "keyword": "손실",
+    "sympathy": 1,
+    "antipathy": 0,
+    "reply": 0
+   }
+  }
+ ],
+ "snapshots": [
+  {
+   "slot": "2026-10-22 20:00",
+   "collected_at": "2026-10-22 20:55",
+   "naver_total": 2,
+   "deleted": 0
+  }
+ ],
+ "sentiment": {
+  "count": {
+   "긍정": 0,
+   "중립": 0,
+   "부정": 2,
+   "기타": 0
+  },
+  "sympathy": {
+   "긍정": 0,
+   "중립": 0,
+   "부정": 2,
+   "기타": 0
+  }
+ },
+ "category": {
+  "기금 운용 손실": {
+   "긍정": 0,
+   "중립": 0,
+   "부정": 1,
+   "기타": 0
+  },
+  "무소득자 가입 확대": {
+   "긍정": 0,
+   "중립": 0,
+   "부정": 1,
+   "기타": 0
+  }
+ },
+ "demographics": null,
+ "keywords": [
+  {
+   "keyword": "손실",
+   "count": 1,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 1,
+   "기타": 0
+  },
+  {
+   "keyword": "흡혈귀",
+   "count": 1,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 1,
+   "기타": 0
+  }
+ ],
+ "representative": {
+  "top": [
+   {
+    "no": "908359752902246417",
+    "time": "2026-10-22 18:19",
+    "text": "참으로 너무하네 국민연금 다털어 먹고서.....손실을 이런식으로 매꾸려하나....욕나온다....",
+    "sentiment": "부정",
+    "category": "기금 운용 손실",
+    "keyword": "손실",
+    "sympathy": 1,
+    "antipathy": 0,
+    "reply": 0
+   },
+   {
+    "no": "908359583251038321",
+    "time": "2026-10-22 18:16",
+    "text": "사각지대를 보호하는 척 결국 세수 바닥날까봐 흡혈귀처럼 무소득자도 가입시키는.....진짜 탄핵하자 이정부",
+    "sentiment": "부정",
+    "category": "무소득자 가입 확대",
+    "keyword": "흡혈귀",
+    "sympathy": 1,
+    "antipathy": 0,
+    "reply": 0
+   }
+  ],
+  "by_category": {
+   "무소득자 가입 확대": {
+    "긍정": [],
+    "부정": [
+     {
+      "no": "908359583251038321",
+      "time": "2026-10-22 18:16",
+      "text": "사각지대를 보호하는 척 결국 세수 바닥날까봐 흡혈귀처럼 무소득자도 가입시키는.....진짜 탄핵하자 이정부",
+      "sentiment": "부정",
+      "category": "무소득자 가입 확대",
+      "keyword": "흡혈귀",
+      "sympathy": 1,
+      "antipathy": 0,
+      "reply": 0
+     }
+    ]
+   },
+   "기금 운용 손실": {
+    "긍정": [],
+    "부정": [
+     {
+      "no": "908359752902246417",
+      "time": "2026-10-22 18:19",
+      "text": "참으로 너무하네 국민연금 다털어 먹고서.....손실을 이런식으로 매꾸려하나....욕나온다....",
+      "sentiment": "부정",
+      "category": "기금 운용 손실",
+      "keyword": "손실",
+      "sympathy": 1,
+      "antipathy": 0,
+      "reply": 0
+     }
+    ]
+   }
+  }
+ },
+ "recent": [
+  {
+   "no": "908359752902246417",
+   "time": "2026-10-22 18:19",
+   "text": "참으로 너무하네 국민연금 다털어 먹고서.....손실을 이런식으로 매꾸려하나....욕나온다....",
+   "sentiment": "부정",
+   "category": "기금 운용 손실",
+   "keyword": "손실",
+   "sympathy": 1,
+   "antipathy": 0,
+   "reply": 0
+  },
+  {
+   "no": "908359583251038321",
+   "time": "2026-10-22 18:16",
+   "text": "사각지대를 보호하는 척 결국 세수 바닥날까봐 흡혈귀처럼 무소득자도 가입시키는.....진짜 탄핵하자 이정부",
+   "sentiment": "부정",
+   "category": "무소득자 가입 확대",
+   "keyword": "흡혈귀",
+   "sympathy": 1,
+   "antipathy": 0,
+   "reply": 0
+  }
+ ]
+}
