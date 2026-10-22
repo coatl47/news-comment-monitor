@@ -171,6 +171,9 @@
         .share span { display: block; height: 100%; }
 
         /* window detail */
+        .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 2px; background: var(--surface-2); }
+        .seg button { border: 0; background: transparent; border-radius: 999px; padding: 4px 12px; cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--text-2); }
+        .seg button[aria-pressed="true"] { background: var(--primary); color: var(--on-primary); }
         .window-box { margin-top: 10px; border-top: 1px dashed var(--line); padding-top: 12px; }
         .window-title { font-weight: 700; margin-bottom: 4px; }
 
@@ -277,9 +280,15 @@
         const SENTIMENTS = ['긍정', '중립', '부정', '기타'];
         const SENT_VAR = { '긍정': '--pos', '중립': '--neu', '부정': '--neg', '기타': '--etc' };
         const SLOT_MS = 2 * 3600 * 1000;
+        const DAY_MS = 24 * 3600 * 1000;
         const PLOT_CONFIG = { displayModeBar: false, responsive: true };
 
-        const app = { index: null, summaries: {}, active: null, fullRows: {}, table: null };
+        const app = { index: null, summaries: {}, active: null, fullRows: {}, table: null, unit: loadUnit() };
+
+        // 추이 차트 단위: 'day'(기본) | 'slot'(2시간). 보는 사람 브라우저에만 기억
+        function loadUnit() {
+            try { return localStorage.getItem('ncm-unit') === 'slot' ? 'slot' : 'day'; } catch (e) { return 'day'; }
+        }
 
         // ---------- utils ----------
         const $ = (sel) => document.querySelector(sel);
@@ -322,6 +331,65 @@
             const axis = { type: 'date', tickformat: count > 24 ? '%m/%d' : '%m/%d %H시' };
             if (count <= 12) Object.assign(axis, { dtick: SLOT_MS, tick0: '2026-01-01 00:00' });
             return axis;
+        }
+
+        // 날짜가 적어도 최소 7일 폭으로 그려서 첫날 막대 하나가 화면을 다 채우지 않게 한다
+        function dayAxis(tl) {
+            const count = Math.max(tl.length, 7);
+            const start = Date.parse(`${tl[0].window}T00:00:00Z`);
+            const naive = (ms) => new Date(ms).toISOString().slice(0, 16).replace('T', ' ');
+            const axis = { type: 'date', tickformat: '%m/%d', range: [naive(start), naive(start + count * DAY_MS)] };
+            if (count <= 14) Object.assign(axis, { dtick: DAY_MS, tick0: '2026-01-01 12:00' });
+            return axis;
+        }
+
+        // 2시간 구간 → KST 날짜별 합계 (2시간 경계는 자정과 맞물리므로 구간이 두 날에 걸치지 않음)
+        function dailyTimeline(tl) {
+            const days = new Map();
+            for (const w of tl) {
+                const key = w.window.slice(0, 10);
+                if (!days.has(key)) {
+                    days.set(key, { window: key, label: `${+key.slice(5, 7)}/${+key.slice(8, 10)}`, total: 0, top: null,
+                        ...Object.fromEntries(SENTIMENTS.map((k) => [k, 0])) });
+                }
+                const d = days.get(key);
+                d.total += w.total;
+                SENTIMENTS.forEach((k) => { d[k] += w[k]; });
+                if (w.top && (!d.top || w.top.sympathy > d.top.sympathy)) d.top = w.top;
+            }
+            return [...days.values()].map((d) => {
+                const op = d['긍정'] + d['중립'] + d['부정'];
+                return { ...d, neg_ratio: op ? Math.round(d['부정'] / op * 1000) / 10 : null,
+                    pos_ratio: op ? Math.round(d['긍정'] / op * 1000) / 10 : null };
+            });
+        }
+
+        // 현재 단위에 맞는 추이 데이터와 차트 설정
+        function trend(s) {
+            if (app.unit === 'slot') {
+                return { unit: 'slot', tl: s.timeline, x: (w) => windowCenter(w.window), width: SLOT_MS * 0.82,
+                    axis: (tl) => timeAxis(tl.length), name: '2시간', latest: '최근 구간', empty: '이 구간에는 댓글이 없습니다.' };
+            }
+            return { unit: 'day', tl: dailyTimeline(s.timeline), x: (w) => `${w.window} 12:00`, width: DAY_MS * 0.82,
+                axis: dayAxis, name: '일별', latest: '최근', empty: '이 날에는 댓글이 없습니다.' };
+        }
+
+        function setUnit(s, unit) {
+            app.unit = unit;
+            try { localStorage.setItem('ncm-unit', unit); } catch (e) { /* ignore */ }
+            renderTrendHead();
+            renderTimeline(s);
+            renderRatio(s);
+        }
+
+        function renderTrendHead() {
+            const day = app.unit === 'day';
+            $('#trendTitle').textContent = day ? '일별 여론 추이' : '2시간 단위 여론 추이';
+            $('#trendDesc').textContent = day
+                ? '작성 시각 기준으로 하루마다 달린 댓글 수. 막대를 누르면 그날 공감을 가장 많이 받은 댓글이 보입니다.'
+                : '작성 시각 기준으로 2시간 구간마다 달린 댓글 수. 막대를 누르면 그 시간대 대표 댓글이 보입니다.';
+            $('#ratioTitle').textContent = day ? '일별 긍정·부정 비율' : '시간대별 긍정·부정 비율';
+            document.querySelectorAll('#unitSeg button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.unit === app.unit)));
         }
 
         function baseLayout(extra = {}) {
@@ -467,8 +535,10 @@
                 </div>
 
                 <div class="card" style="margin-top:16px">
-                    <div class="card-head"><div><h3 class="card-title">2시간 단위 여론 추이</h3>
-                        <p class="card-desc">작성 시각 기준으로 2시간 구간마다 달린 댓글 수. 막대를 누르면 그 시간대 대표 댓글이 보입니다.</p></div></div>
+                    <div class="card-head"><div><h3 class="card-title" id="trendTitle"></h3>
+                        <p class="card-desc" id="trendDesc"></p></div>
+                        <div class="seg" id="unitSeg" role="group" aria-label="추이 단위">
+                            <button type="button" data-unit="day">일별</button><button type="button" data-unit="slot">2시간</button></div></div>
                     ${legendHtml(SENTIMENTS.map((x) => [x, cssVar(SENT_VAR[x])]))}
                     <div id="dTimeline" class="chart tall"></div>
                     <div id="dWindow" class="window-box"></div>
@@ -476,7 +546,7 @@
 
                 <div class="grid grid-2">
                     <div class="card">
-                        <div class="card-head"><div><h3 class="card-title">시간대별 긍정·부정 비율</h3><p class="card-desc">각 구간에서 분류된 댓글(긍정·중립·부정) 중 비율. 점이 작을수록 댓글 수가 적어 변동이 큽니다.</p></div></div>
+                        <div class="card-head"><div><h3 class="card-title" id="ratioTitle"></h3><p class="card-desc">각 구간에서 분류된 댓글(긍정·중립·부정) 중 비율. 점이 작을수록 댓글 수가 적어 변동이 큽니다.</p></div></div>
                         ${legendHtml([['부정 비율', cssVar('--neg')], ['긍정 비율', cssVar('--pos')]])}
                         <div id="dRatio" class="chart"></div>
                     </div>
@@ -514,6 +584,11 @@
 
                 <div class="card" style="margin-top:16px" id="dTableCard"></div>`;
 
+            renderTrendHead();
+            $('#unitSeg').addEventListener('click', (e) => {
+                const b = e.target.closest('button');
+                if (b && b.dataset.unit !== app.unit) setUnit(s, b.dataset.unit);
+            });
             renderTimeline(s);
             renderRatio(s);
             renderCompare(s);
@@ -527,40 +602,46 @@
         }
 
         function renderTimeline(s) {
-            const tl = s.timeline;
-            if (!tl.length) { $('#dTimeline').innerHTML = '<div class="empty-msg">아직 데이터가 없습니다.</div>'; return; }
-            const x = tl.map((w) => windowCenter(w.window));
+            const tr = trend(s);
+            const tl = tr.tl;
+            if (!tl.length) { $('#dTimeline').innerHTML = '<div class="empty-msg">아직 데이터가 없습니다.</div>'; $('#dWindow').innerHTML = ''; return; }
+            const x = tl.map(tr.x);
             const traces = SENTIMENTS.map((name) => ({
                 type: 'bar', name, x, y: tl.map((w) => w[name]),
-                width: SLOT_MS * 0.82,
+                width: tr.width,
                 customdata: tl.map((w) => [w.label, w.total]),
                 marker: { color: cssVar(SENT_VAR[name]), line: { color: cssVar('--surface'), width: 1 } },
                 hovertemplate: `%{customdata[0]} · ${name} %{y:,}건 (전체 %{customdata[1]:,}건)<extra></extra>`,
             }));
             Plotly.newPlot('dTimeline', traces, baseLayout({
                 barmode: 'stack', barcornerradius: 3, hovermode: 'closest',
-                xaxis: timeAxis(tl.length),
+                xaxis: tr.axis(tl),
                 yaxis: { title: { text: '건' } },
             }), PLOT_CONFIG);
             const el = $('#dTimeline');
-            el.on('plotly_click', (ev) => { const p = ev.points?.[0]; if (p) showWindow(s, p.pointIndex); });
-            showWindow(s, tl.length - 1);
+            el.on('plotly_click', (ev) => { const p = ev.points?.[0]; if (p) showWindow(s, tr, p.pointIndex); });
+            showWindow(s, tr, tl.length - 1);
         }
 
-        function showWindow(s, i) {
-            const w = s.timeline[i];
+        function showWindow(s, tr, i) {
+            const w = tr.tl[i];
             const box = $('#dWindow');
             if (!w) { box.innerHTML = ''; return; }
+            const last = i === tr.tl.length - 1;
+            // 마지막 날은 데이터 기준 시각까지만 집계됨
+            const until = tr.unit === 'day' && last && s.cutoff && s.cutoff.slice(0, 10) === w.window && s.cutoff.slice(11) !== '00:00'
+                ? ` (${+s.cutoff.slice(11, 13)}시까지)` : '';
             box.innerHTML = `
-                <div class="window-title">${esc(w.label)} · ${fmtNum(w.total)}건 ${i === s.timeline.length - 1 ? '<span class="badge">최근 구간</span>' : ''}</div>
+                <div class="window-title">${esc(w.label)}${until} · ${fmtNum(w.total)}건 ${last && !s.article.closed ? `<span class="badge">${tr.latest}</span>` : ''}</div>
                 <div class="card-desc" style="margin-bottom:6px">긍정 ${fmtNum(w['긍정'])} · 중립 ${fmtNum(w['중립'])} · 부정 ${fmtNum(w['부정'])} · 기타 ${fmtNum(w['기타'])}${w.neg_ratio !== null ? ` · 부정 비율 ${fmtPct(w.neg_ratio)}` : ''}</div>
-                ${w.top ? commentHtml(w.top) : '<div class="card-desc">이 구간에는 댓글이 없습니다.</div>'}`;
+                ${w.top ? commentHtml(w.top) : `<div class="card-desc">${tr.empty}</div>`}`;
         }
 
         function renderRatio(s) {
-            const tl = s.timeline.filter((w) => w.neg_ratio !== null);
+            const tr = trend(s);
+            const tl = tr.tl.filter((w) => w.neg_ratio !== null);
             if (!tl.length) { $('#dRatio').innerHTML = '<div class="empty-msg">AI 분류 후 표시됩니다.</div>'; return; }
-            const x = tl.map((w) => windowCenter(w.window));
+            const x = tl.map(tr.x);
             const maxN = Math.max(...tl.map((w) => w['긍정'] + w['중립'] + w['부정']));
             const size = tl.map((w) => 6 + 8 * Math.sqrt((w['긍정'] + w['중립'] + w['부정']) / maxN));
             const mk = (name, key, cssName) => ({
@@ -571,7 +652,7 @@
                 hovertemplate: `%{customdata[0]} · ${name} %{y:.1f}% (분류 %{customdata[1]:,}건)<extra></extra>`,
             });
             Plotly.newPlot('dRatio', [mk('부정 비율', 'neg_ratio', '--neg'), mk('긍정 비율', 'pos_ratio', '--pos')], baseLayout({
-                xaxis: timeAxis(s.timeline.length),
+                xaxis: tr.axis(tr.tl),
                 yaxis: { range: [0, 100], ticksuffix: '%', rangemode: 'normal' },
                 hovermode: 'closest',
             }), PLOT_CONFIG);
