@@ -10,24 +10,24 @@
   "closed": false,
   "closes_at": "2026-11-11 18:00"
  },
- "generated_at": "2026-10-23 08:05",
- "cutoff": "2026-10-23 08:00",
- "next_update": "2026-10-23 10:00",
+ "generated_at": "2026-10-23 10:05",
+ "cutoff": "2026-10-23 10:00",
+ "next_update": "2026-10-23 12:00",
  "status": {
-  "last_success_at": "2026-10-23 08:05",
+  "last_success_at": "2026-10-23 10:05",
   "last_error": null,
   "last_error_at": null
  },
  "kpi": {
-  "naver_total": 3,
+  "naver_total": 4,
   "deleted": 0,
   "deleted_delta": 0,
-  "collected": 3,
-  "last_window_label": "10/23 06–08시",
+  "collected": 4,
+  "last_window_label": "10/23 08–10시",
   "last_window_new": 1,
-  "prev_window_new": 0,
+  "prev_window_new": 1,
   "neg_ratio_last": 100.0,
-  "neg_ratio_prev": null,
+  "neg_ratio_prev": 100.0,
   "neg_ratio_all": 100.0,
   "neg_ratio_sympathy": 100.0,
   "ads": 0,
@@ -52,7 +52,7 @@
     "sentiment": "부정",
     "category": "무소득자 가입 확대",
     "keyword": "흡혈귀",
-    "sympathy": 1,
+    "sympathy": 2,
     "antipathy": 0,
     "reply": 0
    }
@@ -144,6 +144,29 @@
     "antipathy": 0,
     "reply": 0
    }
+  },
+  {
+   "window": "2026-10-23 08:00",
+   "label": "10/23 08–10시",
+   "total": 1,
+   "cumulative": 4,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 1,
+   "기타": 0,
+   "neg_ratio": 100.0,
+   "pos_ratio": 0.0,
+   "top": {
+    "no": "908413957402787931",
+    "time": "2026-10-23 08:20",
+    "text": "국민연금없에겠다.  공약걸면 차기 대통령 바로당선임.",
+    "sentiment": "부정",
+    "category": "기타",
+    "keyword": "국민연금",
+    "sympathy": 0,
+    "antipathy": 0,
+    "reply": 0
+   }
   }
  ],
  "snapshots": [
@@ -188,19 +211,25 @@
    "collected_at": "2026-10-23 08:05",
    "naver_total": 3,
    "deleted": 0
+  },
+  {
+   "slot": "2026-10-23 10:00",
+   "collected_at": "2026-10-23 10:05",
+   "naver_total": 4,
+   "deleted": 0
   }
  ],
  "sentiment": {
   "count": {
    "긍정": 0,
    "중립": 0,
-   "부정": 3,
+   "부정": 4,
    "기타": 0
   },
   "sympathy": {
    "긍정": 0,
    "중립": 0,
-   "부정": 2,
+   "부정": 4,
    "기타": 0
   }
  },
@@ -218,6 +247,12 @@
    "기타": 0
   },
   "의무가입·제도 불신": {
+   "긍정": 0,
+   "중립": 0,
+   "부정": 1,
+   "기타": 0
+  },
+  "기타": {
    "긍정": 0,
    "중립": 0,
    "부정": 1,
@@ -249,6 +284,14 @@
    "중립": 0,
    "부정": 1,
    "기타": 0
+  },
+  {
+   "keyword": "국민연금",
+   "count": 1,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 1,
+   "기타": 0
   }
  ],
  "representative": {
@@ -260,7 +303,7 @@
     "sentiment": "부정",
     "category": "무소득자 가입 확대",
     "keyword": "흡혈귀",
-    "sympathy": 1,
+    "sympathy": 2,
     "antipathy": 0,
     "reply": 0
    },
@@ -271,7 +314,7 @@
     "sentiment": "부정",
     "category": "기금 운용 손실",
     "keyword": "손실",
-    "sympathy": 1,
+    "sympathy": 2,
     "antipathy": 0,
     "reply": 0
    },
@@ -285,11 +328,33 @@
     "sympathy": 0,
     "antipathy": 0,
     "reply": 0
+   },
+   {
+    "no": "908413957402787931",
+    "time": "2026-10-23 08:20",
+    "text": "국민연금없에겠다.  공약걸면 차기 대통령 바로당선임.",
+    "sentiment": "부정",
+    "category": "기타",
+    "keyword": "국민연금",
+    "sympathy": 0,
+    "antipathy": 0,
+    "reply": 0
    }
   ],
   "by_category": {}
  },
  "recent": [
+  {
+   "no": "908413957402787931",
+   "time": "2026-10-23 08:20",
+   "text": "국민연금없에겠다.  공약걸면 차기 대통령 바로당선임.",
+   "sentiment": "부정",
+   "category": "기타",
+   "keyword": "국민연금",
+   "sympathy": 0,
+   "antipathy": 0,
+   "reply": 0
+  },
   {
    "no": "908410792817197099",
    "time": "2026-10-23 07:31",
@@ -308,7 +373,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "손실",
-   "sympathy": 1,
+   "sympathy": 2,
    "antipathy": 0,
    "reply": 0
   },
@@ -319,7 +384,7 @@
    "sentiment": "부정",
    "category": "무소득자 가입 확대",
    "keyword": "흡혈귀",
-   "sympathy": 1,
+   "sympathy": 2,
    "antipathy": 0,
    "reply": 0
   }

@@ -10,24 +10,24 @@
   "closed": false,
   "closes_at": "2026-11-11 08:00"
  },
- "generated_at": "2026-10-23 08:05",
- "cutoff": "2026-10-23 08:00",
- "next_update": "2026-10-23 10:00",
+ "generated_at": "2026-10-23 10:05",
+ "cutoff": "2026-10-23 10:00",
+ "next_update": "2026-10-23 12:00",
  "status": {
-  "last_success_at": "2026-10-23 08:05",
+  "last_success_at": "2026-10-23 10:05",
   "last_error": null,
   "last_error_at": null
  },
  "kpi": {
   "naver_total": 366,
-  "deleted": 29,
-  "deleted_delta": 0,
+  "deleted": 30,
+  "deleted_delta": 1,
   "collected": 345,
-  "last_window_label": "10/23 06–08시",
-  "last_window_new": 4,
-  "prev_window_new": 1,
-  "neg_ratio_last": 75.0,
-  "neg_ratio_prev": 100.0,
+  "last_window_label": "10/23 08–10시",
+  "last_window_new": 0,
+  "prev_window_new": 4,
+  "neg_ratio_last": null,
+  "neg_ratio_prev": 75.0,
   "neg_ratio_all": 83.9,
   "neg_ratio_sympathy": 79.2,
   "ads": 3,
@@ -52,7 +52,7 @@
     "sentiment": "부정",
     "category": "정부·정책 평가",
     "keyword": "개혁",
-    "sympathy": 1310,
+    "sympathy": 1311,
     "antipathy": 163,
     "reply": 26
    }
@@ -322,16 +322,29 @@
    "neg_ratio": 75.0,
    "pos_ratio": 0.0,
    "top": {
-    "no": "908409174889594907",
-    "time": "2026-10-23 07:06",
-    "text": "최악의 지도자 트럼프조차 출생연금을 만들어서 미국 주식시장에 강제 투자를 시키고 있고 미래를 대비하고 있다. 근데 한국은 반도체로 꽁돈 생겼다고…",
+    "no": "908405980927098933",
+    "time": "2026-10-23 06:16",
+    "text": "국민연금  국내주식 투자 어떻게 됐나 ?   개판일거 같은데",
     "sentiment": "부정",
-    "category": "정부·정책 평가",
-    "keyword": "재정",
+    "category": "연금 재정·고갈",
+    "keyword": "투자",
     "sympathy": 0,
     "antipathy": 0,
     "reply": 0
    }
+  },
+  {
+   "window": "2026-10-23 08:00",
+   "label": "10/23 08–10시",
+   "total": 0,
+   "cumulative": 345,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 0,
+   "기타": 0,
+   "neg_ratio": null,
+   "pos_ratio": null,
+   "top": null
   }
  ],
  "snapshots": [
@@ -388,6 +401,12 @@
    "collected_at": "2026-10-23 08:05",
    "naver_total": 366,
    "deleted": 29
+  },
+  {
+   "slot": "2026-10-23 10:00",
+   "collected_at": "2026-10-23 10:05",
+   "naver_total": 366,
+   "deleted": 30
   }
  ],
  "sentiment": {
@@ -399,8 +418,8 @@
   },
   "sympathy": {
    "긍정": 17,
-   "중립": 710,
-   "부정": 2766,
+   "중립": 711,
+   "부정": 2767,
    "기타": 0
   }
  },
@@ -443,7 +462,7 @@
   }
  },
  "demographics": {
-  "as_of": "2026-10-23 08:05",
+  "as_of": "2026-10-23 10:05",
   "gender": {
    "male": 83,
    "female": 17
@@ -650,7 +669,7 @@
     "sentiment": "부정",
     "category": "정부·정책 평가",
     "keyword": "개혁",
-    "sympathy": 1310,
+    "sympathy": 1311,
     "antipathy": 163,
     "reply": 26
    },
@@ -683,7 +702,7 @@
     "sentiment": "중립",
     "category": "기타",
     "keyword": "기여금",
-    "sympathy": 306,
+    "sympathy": 307,
     "antipathy": 7,
     "reply": 6
    },
