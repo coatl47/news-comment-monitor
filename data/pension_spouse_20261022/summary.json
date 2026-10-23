@@ -10,26 +10,26 @@
   "closed": false,
   "closes_at": "2026-11-11 08:00"
  },
- "generated_at": "2026-10-23 10:05",
- "cutoff": "2026-10-23 10:00",
- "next_update": "2026-10-23 12:00",
+ "generated_at": "2026-10-23 12:05",
+ "cutoff": "2026-10-23 12:00",
+ "next_update": "2026-10-23 14:00",
  "status": {
-  "last_success_at": "2026-10-23 10:05",
+  "last_success_at": "2026-10-23 12:05",
   "last_error": null,
   "last_error_at": null
  },
  "kpi": {
-  "naver_total": 103,
-  "deleted": 5,
+  "naver_total": 104,
+  "deleted": 6,
   "deleted_delta": 1,
-  "collected": 99,
-  "last_window_label": "10/23 08–10시",
-  "last_window_new": 14,
-  "prev_window_new": 3,
-  "neg_ratio_last": 78.6,
-  "neg_ratio_prev": 100.0,
-  "neg_ratio_all": 92.9,
-  "neg_ratio_sympathy": 98.7,
+  "collected": 101,
+  "last_window_label": "10/23 10–12시",
+  "last_window_new": 2,
+  "prev_window_new": 14,
+  "neg_ratio_last": 100.0,
+  "neg_ratio_prev": 78.6,
+  "neg_ratio_all": 93.1,
+  "neg_ratio_sympathy": 98.1,
   "ads": 0,
   "unanalyzed": 0
  },
@@ -52,8 +52,8 @@
     "sentiment": "부정",
     "category": "정부·정치 비판",
     "keyword": "민주화",
-    "sympathy": 123,
-    "antipathy": 38,
+    "sympathy": 125,
+    "antipathy": 39,
     "reply": 17
    }
   },
@@ -75,7 +75,7 @@
     "sentiment": "부정",
     "category": "기금 운용 손실",
     "keyword": "손실",
-    "sympathy": 15,
+    "sympathy": 16,
     "antipathy": 1,
     "reply": 1
    }
@@ -258,7 +258,7 @@
     "sentiment": "부정",
     "category": "기타",
     "keyword": "폐지",
-    "sympathy": 2,
+    "sympathy": 3,
     "antipathy": 0,
     "reply": 0
    }
@@ -275,13 +275,36 @@
    "neg_ratio": 78.6,
    "pos_ratio": 7.1,
    "top": {
-    "no": "908415427523117112",
-    "time": "2026-10-23 08:43",
-    "text": "찟두로 맘대로 꺼내 쓰는 국민연금 들기 싫다 남으ㅡ 돈을 왜 지들이 맘대로 쓰고 있냐",
+    "no": "908415187139166313",
+    "time": "2026-10-23 08:39",
+    "text": "0세도 부모가 원하면 선택적으로 가입하게 해 줘라.부모가 대신 납입하면 된다.복리효과를 제대로 누릴 수 있다.",
+    "sentiment": "긍정",
+    "category": "무소득자 가입 확대",
+    "keyword": "가입",
+    "sympathy": 2,
+    "antipathy": 0,
+    "reply": 0
+   }
+  },
+  {
+   "window": "2026-10-23 10:00",
+   "label": "10/23 10–12시",
+   "total": 2,
+   "cumulative": 101,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 2,
+   "기타": 0,
+   "neg_ratio": 100.0,
+   "pos_ratio": 0.0,
+   "top": {
+    "no": "908424207912665254",
+    "time": "2026-10-23 10:59",
+    "text": "이건 잘못된거같아",
     "sentiment": "부정",
     "category": "기타",
-    "keyword": "국민연금",
-    "sympathy": 1,
+    "keyword": "잘못된거같아",
+    "sympathy": 0,
     "antipathy": 0,
     "reply": 0
    }
@@ -335,19 +358,25 @@
    "collected_at": "2026-10-23 10:05",
    "naver_total": 103,
    "deleted": 5
+  },
+  {
+   "slot": "2026-10-23 12:00",
+   "collected_at": "2026-10-23 12:05",
+   "naver_total": 104,
+   "deleted": 6
   }
  ],
  "sentiment": {
   "count": {
    "긍정": 3,
    "중립": 4,
-   "부정": 92,
+   "부정": 94,
    "기타": 0
   },
   "sympathy": {
-   "긍정": 1,
-   "중립": 5,
-   "부정": 453,
+   "긍정": 2,
+   "중립": 7,
+   "부정": 470,
    "기타": 0
   }
  },
@@ -355,7 +384,7 @@
   "기타": {
    "긍정": 1,
    "중립": 4,
-   "부정": 25,
+   "부정": 27,
    "기타": 0
   },
   "기금 운용 손실": {
@@ -480,19 +509,19 @@
    "기타": 0
   },
   {
-   "keyword": "돈부족",
-   "count": 2,
-   "긍정": 0,
-   "중립": 0,
-   "부정": 2,
-   "기타": 0
-  },
-  {
    "keyword": "질문",
    "count": 2,
    "긍정": 0,
    "중립": 2,
    "부정": 0,
+   "기타": 0
+  },
+  {
+   "keyword": "돈부족",
+   "count": 2,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 2,
    "기타": 0
   },
   {
@@ -561,8 +590,8 @@
     "sentiment": "부정",
     "category": "정부·정치 비판",
     "keyword": "민주화",
-    "sympathy": 123,
-    "antipathy": 38,
+    "sympathy": 125,
+    "antipathy": 39,
     "reply": 17
    },
    {
@@ -572,7 +601,7 @@
     "sentiment": "부정",
     "category": "기금 운용 손실",
     "keyword": "방만함",
-    "sympathy": 62,
+    "sympathy": 65,
     "antipathy": 5,
     "reply": 2
    },
@@ -583,7 +612,7 @@
     "sentiment": "부정",
     "category": "재정 고갈·미래세대 부담",
     "keyword": "희생",
-    "sympathy": 47,
+    "sympathy": 49,
     "antipathy": 4,
     "reply": 2
    },
@@ -605,7 +634,7 @@
     "sentiment": "부정",
     "category": "기타",
     "keyword": "구조개편",
-    "sympathy": 40,
+    "sympathy": 42,
     "antipathy": 4,
     "reply": 0
    }
@@ -620,7 +649,7 @@
       "sentiment": "긍정",
       "category": "무소득자 가입 확대",
       "keyword": "가입",
-      "sympathy": 1,
+      "sympathy": 2,
       "antipathy": 0,
       "reply": 0
      },
@@ -671,7 +700,7 @@
       "sentiment": "부정",
       "category": "기금 운용 손실",
       "keyword": "손실",
-      "sympathy": 15,
+      "sympathy": 16,
       "antipathy": 1,
       "reply": 1
      },
@@ -682,7 +711,7 @@
       "sentiment": "부정",
       "category": "기금 운용 손실",
       "keyword": "탕진",
-      "sympathy": 14,
+      "sympathy": 15,
       "antipathy": 1,
       "reply": 1
      }
@@ -725,7 +754,7 @@
       "sentiment": "부정",
       "category": "의무가입·제도 불신",
       "keyword": "의무가입",
-      "sympathy": 7,
+      "sympathy": 8,
       "antipathy": 0,
       "reply": 0
      },
@@ -791,18 +820,18 @@
       "sentiment": "부정",
       "category": "기타",
       "keyword": "백수",
-      "sympathy": 7,
+      "sympathy": 8,
       "antipathy": 0,
       "reply": 0
      },
      {
-      "no": "908331171606167693",
-      "time": "2026-10-22 10:55",
-      "text": "탈퇴 할 수만 있으면 탈퇴하고 싶은게 국민연금인데 품긴 뭘 품어 다 빼버려야지",
+      "no": "908411943868432420",
+      "time": "2026-10-23 07:49",
+      "text": "국민연금,의료보험,고용보험,기초연금 전부 다 폐지해라",
       "sentiment": "부정",
       "category": "기타",
-      "keyword": "탈퇴",
-      "sympathy": 2,
+      "keyword": "폐지",
+      "sympathy": 3,
       "antipathy": 0,
       "reply": 0
      }
@@ -811,6 +840,28 @@
   }
  },
  "recent": [
+  {
+   "no": "908424207912665254",
+   "time": "2026-10-23 10:59",
+   "text": "이건 잘못된거같아",
+   "sentiment": "부정",
+   "category": "기타",
+   "keyword": "잘못된거같아",
+   "sympathy": 0,
+   "antipathy": 0,
+   "reply": 0
+  },
+  {
+   "no": "908420598630187154",
+   "time": "2026-10-23 10:03",
+   "text": "태어나자마자 인두세 징수하고 국가 노예화로 빨때 꼽는 격이네. 재명이 돟은거 아냐?",
+   "sentiment": "부정",
+   "category": "기타",
+   "keyword": "국가 노예화",
+   "sympathy": 0,
+   "antipathy": 0,
+   "reply": 0
+  },
   {
    "no": "908420348767109295",
    "time": "2026-10-23 09:59",
@@ -906,7 +957,7 @@
    "sentiment": "긍정",
    "category": "무소득자 가입 확대",
    "keyword": "가입",
-   "sympathy": 1,
+   "sympathy": 2,
    "antipathy": 0,
    "reply": 0
   },
@@ -972,7 +1023,7 @@
    "sentiment": "부정",
    "category": "기타",
    "keyword": "폐지",
-   "sympathy": 2,
+   "sympathy": 3,
    "antipathy": 0,
    "reply": 0
   },
@@ -1379,7 +1430,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "돈",
-   "sympathy": 11,
+   "sympathy": 12,
    "antipathy": 0,
    "reply": 0
   },
@@ -1423,8 +1474,8 @@
    "sentiment": "중립",
    "category": "기타",
    "keyword": "품는거",
-   "sympathy": 5,
-   "antipathy": 0,
+   "sympathy": 7,
+   "antipathy": 1,
    "reply": 0
   },
   {
@@ -1555,7 +1606,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "갈취",
-   "sympathy": 3,
+   "sympathy": 5,
    "antipathy": 0,
    "reply": 0
   },
@@ -1698,7 +1749,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "손실",
-   "sympathy": 15,
+   "sympathy": 16,
    "antipathy": 1,
    "reply": 1
   },
@@ -1709,7 +1760,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "억울함",
-   "sympathy": 7,
+   "sympathy": 8,
    "antipathy": 0,
    "reply": 0
   },
@@ -1720,7 +1771,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "탕진",
-   "sympathy": 14,
+   "sympathy": 15,
    "antipathy": 1,
    "reply": 1
   },
@@ -1731,7 +1782,7 @@
    "sentiment": "부정",
    "category": "의무가입·제도 불신",
    "keyword": "의무가입",
-   "sympathy": 7,
+   "sympathy": 8,
    "antipathy": 0,
    "reply": 0
   },
@@ -1786,7 +1837,7 @@
    "sentiment": "부정",
    "category": "재정 고갈·미래세대 부담",
    "keyword": "위험",
-   "sympathy": 1,
+   "sympathy": 0,
    "antipathy": 0,
    "reply": 0
   },
@@ -1797,7 +1848,7 @@
    "sentiment": "부정",
    "category": "기타",
    "keyword": "구조개편",
-   "sympathy": 40,
+   "sympathy": 42,
    "antipathy": 4,
    "reply": 0
   },
@@ -1808,7 +1859,7 @@
    "sentiment": "부정",
    "category": "기타",
    "keyword": "백수",
-   "sympathy": 7,
+   "sympathy": 8,
    "antipathy": 0,
    "reply": 0
   },
@@ -1819,7 +1870,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "방만함",
-   "sympathy": 62,
+   "sympathy": 65,
    "antipathy": 5,
    "reply": 2
   },
@@ -1852,7 +1903,7 @@
    "sentiment": "부정",
    "category": "재정 고갈·미래세대 부담",
    "keyword": "희생",
-   "sympathy": 47,
+   "sympathy": 49,
    "antipathy": 4,
    "reply": 2
   },
@@ -1885,8 +1936,8 @@
    "sentiment": "부정",
    "category": "정부·정치 비판",
    "keyword": "민주화",
-   "sympathy": 123,
-   "antipathy": 38,
+   "sympathy": 125,
+   "antipathy": 39,
    "reply": 17
   },
   {

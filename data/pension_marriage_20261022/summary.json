@@ -10,25 +10,25 @@
   "closed": false,
   "closes_at": "2026-11-11 08:00"
  },
- "generated_at": "2026-10-23 10:05",
- "cutoff": "2026-10-23 10:00",
- "next_update": "2026-10-23 12:00",
+ "generated_at": "2026-10-23 12:05",
+ "cutoff": "2026-10-23 12:00",
+ "next_update": "2026-10-23 14:00",
  "status": {
-  "last_success_at": "2026-10-23 10:05",
+  "last_success_at": "2026-10-23 12:05",
   "last_error": null,
   "last_error_at": null
  },
  "kpi": {
-  "naver_total": 366,
-  "deleted": 30,
+  "naver_total": 367,
+  "deleted": 31,
   "deleted_delta": 1,
-  "collected": 345,
-  "last_window_label": "10/23 08–10시",
-  "last_window_new": 0,
-  "prev_window_new": 4,
-  "neg_ratio_last": null,
-  "neg_ratio_prev": 75.0,
-  "neg_ratio_all": 83.9,
+  "collected": 346,
+  "last_window_label": "10/23 10–12시",
+  "last_window_new": 1,
+  "prev_window_new": 0,
+  "neg_ratio_last": 100.0,
+  "neg_ratio_prev": null,
+  "neg_ratio_all": 84.0,
   "neg_ratio_sympathy": 79.2,
   "ads": 3,
   "unanalyzed": 0
@@ -52,7 +52,7 @@
     "sentiment": "부정",
     "category": "정부·정책 평가",
     "keyword": "개혁",
-    "sympathy": 1311,
+    "sympathy": 1312,
     "antipathy": 163,
     "reply": 26
    }
@@ -75,7 +75,7 @@
     "sentiment": "부정",
     "category": "연금 재정·고갈",
     "keyword": "사회안전망",
-    "sympathy": 61,
+    "sympathy": 62,
     "antipathy": 0,
     "reply": 1
    }
@@ -345,6 +345,29 @@
    "neg_ratio": null,
    "pos_ratio": null,
    "top": null
+  },
+  {
+   "window": "2026-10-23 10:00",
+   "label": "10/23 10–12시",
+   "total": 1,
+   "cumulative": 346,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 1,
+   "기타": 0,
+   "neg_ratio": 100.0,
+   "pos_ratio": 0.0,
+   "top": {
+    "no": "908422601209020603",
+    "time": "2026-10-23 10:34",
+    "text": "한 가정에서 연금 하나 내는것도 벅찬 가정이 많다는걸 모르는 기자님.",
+    "sentiment": "부정",
+    "category": "노후 불안",
+    "keyword": "가정",
+    "sympathy": 0,
+    "antipathy": 0,
+    "reply": 0
+   }
   }
  ],
  "snapshots": [
@@ -407,19 +430,25 @@
    "collected_at": "2026-10-23 10:05",
    "naver_total": 366,
    "deleted": 30
+  },
+  {
+   "slot": "2026-10-23 12:00",
+   "collected_at": "2026-10-23 12:05",
+   "naver_total": 367,
+   "deleted": 31
   }
  ],
  "sentiment": {
   "count": {
    "긍정": 11,
    "중립": 44,
-   "부정": 287,
+   "부정": 288,
    "기타": 3
   },
   "sympathy": {
    "긍정": 17,
    "중립": 711,
-   "부정": 2767,
+   "부정": 2769,
    "기타": 0
   }
  },
@@ -457,12 +486,12 @@
   "노후 불안": {
    "긍정": 0,
    "중립": 0,
-   "부정": 5,
+   "부정": 6,
    "기타": 0
   }
  },
  "demographics": {
-  "as_of": "2026-10-23 10:05",
+  "as_of": "2026-10-23 12:05",
   "gender": {
    "male": 83,
    "female": 17
@@ -669,7 +698,7 @@
     "sentiment": "부정",
     "category": "정부·정책 평가",
     "keyword": "개혁",
-    "sympathy": 1311,
+    "sympathy": 1312,
     "antipathy": 163,
     "reply": 26
    },
@@ -806,7 +835,7 @@
       "sentiment": "부정",
       "category": "연금 재정·고갈",
       "keyword": "사회안전망",
-      "sympathy": 61,
+      "sympathy": 62,
       "antipathy": 0,
       "reply": 1
      },
@@ -942,6 +971,17 @@
   }
  },
  "recent": [
+  {
+   "no": "908422601209020603",
+   "time": "2026-10-23 10:34",
+   "text": "한 가정에서 연금 하나 내는것도 벅찬 가정이 많다는걸 모르는 기자님.",
+   "sentiment": "부정",
+   "category": "노후 불안",
+   "keyword": "가정",
+   "sympathy": 0,
+   "antipathy": 0,
+   "reply": 0
+  },
   {
    "no": "908409174889594907",
    "time": "2026-10-23 07:06",
@@ -3688,7 +3728,7 @@
    "sentiment": "부정",
    "category": "연금 재정·고갈",
    "keyword": "사회안전망",
-   "sympathy": 61,
+   "sympathy": 62,
    "antipathy": 0,
    "reply": 1
   },
@@ -4228,17 +4268,6 @@
    "category": "기타",
    "keyword": "추납",
    "sympathy": 2,
-   "antipathy": 0,
-   "reply": 0
-  },
-  {
-   "no": "908319127377018961",
-   "time": "2026-10-22 07:48",
-   "text": "기자님 공짜를 바라는건가요?",
-   "sentiment": "부정",
-   "category": "기타",
-   "keyword": "공짜",
-   "sympathy": 1,
    "antipathy": 0,
    "reply": 0
   }

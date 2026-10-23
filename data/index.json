@@ -1,6 +1,6 @@
 {
  "dashboard_title": "네이버 뉴스 댓글 여론 모니터링",
- "generated_at": "2026-10-23 10:05",
+ "generated_at": "2026-10-23 12:05",
  "slot_hours": 2,
  "articles": [
   {
@@ -13,24 +13,24 @@
    "collect_enabled": true,
    "closed": false,
    "closes_at": "2026-11-11 08:00",
-   "cutoff": "2026-10-23 10:00",
-   "next_update": "2026-10-23 12:00",
+   "cutoff": "2026-10-23 12:00",
+   "next_update": "2026-10-23 14:00",
    "status": {
-    "last_success_at": "2026-10-23 10:05",
+    "last_success_at": "2026-10-23 12:05",
     "last_error": null,
     "last_error_at": null
    },
    "kpi": {
-    "naver_total": 366,
-    "deleted": 30,
+    "naver_total": 367,
+    "deleted": 31,
     "deleted_delta": 1,
-    "collected": 345,
-    "last_window_label": "10/23 08–10시",
-    "last_window_new": 0,
-    "prev_window_new": 4,
-    "neg_ratio_last": null,
-    "neg_ratio_prev": 75.0,
-    "neg_ratio_all": 83.9,
+    "collected": 346,
+    "last_window_label": "10/23 10–12시",
+    "last_window_new": 1,
+    "prev_window_new": 0,
+    "neg_ratio_last": 100.0,
+    "neg_ratio_prev": null,
+    "neg_ratio_all": 84.0,
     "neg_ratio_sympathy": 79.2,
     "ads": 3,
     "unanalyzed": 0
@@ -39,13 +39,13 @@
     "count": {
      "긍정": 11,
      "중립": 44,
-     "부정": 287,
+     "부정": 288,
      "기타": 3
     },
     "sympathy": {
      "긍정": 17,
      "중립": 711,
-     "부정": 2767,
+     "부정": 2769,
      "기타": 0
     }
    },
@@ -147,6 +147,13 @@
      "total": 0,
      "cumulative": 345,
      "neg_ratio": null
+    },
+    {
+     "window": "2026-10-23 10:00",
+     "label": "10/23 10–12시",
+     "total": 1,
+     "cumulative": 346,
+     "neg_ratio": 100.0
     }
    ]
   },
@@ -160,25 +167,25 @@
    "collect_enabled": true,
    "closed": false,
    "closes_at": "2026-11-11 08:00",
-   "cutoff": "2026-10-23 10:00",
-   "next_update": "2026-10-23 12:00",
+   "cutoff": "2026-10-23 12:00",
+   "next_update": "2026-10-23 14:00",
    "status": {
-    "last_success_at": "2026-10-23 10:05",
+    "last_success_at": "2026-10-23 12:05",
     "last_error": null,
     "last_error_at": null
    },
    "kpi": {
-    "naver_total": 103,
-    "deleted": 5,
+    "naver_total": 104,
+    "deleted": 6,
     "deleted_delta": 1,
-    "collected": 99,
-    "last_window_label": "10/23 08–10시",
-    "last_window_new": 14,
-    "prev_window_new": 3,
-    "neg_ratio_last": 78.6,
-    "neg_ratio_prev": 100.0,
-    "neg_ratio_all": 92.9,
-    "neg_ratio_sympathy": 98.7,
+    "collected": 101,
+    "last_window_label": "10/23 10–12시",
+    "last_window_new": 2,
+    "prev_window_new": 14,
+    "neg_ratio_last": 100.0,
+    "neg_ratio_prev": 78.6,
+    "neg_ratio_all": 93.1,
+    "neg_ratio_sympathy": 98.1,
     "ads": 0,
     "unanalyzed": 0
    },
@@ -186,13 +193,13 @@
     "count": {
      "긍정": 3,
      "중립": 4,
-     "부정": 92,
+     "부정": 94,
      "기타": 0
     },
     "sympathy": {
-     "긍정": 1,
-     "중립": 5,
-     "부정": 453,
+     "긍정": 2,
+     "중립": 7,
+     "부정": 470,
      "기타": 0
     }
    },
@@ -294,6 +301,13 @@
      "total": 14,
      "cumulative": 99,
      "neg_ratio": 78.6
+    },
+    {
+     "window": "2026-10-23 10:00",
+     "label": "10/23 10–12시",
+     "total": 2,
+     "cumulative": 101,
+     "neg_ratio": 100.0
     }
    ]
   },
@@ -307,10 +321,10 @@
    "collect_enabled": true,
    "closed": false,
    "closes_at": "2026-11-11 18:00",
-   "cutoff": "2026-10-23 10:00",
-   "next_update": "2026-10-23 12:00",
+   "cutoff": "2026-10-23 12:00",
+   "next_update": "2026-10-23 14:00",
    "status": {
-    "last_success_at": "2026-10-23 10:05",
+    "last_success_at": "2026-10-23 12:05",
     "last_error": null,
     "last_error_at": null
    },
@@ -319,10 +333,10 @@
     "deleted": 0,
     "deleted_delta": 0,
     "collected": 4,
-    "last_window_label": "10/23 08–10시",
-    "last_window_new": 1,
+    "last_window_label": "10/23 10–12시",
+    "last_window_new": 0,
     "prev_window_new": 1,
-    "neg_ratio_last": 100.0,
+    "neg_ratio_last": null,
     "neg_ratio_prev": 100.0,
     "neg_ratio_all": 100.0,
     "neg_ratio_sympathy": 100.0,
@@ -399,6 +413,13 @@
      "total": 1,
      "cumulative": 4,
      "neg_ratio": 100.0
+    },
+    {
+     "window": "2026-10-23 10:00",
+     "label": "10/23 10–12시",
+     "total": 0,
+     "cumulative": 4,
+     "neg_ratio": null
     }
    ]
   }

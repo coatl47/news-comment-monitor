@@ -10,11 +10,11 @@
   "closed": false,
   "closes_at": "2026-11-11 18:00"
  },
- "generated_at": "2026-10-23 10:05",
- "cutoff": "2026-10-23 10:00",
- "next_update": "2026-10-23 12:00",
+ "generated_at": "2026-10-23 12:05",
+ "cutoff": "2026-10-23 12:00",
+ "next_update": "2026-10-23 14:00",
  "status": {
-  "last_success_at": "2026-10-23 10:05",
+  "last_success_at": "2026-10-23 12:05",
   "last_error": null,
   "last_error_at": null
  },
@@ -23,10 +23,10 @@
   "deleted": 0,
   "deleted_delta": 0,
   "collected": 4,
-  "last_window_label": "10/23 08–10시",
-  "last_window_new": 1,
+  "last_window_label": "10/23 10–12시",
+  "last_window_new": 0,
   "prev_window_new": 1,
-  "neg_ratio_last": 100.0,
+  "neg_ratio_last": null,
   "neg_ratio_prev": 100.0,
   "neg_ratio_all": 100.0,
   "neg_ratio_sympathy": 100.0,
@@ -167,6 +167,19 @@
     "antipathy": 0,
     "reply": 0
    }
+  },
+  {
+   "window": "2026-10-23 10:00",
+   "label": "10/23 10–12시",
+   "total": 0,
+   "cumulative": 4,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 0,
+   "기타": 0,
+   "neg_ratio": null,
+   "pos_ratio": null,
+   "top": null
   }
  ],
  "snapshots": [
@@ -215,6 +228,12 @@
   {
    "slot": "2026-10-23 10:00",
    "collected_at": "2026-10-23 10:05",
+   "naver_total": 4,
+   "deleted": 0
+  },
+  {
+   "slot": "2026-10-23 12:00",
+   "collected_at": "2026-10-23 12:05",
    "naver_total": 4,
    "deleted": 0
   }
