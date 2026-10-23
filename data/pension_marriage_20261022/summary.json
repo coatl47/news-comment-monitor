@@ -10,20 +10,20 @@
   "closed": false,
   "closes_at": "2026-11-11 08:00"
  },
- "generated_at": "2026-10-23 16:05",
- "cutoff": "2026-10-23 16:00",
- "next_update": "2026-10-23 18:00",
+ "generated_at": "2026-10-23 18:05",
+ "cutoff": "2026-10-23 18:00",
+ "next_update": "2026-10-23 20:00",
  "status": {
-  "last_success_at": "2026-10-23 16:05",
+  "last_success_at": "2026-10-23 18:05",
   "last_error": null,
   "last_error_at": null
  },
  "kpi": {
   "naver_total": 367,
-  "deleted": 34,
+  "deleted": 35,
   "deleted_delta": 1,
   "collected": 346,
-  "last_window_label": "10/23 14–16시",
+  "last_window_label": "10/23 16–18시",
   "last_window_new": 0,
   "prev_window_new": 0,
   "neg_ratio_last": null,
@@ -394,6 +394,19 @@
    "neg_ratio": null,
    "pos_ratio": null,
    "top": null
+  },
+  {
+   "window": "2026-10-23 16:00",
+   "label": "10/23 16–18시",
+   "total": 0,
+   "cumulative": 346,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 0,
+   "기타": 0,
+   "neg_ratio": null,
+   "pos_ratio": null,
+   "top": null
   }
  ],
  "snapshots": [
@@ -474,6 +487,12 @@
    "collected_at": "2026-10-23 16:05",
    "naver_total": 367,
    "deleted": 34
+  },
+  {
+   "slot": "2026-10-23 18:00",
+   "collected_at": "2026-10-23 18:05",
+   "naver_total": 367,
+   "deleted": 35
   }
  ],
  "sentiment": {
@@ -486,7 +505,7 @@
   "sympathy": {
    "긍정": 17,
    "중립": 711,
-   "부정": 2769,
+   "부정": 2767,
    "기타": 0
   }
  },
@@ -529,7 +548,7 @@
   }
  },
  "demographics": {
-  "as_of": "2026-10-23 16:05",
+  "as_of": "2026-10-23 18:05",
   "gender": {
    "male": 83,
    "female": 17
@@ -1302,8 +1321,8 @@
    "sentiment": "부정",
    "category": "정부·정책 평가",
    "keyword": "비판",
-   "sympathy": 2,
-   "antipathy": 1,
+   "sympathy": 0,
+   "antipathy": 0,
    "reply": 2
   },
   {

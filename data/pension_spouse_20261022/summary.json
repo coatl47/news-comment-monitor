@@ -10,20 +10,20 @@
   "closed": false,
   "closes_at": "2026-11-11 08:00"
  },
- "generated_at": "2026-10-23 16:05",
- "cutoff": "2026-10-23 16:00",
- "next_update": "2026-10-23 18:00",
+ "generated_at": "2026-10-23 18:05",
+ "cutoff": "2026-10-23 18:00",
+ "next_update": "2026-10-23 20:00",
  "status": {
-  "last_success_at": "2026-10-23 16:05",
+  "last_success_at": "2026-10-23 18:05",
   "last_error": null,
   "last_error_at": null
  },
  "kpi": {
   "naver_total": 104,
   "deleted": 9,
-  "deleted_delta": 1,
+  "deleted_delta": 0,
   "collected": 101,
-  "last_window_label": "10/23 14–16시",
+  "last_window_label": "10/23 16–18시",
   "last_window_new": 0,
   "prev_window_new": 0,
   "neg_ratio_last": null,
@@ -52,7 +52,7 @@
     "sentiment": "부정",
     "category": "정부·정치 비판",
     "keyword": "민주화",
-    "sympathy": 125,
+    "sympathy": 126,
     "antipathy": 39,
     "reply": 17
    }
@@ -334,6 +334,19 @@
    "neg_ratio": null,
    "pos_ratio": null,
    "top": null
+  },
+  {
+   "window": "2026-10-23 16:00",
+   "label": "10/23 16–18시",
+   "total": 0,
+   "cumulative": 101,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 0,
+   "기타": 0,
+   "neg_ratio": null,
+   "pos_ratio": null,
+   "top": null
   }
  ],
  "snapshots": [
@@ -402,6 +415,12 @@
    "collected_at": "2026-10-23 16:05",
    "naver_total": 104,
    "deleted": 9
+  },
+  {
+   "slot": "2026-10-23 18:00",
+   "collected_at": "2026-10-23 18:05",
+   "naver_total": 104,
+   "deleted": 9
   }
  ],
  "sentiment": {
@@ -414,7 +433,7 @@
   "sympathy": {
    "긍정": 2,
    "중립": 7,
-   "부정": 470,
+   "부정": 471,
    "기타": 0
   }
  },
@@ -628,7 +647,7 @@
     "sentiment": "부정",
     "category": "정부·정치 비판",
     "keyword": "민주화",
-    "sympathy": 125,
+    "sympathy": 126,
     "antipathy": 39,
     "reply": 17
    },
@@ -1974,7 +1993,7 @@
    "sentiment": "부정",
    "category": "정부·정치 비판",
    "keyword": "민주화",
-   "sympathy": 125,
+   "sympathy": 126,
    "antipathy": 39,
    "reply": 17
   },
