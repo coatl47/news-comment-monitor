@@ -10,11 +10,11 @@
   "closed": false,
   "closes_at": "2026-11-11 08:00"
  },
- "generated_at": "2026-10-25 06:05",
- "cutoff": "2026-10-25 06:00",
- "next_update": "2026-10-25 08:00",
+ "generated_at": "2026-10-25 08:05",
+ "cutoff": "2026-10-25 08:00",
+ "next_update": "2026-10-25 10:00",
  "status": {
-  "last_success_at": "2026-10-25 06:05",
+  "last_success_at": "2026-10-25 08:05",
   "last_error": null,
   "last_error_at": null
  },
@@ -23,13 +23,13 @@
   "deleted": 42,
   "deleted_delta": 0,
   "collected": 346,
-  "last_window_label": "10/25 04–06시",
+  "last_window_label": "10/25 06–08시",
   "last_window_new": 0,
   "prev_window_new": 0,
   "neg_ratio_last": null,
   "neg_ratio_prev": null,
   "neg_ratio_all": 84.0,
-  "neg_ratio_sympathy": 79.1,
+  "neg_ratio_sympathy": 79.2,
   "ads": 3,
   "unanalyzed": 0
  },
@@ -641,6 +641,19 @@
    "neg_ratio": null,
    "pos_ratio": null,
    "top": null
+  },
+  {
+   "window": "2026-10-25 06:00",
+   "label": "10/25 06–08시",
+   "total": 0,
+   "cumulative": 346,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 0,
+   "기타": 0,
+   "neg_ratio": null,
+   "pos_ratio": null,
+   "top": null
   }
  ],
  "snapshots": [
@@ -835,6 +848,12 @@
    "collected_at": "2026-10-25 06:05",
    "naver_total": 367,
    "deleted": 42
+  },
+  {
+   "slot": "2026-10-25 08:00",
+   "collected_at": "2026-10-25 08:05",
+   "naver_total": 367,
+   "deleted": 42
   }
  ],
  "sentiment": {
@@ -847,7 +866,7 @@
   "sympathy": {
    "긍정": 17,
    "중립": 711,
-   "부정": 2762,
+   "부정": 2766,
    "기타": 0
   }
  },
@@ -890,7 +909,7 @@
   }
  },
  "demographics": {
-  "as_of": "2026-10-25 06:05",
+  "as_of": "2026-10-25 08:05",
   "gender": {
    "male": 83,
    "female": 17
@@ -1108,7 +1127,7 @@
     "sentiment": "부정",
     "category": "제도 개선(1인 1연금)",
     "keyword": "추납제도",
-    "sympathy": 664,
+    "sympathy": 665,
     "antipathy": 51,
     "reply": 12
    },
@@ -2796,7 +2815,7 @@
    "sentiment": "부정",
    "category": "기타",
    "keyword": "중국인",
-   "sympathy": 2,
+   "sympathy": 3,
    "antipathy": 0,
    "reply": 0
   },
@@ -3874,7 +3893,7 @@
    "sentiment": "부정",
    "category": "연금 재정·고갈",
    "keyword": "노후자금",
-   "sympathy": 13,
+   "sympathy": 14,
    "antipathy": 1,
    "reply": 1
   },
@@ -4446,7 +4465,7 @@
    "sentiment": "부정",
    "category": "기타",
    "keyword": "좌파",
-   "sympathy": 2,
+   "sympathy": 3,
    "antipathy": 0,
    "reply": 0
   },
