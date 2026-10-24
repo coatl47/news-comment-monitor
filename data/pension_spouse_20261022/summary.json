@@ -10,11 +10,11 @@
   "closed": false,
   "closes_at": "2026-11-11 08:00"
  },
- "generated_at": "2026-10-25 04:05",
- "cutoff": "2026-10-25 04:00",
- "next_update": "2026-10-25 06:00",
+ "generated_at": "2026-10-25 06:05",
+ "cutoff": "2026-10-25 06:00",
+ "next_update": "2026-10-25 08:00",
  "status": {
-  "last_success_at": "2026-10-25 04:05",
+  "last_success_at": "2026-10-25 06:05",
   "last_error": null,
   "last_error_at": null
  },
@@ -23,7 +23,7 @@
   "deleted": 11,
   "deleted_delta": 0,
   "collected": 102,
-  "last_window_label": "10/25 02–04시",
+  "last_window_label": "10/25 04–06시",
   "last_window_new": 0,
   "prev_window_new": 0,
   "neg_ratio_last": null,
@@ -578,6 +578,19 @@
    "neg_ratio": null,
    "pos_ratio": null,
    "top": null
+  },
+  {
+   "window": "2026-10-25 04:00",
+   "label": "10/25 04–06시",
+   "total": 0,
+   "cumulative": 102,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 0,
+   "기타": 0,
+   "neg_ratio": null,
+   "pos_ratio": null,
+   "top": null
   }
  ],
  "snapshots": [
@@ -754,6 +767,12 @@
    "collected_at": "2026-10-25 04:05",
    "naver_total": 105,
    "deleted": 11
+  },
+  {
+   "slot": "2026-10-25 06:00",
+   "collected_at": "2026-10-25 06:05",
+   "naver_total": 105,
+   "deleted": 11
   }
  ],
  "sentiment": {
@@ -766,7 +785,7 @@
   "sympathy": {
    "긍정": 2,
    "중립": 7,
-   "부정": 476,
+   "부정": 477,
    "기타": 0
   }
  },
@@ -1117,7 +1136,7 @@
       "sentiment": "부정",
       "category": "재정 고갈·미래세대 부담",
       "keyword": "정책",
-      "sympathy": 6,
+      "sympathy": 7,
       "antipathy": 0,
       "reply": 0
      },
@@ -2084,7 +2103,7 @@
    "sentiment": "부정",
    "category": "재정 고갈·미래세대 부담",
    "keyword": "정책",
-   "sympathy": 6,
+   "sympathy": 7,
    "antipathy": 0,
    "reply": 0
   },
