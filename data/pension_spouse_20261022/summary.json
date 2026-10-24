@@ -10,23 +10,23 @@
   "closed": false,
   "closes_at": "2026-11-11 08:00"
  },
- "generated_at": "2026-10-24 08:05",
- "cutoff": "2026-10-24 08:00",
- "next_update": "2026-10-24 10:00",
+ "generated_at": "2026-10-24 10:05",
+ "cutoff": "2026-10-24 10:00",
+ "next_update": "2026-10-24 12:00",
  "status": {
-  "last_success_at": "2026-10-24 08:05",
+  "last_success_at": "2026-10-24 10:05",
   "last_error": null,
   "last_error_at": null
  },
  "kpi": {
-  "naver_total": 104,
+  "naver_total": 105,
   "deleted": 11,
   "deleted_delta": 0,
-  "collected": 101,
-  "last_window_label": "10/24 06–08시",
-  "last_window_new": 0,
+  "collected": 102,
+  "last_window_label": "10/24 08–10시",
+  "last_window_new": 1,
   "prev_window_new": 0,
-  "neg_ratio_last": null,
+  "neg_ratio_last": 100.0,
   "neg_ratio_prev": null,
   "neg_ratio_all": 93.1,
   "neg_ratio_sympathy": 98.1,
@@ -282,7 +282,7 @@
     "category": "무소득자 가입 확대",
     "keyword": "가입",
     "sympathy": 2,
-    "antipathy": 0,
+    "antipathy": 1,
     "reply": 0
    }
   },
@@ -438,6 +438,29 @@
    "neg_ratio": null,
    "pos_ratio": null,
    "top": null
+  },
+  {
+   "window": "2026-10-24 08:00",
+   "label": "10/24 08–10시",
+   "total": 1,
+   "cumulative": 102,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 1,
+   "기타": 0,
+   "neg_ratio": 100.0,
+   "pos_ratio": 0.0,
+   "top": {
+    "no": "908510670956265581",
+    "time": "2026-10-24 09:21",
+    "text": "국민들에게 국민연금 납부하라고 하지 말고 국가에서 공짜로 전국민들 연금 납부하자. 국민들\n그만 괴롭히고 나라에서 60세되면 무조건 연금\n500만…",
+    "sentiment": "부정",
+    "category": "기타",
+    "keyword": "연금",
+    "sympathy": 0,
+    "antipathy": 0,
+    "reply": 0
+   }
   }
  ],
  "snapshots": [
@@ -554,19 +577,25 @@
    "collected_at": "2026-10-24 08:05",
    "naver_total": 104,
    "deleted": 11
+  },
+  {
+   "slot": "2026-10-24 10:00",
+   "collected_at": "2026-10-24 10:05",
+   "naver_total": 105,
+   "deleted": 11
   }
  ],
  "sentiment": {
   "count": {
    "긍정": 3,
    "중립": 4,
-   "부정": 94,
+   "부정": 95,
    "기타": 0
   },
   "sympathy": {
    "긍정": 2,
    "중립": 7,
-   "부정": 469,
+   "부정": 471,
    "기타": 0
   }
  },
@@ -574,7 +603,7 @@
   "기타": {
    "긍정": 1,
    "중립": 4,
-   "부정": 27,
+   "부정": 28,
    "기타": 0
   },
   "기금 운용 손실": {
@@ -635,6 +664,14 @@
    "기타": 0
   },
   {
+   "keyword": "연금",
+   "count": 3,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 3,
+   "기타": 0
+  },
+  {
    "keyword": "고갈",
    "count": 3,
    "긍정": 0,
@@ -652,14 +689,6 @@
   },
   {
    "keyword": "돈",
-   "count": 2,
-   "긍정": 0,
-   "중립": 0,
-   "부정": 2,
-   "기타": 0
-  },
-  {
-   "keyword": "연금",
    "count": 2,
    "긍정": 0,
    "중립": 0,
@@ -791,7 +820,7 @@
     "sentiment": "부정",
     "category": "기금 운용 손실",
     "keyword": "방만함",
-    "sympathy": 65,
+    "sympathy": 66,
     "antipathy": 5,
     "reply": 2
    },
@@ -840,7 +869,7 @@
       "category": "무소득자 가입 확대",
       "keyword": "가입",
       "sympathy": 2,
-      "antipathy": 0,
+      "antipathy": 1,
       "reply": 0
      },
      {
@@ -917,7 +946,7 @@
       "sentiment": "부정",
       "category": "재정 고갈·미래세대 부담",
       "keyword": "정책",
-      "sympathy": 5,
+      "sympathy": 6,
       "antipathy": 0,
       "reply": 0
      },
@@ -1030,6 +1059,17 @@
   }
  },
  "recent": [
+  {
+   "no": "908510670956265581",
+   "time": "2026-10-24 09:21",
+   "text": "국민들에게 국민연금 납부하라고 하지 말고 국가에서 공짜로 전국민들 연금 납부하자. 국민들\n그만 괴롭히고 나라에서 60세되면 무조건 연금\n500만원씩 나누어주자",
+   "sentiment": "부정",
+   "category": "기타",
+   "keyword": "연금",
+   "sympathy": 0,
+   "antipathy": 0,
+   "reply": 0
+  },
   {
    "no": "908424207912665254",
    "time": "2026-10-23 10:59",
@@ -1148,7 +1188,7 @@
    "category": "무소득자 가입 확대",
    "keyword": "가입",
    "sympathy": 2,
-   "antipathy": 0,
+   "antipathy": 1,
    "reply": 0
   },
   {
@@ -1873,7 +1913,7 @@
    "sentiment": "부정",
    "category": "재정 고갈·미래세대 부담",
    "keyword": "정책",
-   "sympathy": 5,
+   "sympathy": 6,
    "antipathy": 0,
    "reply": 0
   },
@@ -2060,7 +2100,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "방만함",
-   "sympathy": 65,
+   "sympathy": 66,
    "antipathy": 5,
    "reply": 2
   },
