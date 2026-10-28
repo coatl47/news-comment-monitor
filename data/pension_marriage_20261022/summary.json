@@ -10,11 +10,11 @@
   "closed": false,
   "closes_at": "2026-11-11 08:00"
  },
- "generated_at": "2026-10-28 10:05",
- "cutoff": "2026-10-28 10:00",
- "next_update": "2026-10-28 12:00",
+ "generated_at": "2026-10-28 12:05",
+ "cutoff": "2026-10-28 12:00",
+ "next_update": "2026-10-28 14:00",
  "status": {
-  "last_success_at": "2026-10-28 10:05",
+  "last_success_at": "2026-10-28 12:05",
   "last_error": null,
   "last_error_at": null
  },
@@ -23,7 +23,7 @@
   "deleted": 46,
   "deleted_delta": 0,
   "collected": 346,
-  "last_window_label": "10/28 08–10시",
+  "last_window_label": "10/28 10–12시",
   "last_window_new": 0,
   "prev_window_new": 0,
   "neg_ratio_last": null,
@@ -52,7 +52,7 @@
     "sentiment": "부정",
     "category": "정부·정책 평가",
     "keyword": "개혁",
-    "sympathy": 1316,
+    "sympathy": 1317,
     "antipathy": 163,
     "reply": 26
    }
@@ -1135,6 +1135,19 @@
    "neg_ratio": null,
    "pos_ratio": null,
    "top": null
+  },
+  {
+   "window": "2026-10-28 10:00",
+   "label": "10/28 10–12시",
+   "total": 0,
+   "cumulative": 346,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 0,
+   "기타": 0,
+   "neg_ratio": null,
+   "pos_ratio": null,
+   "top": null
   }
  ],
  "snapshots": [
@@ -1557,6 +1570,12 @@
    "collected_at": "2026-10-28 10:05",
    "naver_total": 367,
    "deleted": 46
+  },
+  {
+   "slot": "2026-10-28 12:00",
+   "collected_at": "2026-10-28 12:05",
+   "naver_total": 367,
+   "deleted": 46
   }
  ],
  "sentiment": {
@@ -1568,8 +1587,8 @@
   },
   "sympathy": {
    "긍정": 17,
-   "중립": 711,
-   "부정": 2770,
+   "중립": 712,
+   "부정": 2771,
    "기타": 0
   }
  },
@@ -1612,7 +1631,7 @@
   }
  },
  "demographics": {
-  "as_of": "2026-10-28 10:05",
+  "as_of": "2026-10-28 12:05",
   "gender": {
    "male": 83,
    "female": 17
@@ -1819,7 +1838,7 @@
     "sentiment": "부정",
     "category": "정부·정책 평가",
     "keyword": "개혁",
-    "sympathy": 1316,
+    "sympathy": 1317,
     "antipathy": 163,
     "reply": 26
    },
@@ -1841,7 +1860,7 @@
     "sentiment": "중립",
     "category": "기타",
     "keyword": "여성연금",
-    "sympathy": 337,
+    "sympathy": 338,
     "antipathy": 70,
     "reply": 14
    },
