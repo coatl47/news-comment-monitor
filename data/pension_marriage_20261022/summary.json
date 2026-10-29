@@ -10,11 +10,11 @@
   "closed": false,
   "closes_at": "2026-11-11 08:00"
  },
- "generated_at": "2026-10-29 18:05",
- "cutoff": "2026-10-29 18:00",
- "next_update": "2026-10-29 20:00",
+ "generated_at": "2026-10-29 20:05",
+ "cutoff": "2026-10-29 20:00",
+ "next_update": "2026-10-29 22:00",
  "status": {
-  "last_success_at": "2026-10-29 18:05",
+  "last_success_at": "2026-10-29 20:05",
   "last_error": null,
   "last_error_at": null
  },
@@ -23,7 +23,7 @@
   "deleted": 48,
   "deleted_delta": 0,
   "collected": 346,
-  "last_window_label": "10/29 16–18시",
+  "last_window_label": "10/29 18–20시",
   "last_window_new": 0,
   "prev_window_new": 0,
   "neg_ratio_last": null,
@@ -1343,6 +1343,19 @@
    "neg_ratio": null,
    "pos_ratio": null,
    "top": null
+  },
+  {
+   "window": "2026-10-29 18:00",
+   "label": "10/29 18–20시",
+   "total": 0,
+   "cumulative": 346,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 0,
+   "기타": 0,
+   "neg_ratio": null,
+   "pos_ratio": null,
+   "top": null
   }
  ],
  "snapshots": [
@@ -1861,6 +1874,12 @@
    "collected_at": "2026-10-29 18:05",
    "naver_total": 367,
    "deleted": 48
+  },
+  {
+   "slot": "2026-10-29 20:00",
+   "collected_at": "2026-10-29 20:05",
+   "naver_total": 367,
+   "deleted": 48
   }
  ],
  "sentiment": {
@@ -1916,7 +1935,7 @@
   }
  },
  "demographics": {
-  "as_of": "2026-10-29 18:05",
+  "as_of": "2026-10-29 20:05",
   "gender": {
    "male": 83,
    "female": 17
