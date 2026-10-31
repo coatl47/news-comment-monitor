@@ -10,11 +10,11 @@
   "closed": false,
   "closes_at": "2026-11-11 08:00"
  },
- "generated_at": "2026-11-01 00:05",
- "cutoff": "2026-11-01 00:00",
- "next_update": "2026-11-01 02:00",
+ "generated_at": "2026-11-01 02:05",
+ "cutoff": "2026-11-01 02:00",
+ "next_update": "2026-11-01 04:00",
  "status": {
-  "last_success_at": "2026-11-01 00:05",
+  "last_success_at": "2026-11-01 02:05",
   "last_error": null,
   "last_error_at": null
  },
@@ -23,7 +23,7 @@
   "deleted": 13,
   "deleted_delta": 0,
   "collected": 103,
-  "last_window_label": "10/31 22–00시",
+  "last_window_label": "11/1 00–02시",
   "last_window_new": 0,
   "prev_window_new": 0,
   "neg_ratio_last": null,
@@ -1654,6 +1654,19 @@
    "neg_ratio": null,
    "pos_ratio": null,
    "top": null
+  },
+  {
+   "window": "2026-11-01 00:00",
+   "label": "11/1 00–02시",
+   "total": 0,
+   "cumulative": 103,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 0,
+   "기타": 0,
+   "neg_ratio": null,
+   "pos_ratio": null,
+   "top": null
   }
  ],
  "snapshots": [
@@ -2320,6 +2333,12 @@
   {
    "slot": "2026-11-01 00:00",
    "collected_at": "2026-11-01 00:05",
+   "naver_total": 106,
+   "deleted": 13
+  },
+  {
+   "slot": "2026-11-01 02:00",
+   "collected_at": "2026-11-01 02:05",
    "naver_total": 106,
    "deleted": 13
   }
