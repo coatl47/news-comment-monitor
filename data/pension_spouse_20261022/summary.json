@@ -10,11 +10,11 @@
   "closed": false,
   "closes_at": "2026-11-11 08:00"
  },
- "generated_at": "2026-11-08 00:05",
- "cutoff": "2026-11-08 00:00",
- "next_update": "2026-11-08 02:00",
+ "generated_at": "2026-11-08 02:05",
+ "cutoff": "2026-11-08 02:00",
+ "next_update": "2026-11-08 04:00",
  "status": {
-  "last_success_at": "2026-11-08 00:05",
+  "last_success_at": "2026-11-08 02:05",
   "last_error": null,
   "last_error_at": null
  },
@@ -23,13 +23,13 @@
   "deleted": 13,
   "deleted_delta": 0,
   "collected": 103,
-  "last_window_label": "11/7 22–00시",
+  "last_window_label": "11/8 00–02시",
   "last_window_new": 0,
   "prev_window_new": 0,
   "neg_ratio_last": null,
   "neg_ratio_prev": null,
   "neg_ratio_all": 92.2,
-  "neg_ratio_sympathy": 97.9,
+  "neg_ratio_sympathy": 97.8,
   "ads": 0,
   "unanalyzed": 0
  },
@@ -52,7 +52,7 @@
     "sentiment": "부정",
     "category": "정부·정치 비판",
     "keyword": "민주화",
-    "sympathy": 128,
+    "sympathy": 129,
     "antipathy": 39,
     "reply": 17
    }
@@ -75,7 +75,7 @@
     "sentiment": "부정",
     "category": "기금 운용 손실",
     "keyword": "손실",
-    "sympathy": 16,
+    "sympathy": 17,
     "antipathy": 1,
     "reply": 1
    }
@@ -98,7 +98,7 @@
     "sentiment": "부정",
     "category": "기타",
     "keyword": "탈퇴",
-    "sympathy": 2,
+    "sympathy": 3,
     "antipathy": 0,
     "reply": 0
    }
@@ -2746,6 +2746,19 @@
    "neg_ratio": null,
    "pos_ratio": null,
    "top": null
+  },
+  {
+   "window": "2026-11-08 00:00",
+   "label": "11/8 00–02시",
+   "total": 0,
+   "cumulative": 103,
+   "긍정": 0,
+   "중립": 0,
+   "부정": 0,
+   "기타": 0,
+   "neg_ratio": null,
+   "pos_ratio": null,
+   "top": null
   }
  ],
  "snapshots": [
@@ -3918,6 +3931,12 @@
    "collected_at": "2026-11-08 00:05",
    "naver_total": 106,
    "deleted": 13
+  },
+  {
+   "slot": "2026-11-08 02:00",
+   "collected_at": "2026-11-08 02:05",
+   "naver_total": 106,
+   "deleted": 13
   }
  ],
  "sentiment": {
@@ -3929,8 +3948,8 @@
   },
   "sympathy": {
    "긍정": 3,
-   "중립": 7,
-   "부정": 471,
+   "중립": 8,
+   "부정": 484,
    "기타": 0
   }
  },
@@ -4144,7 +4163,7 @@
     "sentiment": "부정",
     "category": "정부·정치 비판",
     "keyword": "민주화",
-    "sympathy": 128,
+    "sympathy": 129,
     "antipathy": 39,
     "reply": 17
    },
@@ -4155,7 +4174,7 @@
     "sentiment": "부정",
     "category": "기금 운용 손실",
     "keyword": "방만함",
-    "sympathy": 67,
+    "sympathy": 68,
     "antipathy": 5,
     "reply": 2
    },
@@ -4166,7 +4185,7 @@
     "sentiment": "부정",
     "category": "재정 고갈·미래세대 부담",
     "keyword": "희생",
-    "sympathy": 50,
+    "sympathy": 51,
     "antipathy": 4,
     "reply": 3
    },
@@ -4188,7 +4207,7 @@
     "sentiment": "부정",
     "category": "기타",
     "keyword": "구조개편",
-    "sympathy": 43,
+    "sympathy": 44,
     "antipathy": 4,
     "reply": 0
    }
@@ -4254,7 +4273,7 @@
       "sentiment": "부정",
       "category": "기금 운용 손실",
       "keyword": "손실",
-      "sympathy": 16,
+      "sympathy": 17,
       "antipathy": 1,
       "reply": 1
      },
@@ -4265,7 +4284,7 @@
       "sentiment": "부정",
       "category": "기금 운용 손실",
       "keyword": "탕진",
-      "sympathy": 15,
+      "sympathy": 16,
       "antipathy": 1,
       "reply": 1
      }
@@ -4319,7 +4338,7 @@
       "sentiment": "부정",
       "category": "의무가입·제도 불신",
       "keyword": "납부",
-      "sympathy": 3,
+      "sympathy": 4,
       "antipathy": 0,
       "reply": 0
      }
@@ -4385,17 +4404,17 @@
       "sentiment": "부정",
       "category": "기타",
       "keyword": "백수",
-      "sympathy": 9,
+      "sympathy": 10,
       "antipathy": 0,
       "reply": 0
      },
      {
-      "no": "908411943868432420",
-      "time": "2026-10-23 07:49",
-      "text": "국민연금,의료보험,고용보험,기초연금 전부 다 폐지해라",
+      "no": "908331171606167693",
+      "time": "2026-10-22 10:55",
+      "text": "탈퇴 할 수만 있으면 탈퇴하고 싶은게 국민연금인데 품긴 뭘 품어 다 빼버려야지",
       "sentiment": "부정",
       "category": "기타",
-      "keyword": "폐지",
+      "keyword": "탈퇴",
       "sympathy": 3,
       "antipathy": 0,
       "reply": 0
@@ -4698,7 +4717,7 @@
    "sentiment": "부정",
    "category": "기타",
    "keyword": "탈퇴",
-   "sympathy": 2,
+   "sympathy": 3,
    "antipathy": 0,
    "reply": 0
   },
@@ -5017,7 +5036,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "돈",
-   "sympathy": 13,
+   "sympathy": 14,
    "antipathy": 0,
    "reply": 0
   },
@@ -5039,7 +5058,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "증발",
-   "sympathy": 4,
+   "sympathy": 5,
    "antipathy": 0,
    "reply": 0
   },
@@ -5061,7 +5080,7 @@
    "sentiment": "중립",
    "category": "기타",
    "keyword": "품는거",
-   "sympathy": 7,
+   "sympathy": 8,
    "antipathy": 1,
    "reply": 0
   },
@@ -5193,7 +5212,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "갈취",
-   "sympathy": 5,
+   "sympathy": 6,
    "antipathy": 0,
    "reply": 0
   },
@@ -5248,7 +5267,7 @@
    "sentiment": "부정",
    "category": "의무가입·제도 불신",
    "keyword": "납부",
-   "sympathy": 3,
+   "sympathy": 4,
    "antipathy": 0,
    "reply": 0
   },
@@ -5336,7 +5355,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "손실",
-   "sympathy": 16,
+   "sympathy": 17,
    "antipathy": 1,
    "reply": 1
   },
@@ -5347,7 +5366,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "억울함",
-   "sympathy": 8,
+   "sympathy": 9,
    "antipathy": 0,
    "reply": 0
   },
@@ -5358,7 +5377,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "탕진",
-   "sympathy": 15,
+   "sympathy": 16,
    "antipathy": 1,
    "reply": 1
   },
@@ -5435,7 +5454,7 @@
    "sentiment": "부정",
    "category": "기타",
    "keyword": "구조개편",
-   "sympathy": 43,
+   "sympathy": 44,
    "antipathy": 4,
    "reply": 0
   },
@@ -5446,7 +5465,7 @@
    "sentiment": "부정",
    "category": "기타",
    "keyword": "백수",
-   "sympathy": 9,
+   "sympathy": 10,
    "antipathy": 0,
    "reply": 0
   },
@@ -5457,7 +5476,7 @@
    "sentiment": "부정",
    "category": "기금 운용 손실",
    "keyword": "방만함",
-   "sympathy": 67,
+   "sympathy": 68,
    "antipathy": 5,
    "reply": 2
   },
@@ -5490,7 +5509,7 @@
    "sentiment": "부정",
    "category": "재정 고갈·미래세대 부담",
    "keyword": "희생",
-   "sympathy": 50,
+   "sympathy": 51,
    "antipathy": 4,
    "reply": 3
   },
@@ -5523,7 +5542,7 @@
    "sentiment": "부정",
    "category": "정부·정치 비판",
    "keyword": "민주화",
-   "sympathy": 128,
+   "sympathy": 129,
    "antipathy": 39,
    "reply": 17
   },
