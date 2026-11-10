@@ -1,6 +1,6 @@
 {
  "dashboard_title": "네이버 뉴스 댓글 여론 모니터링",
- "generated_at": "2026-11-10 08:05",
+ "generated_at": "2026-11-10 10:05",
  "slot_hours": 2,
  "articles": [
   {
@@ -13,10 +13,10 @@
    "collect_enabled": true,
    "closed": false,
    "closes_at": "2026-11-11 08:00",
-   "cutoff": "2026-11-10 08:00",
-   "next_update": "2026-11-10 10:00",
+   "cutoff": "2026-11-10 10:00",
+   "next_update": "2026-11-10 12:00",
    "status": {
-    "last_success_at": "2026-11-10 08:05",
+    "last_success_at": "2026-11-10 10:05",
     "last_error": null,
     "last_error_at": null
    },
@@ -25,7 +25,7 @@
     "deleted": 58,
     "deleted_delta": 0,
     "collected": 346,
-    "last_window_label": "11/10 06–08시",
+    "last_window_label": "11/10 08–10시",
     "last_window_new": 0,
     "prev_window_new": 0,
     "neg_ratio_last": null,
@@ -1652,6 +1652,13 @@
      "total": 0,
      "cumulative": 346,
      "neg_ratio": null
+    },
+    {
+     "window": "2026-11-10 08:00",
+     "label": "11/10 08–10시",
+     "total": 0,
+     "cumulative": 346,
+     "neg_ratio": null
     }
    ]
   },
@@ -1665,10 +1672,10 @@
    "collect_enabled": true,
    "closed": false,
    "closes_at": "2026-11-11 08:00",
-   "cutoff": "2026-11-10 08:00",
-   "next_update": "2026-11-10 10:00",
+   "cutoff": "2026-11-10 10:00",
+   "next_update": "2026-11-10 12:00",
    "status": {
-    "last_success_at": "2026-11-10 08:05",
+    "last_success_at": "2026-11-10 10:05",
     "last_error": null,
     "last_error_at": null
    },
@@ -1677,7 +1684,7 @@
     "deleted": 13,
     "deleted_delta": 0,
     "collected": 103,
-    "last_window_label": "11/10 06–08시",
+    "last_window_label": "11/10 08–10시",
     "last_window_new": 0,
     "prev_window_new": 0,
     "neg_ratio_last": null,
@@ -3304,6 +3311,13 @@
      "total": 0,
      "cumulative": 103,
      "neg_ratio": null
+    },
+    {
+     "window": "2026-11-10 08:00",
+     "label": "11/10 08–10시",
+     "total": 0,
+     "cumulative": 103,
+     "neg_ratio": null
     }
    ]
   },
@@ -3317,10 +3331,10 @@
    "collect_enabled": true,
    "closed": false,
    "closes_at": "2026-11-11 18:00",
-   "cutoff": "2026-11-10 08:00",
-   "next_update": "2026-11-10 10:00",
+   "cutoff": "2026-11-10 10:00",
+   "next_update": "2026-11-10 12:00",
    "status": {
-    "last_success_at": "2026-11-10 08:05",
+    "last_success_at": "2026-11-10 10:05",
     "last_error": null,
     "last_error_at": null
    },
@@ -3329,7 +3343,7 @@
     "deleted": 1,
     "deleted_delta": 0,
     "collected": 4,
-    "last_window_label": "11/10 06–08시",
+    "last_window_label": "11/10 08–10시",
     "last_window_new": 0,
     "prev_window_new": 0,
     "neg_ratio_last": null,
@@ -4911,6 +4925,13 @@
     {
      "window": "2026-11-10 06:00",
      "label": "11/10 06–08시",
+     "total": 0,
+     "cumulative": 4,
+     "neg_ratio": null
+    },
+    {
+     "window": "2026-11-10 08:00",
+     "label": "11/10 08–10시",
      "total": 0,
      "cumulative": 4,
      "neg_ratio": null
