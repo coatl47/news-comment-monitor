@@ -217,7 +217,7 @@ def write_index(data_root: str, config: dict, summaries: list[dict], now: dateti
                          for w in s["timeline"]],
         })
     index = {
-        "dashboard_title": config.get("dashboard_title", "네이버 뉴스 댓글 여론 모니터링"),
+        "dashboard_title": config.get("dashboard_title", "뉴스 댓글 여론 모니터링"),
         "generated_at": fmt(now),
         "slot_hours": SLOT_HOURS,
         "articles": articles,

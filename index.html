@@ -250,7 +250,7 @@
             <div class="hero-panel">
                 <div>
                     <h1 class="hero-title" id="dashboardTitle">뉴스 댓글 여론 모니터링</h1>
-                    <p class="hero-sub">네이버 뉴스 댓글 · 2시간마다(KST 짝수 정시) 새 댓글을 모아 AI로 감성·주제를 분류합니다</p>
+                    <p class="hero-sub">뉴스 댓글 · 2시간마다(KST 짝수 정시) 새 댓글을 모아 AI로 감성·주제를 분류합니다</p>
                 </div>
                 <div class="hero-meta">
                     <span class="hero-chip" id="heroCutoff">데이터 기준 —</span>
@@ -269,7 +269,7 @@
         <footer class="card disclaimer" style="margin-top:16px">
             <h3>면책조항</h3>
             <ul>
-                <li>수치는 각 수집 시점(2시간 경계) 기준이며, 네이버 화면의 실시간 값과 다를 수 있습니다. 삭제·숨김 댓글과 답글은 분석에서 제외됩니다.</li>
+                <li>수치는 각 수집 시점(2시간 경계) 기준이며, 기사 화면의 실시간 값과 다를 수 있습니다. 삭제·숨김 댓글과 답글은 분석에서 제외됩니다.</li>
                 <li>감성·주제 분류는 AI 자동 분류 결과로, 작성자의 실제 의도와 다를 수 있습니다. 반어·비꼼은 오분류될 수 있습니다.</li>
                 <li>댓글 작성자는 기사 독자 전체를 대표하지 않습니다. 정책 판단이나 대외 커뮤니케이션에 쓰기 전에 추가 검토가 필요합니다.</li>
             </ul>
@@ -519,7 +519,7 @@
                 </div>
 
                 <div class="kpis">
-                    <div class="kpi"><div class="kpi-label">네이버 댓글 수</div><div class="kpi-value">${fmtNum(k.naver_total)}</div>
+                    <div class="kpi"><div class="kpi-label">전체 댓글 수</div><div class="kpi-value">${fmtNum(k.naver_total)}</div>
                         <div class="kpi-sub">삭제 ${fmtNum(k.deleted)}건${k.deleted_delta ? ` (+${fmtNum(k.deleted_delta)})` : ''} · 분석 대상 ${fmtNum(k.collected)}건</div></div>
                     <div class="kpi"><div class="kpi-label">최근 2시간 신규${k.last_window_label ? ` · ${esc(k.last_window_label)}` : ''}</div>
                         <div class="kpi-value">+${fmtNum(k.last_window_new)}<small>건</small></div><div class="kpi-sub">${newDelta || '&nbsp;'}</div></div>
@@ -565,7 +565,7 @@
                         <div id="dCategory" class="chart" style="height:${Math.max(220, categories.length * 46 + 60)}px"></div>
                     </div>
                     <div class="card">
-                        <div class="card-head"><div><h3 class="card-title">댓글 작성자 분포</h3><p class="card-desc">네이버 제공 통계${s.demographics ? ` · ${esc(s.demographics.as_of)} 기준` : ''}</p></div></div>
+                        <div class="card-head"><div><h3 class="card-title">댓글 작성자 분포</h3><p class="card-desc">포털 제공 통계${s.demographics ? ` · ${esc(s.demographics.as_of)} 기준` : ''}</p></div></div>
                         <div id="dDemo"></div>
                     </div>
                 </div>
@@ -703,7 +703,7 @@
         function renderDemographics(s) {
             const box = $('#dDemo');
             const d = s.demographics;
-            if (!d) { box.innerHTML = '<div class="empty-msg">네이버가 이 기사의 성별·연령 통계를 제공하지 않습니다.<br>(댓글이 적은 기사는 통계가 없습니다)</div>'; return; }
+            if (!d) { box.innerHTML = '<div class="empty-msg">이 기사는 성별·연령 통계가 제공되지 않습니다.<br>(댓글이 적은 기사는 통계가 없습니다)</div>'; return; }
             let htmlStr = '';
             if (d.gender) {
                 const m = d.gender.male || 0, f = d.gender.female || 0;
